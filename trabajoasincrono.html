@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recreación Página Interactiva</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body,
+        html {
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background: #111;
+            color: #fff;
+        }
+
+        .container {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            padding: 4rem;
+            justify-content: flex-start;
+            align-items: center;
+            height: 100%;
+        }
+
+        .background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: 0;
+        }
+
+        .container.active .background {
+            opacity: 1;
+        }
+
+        .item {
+            position: relative;
+            z-index: 1;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .item h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            display: inline;
+        }
+
+        .item small {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            display: inline;
+        }
+
+        .container.active .item:not(.active) {
+            opacity: 0.1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" id="grid">
+        <div class="background" id="bg"></div>
+        <!-- ítems -->
+        <div class="item" data-image="path/to/zpump.jpg">
+            <h1>ZPump Urban Fit</h1><small>Reebok</small>
+        </div>
+        <div class="item" data-image="path/to/coach2o.jpg">
+            <h1>Coach2o</h1><small>Font Vella</small>
+        </div>
+        <div class="item" data-image="path/to/rcar.jpg">
+            <h1>RCar</h1><small>Revista Car</small>
+        </div>
+        <div class="item" data-image="path/to/emotional_pulse.jpg">
+            <h1>Emotional Pulse</h1><small>Seidor</small>
+        </div>
+        <div class="item" data-image="path/to/alhambra.jpg">
+            <h1>Alhambra</h1><small>Cervezas Alhambra</small>
+        </div>
+        <div class="item" data-image="path/to/actimel.jpg">
+            <h1>Actimel</h1><small>Danone</small>
+        </div>
+        <div class="item" data-image="path/to/ffuuss.jpg">
+            <h1>ffuuss</h1><small>OTS Group</small>
+        </div>
+        <div class="item" data-image="path/to/delicious.jpg">
+            <h1>Delicious</h1><small>Día</small>
+        </div>
+        <div class="item" data-image="path/to/roca.jpg">
+            <h1>Roca</h1><small>Sanitarios</small>
+        </div>
+        <div class="item" data-image="path/to/deep_state.jpg">
+            <h1>Deep State</h1><small>Fox</small>
+        </div>
+    </div>
+    
+    <script>
+        const grid = document.getElementById('grid');
+        const bg = document.getElementById('bg');
+        const items = document.querySelectorAll('.item');
+        items.forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                items.forEach(i => i.classList.remove('active'));
+                item.classList.add('active');
+                grid.classList.add('active');
+                bg.style.backgroundImage = `url('${item.dataset.image}')`;
+            });
+            item.addEventListener('mouseleave', () => {
+                item.classList.remove('active');
+                grid.classList.remove('active');
+                bg.style.backgroundImage = '';
+            });
+        });
+    </script>
+</body>
+
+</html>
