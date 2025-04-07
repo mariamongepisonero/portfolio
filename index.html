@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="esp">
 
 <head>
     <meta charset="UTF-8">
@@ -17,13 +17,17 @@
         body {
             font-family: Arial, Helvetica, sans-serif;
             /*POPPINS*/
-            color: #f1f1f1;
-            background-color: #070707;
+            color: #333;
+            background-color: white;
             line-height: 1.6;
             scroll-behavior: smooth;
         }
 
-        /*Header fijo al hacer scroll: position fixed*/
+        /****************************************************************/
+        /*                            HEADER                            */
+        /****************************************************************/
+
+        /*Fijo al hacer scroll*/
         header {
             position: fixed;
             top: 0;
@@ -33,6 +37,27 @@
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 100;
         }
+
+        .nav__container {
+            display: flex;
+            justify-content: space-between;
+            align-content: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo__img {
+            height: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav--desktop {
+            display: flex;
+        }
+
 
         .nav__list {
             list-style: none;
@@ -47,17 +72,85 @@
             transition: color 0.3s ease;
         }
 
-        .nav__link:hover{
+        .nav__link:hover {
             color: crimson;
         }
 
+        /*Móvil: oculto por defecto*/
+        .hamburguesa {
+            display: none;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            color: #333;
+            cursor: pointer;
+        }
+
+        .nav--mobile {
+            display: none;
+            position: fixed;
+            top: 70px;
+            right: 0;
+            background: white;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+        }
+
+        /*Menú activo visible*/
+        .nav--mobile.active {
+            display: block;
+        }
+
+        .nav__list--mobile {
+            margin: 0;
+            padding: 1rem;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            list-style: none;
+        }
+
+        .nav__list--mobile .nav__item {
+            margin-bottom: 1rem;
+        }
+
+        .nav__list--mobile .link {
+            color: #333;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /*MEDIA QUERIES para ocultar cambiar tipo de menú en pantallas pequeñas (móviles)*/
+        @media screen and (max-width: 768px) {
+            .nav--desktop {
+                display: none;
+            }
+
+            .hamburguesa {
+                display: block;
+            }
+
+            .nav--mobile.active {
+                display: block;
+            }
+        }
+
+        /*Logo más pequeño al hacer scroll*/
+        .header.scrolled .logo__img {
+            height: 35px;
+        }
+
+        /****************************************************************/
+        /*                             MAIN                             */
+        /****************************************************************/
         section {
             padding: 120px 20px;
             /*para que no quede debajo del header*/
             min-height: 100vh;
         }
 
-        .whatsapp{
+        .whatsapp {
             position: fixed;
             bottom: 20px;
             right: 20px;
@@ -67,19 +160,20 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             z-index: 99;
             transition: transform 0.3s ease;
         }
 
-        .whatsapp:hover{
+        .whatsapp:hover {
             transform: scale(1.1);
         }
 
-        .whatsapp__icon{
+        .whatsapp__icon {
             width: 30px;
             height: 30px;
-            filter: invert(1); /*para que sea blanco*/
+            filter: invert(1);
+            /*para que sea blanco*/
         }
     </style>
 </head>
@@ -88,26 +182,53 @@
 
     <!--Header-->
     <header class="header">
-        <nav class="nav">
-            <ul class="nav__list">
-                <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
-                <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
-                <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
-                <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
-            </ul>
-        </nav>
+        <div class="nav__container">
+            <!--Logo-->
+            <a class="logo" href="#inicio">
+                <img class="logo__img" src="./img/logo.png" alt="Logo María Monge">
+            </a>
+
+            <!--Menú navegación-->
+            <nav class="nav nav--desktop">
+                <ul class="nav__list">
+                    <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
+                </ul>
+            </nav>
+
+            <!--Botón menú hamburguesa para móvil-->
+            <button class="hamburguesa">
+                ☰
+            </button>
+
+            <!--Menú desplegable para móvil-->
+            <nav class="nav nav--mobile">
+                <ul class="nav__list--mobile">
+                    <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                    <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
+                </ul>
+
+            </nav>
+
+
+        </div>
     </header>
 
     <main>
         <!--Inicio-->
-        <section class="start">
+        <section id="inicio">
 
         </section>
 
         <!--Apartado presentación-->
         <section class="section section--about" id="sobre-mi">
             <h1 class="section__title">Sobre mí</h1>
-            <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam praesentium perspiciatis
+            <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
+                praesentium perspiciatis
                 odio incidunt? Provident illo, amet maxime alias dignissimos asperiores corrupti ex numquam dolore omnis
                 eaque. Delectus dignissimos vel debitis?</p>
         </section>
@@ -142,7 +263,33 @@
     </footer>
 
     <script>
+        //Variables menú
+        const header = document.querySelector('.header');
+        const hamburger = document.querySelector('.hamburguesa');
+        const mobileMenu = document.querySelector('.nav--mobile');
 
+        //Cambiar tamaño del logo y mostrar hamburguesa al hacer scroll
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        //Abrir y cerrar el menú movil
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        });
+
+        //Cerrar el menú móvil cuando se hace clic en un enlace
+        document.querySelectorAll('.nav--mobile .nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                hamburger.classList.remove('active');
+            });
+        });
     </script>
 
 </body>
