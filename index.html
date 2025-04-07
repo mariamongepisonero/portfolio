@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,28 +8,78 @@
 
     <style>
         /*Reset estilos*/
-        *{
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body{
-           font-family: Arial, Helvetica, sans-serif; /*POPPINS*/
-           color: #333;
-           background-color: #fff;
-           line-height: 1.6;
-           scroll-behavior: smooth;
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            /*POPPINS*/
+            color: #f1f1f1;
+            background-color: #070707;
+            line-height: 1.6;
+            scroll-behavior: smooth;
         }
 
         /*Header fijo al hacer scroll: position fixed*/
-        header{
+        header {
             position: fixed;
+            top: 0;
             width: 100%;
             background: white;
             padding: 1rem 2rem;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 100;
+        }
+
+        .nav__list {
+            list-style: none;
+            display: flex;
+            justify-content: row;
+            gap: 1.5rem;
+        }
+
+        .nav__link {
+            text-decoration: none;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .nav__link:hover{
+            color: crimson;
+        }
+
+        section {
+            padding: 120px 20px;
+            /*para que no quede debajo del header*/
+            min-height: 100vh;
+        }
+
+        .whatsapp{
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 30px;
+            background-color: #25D366;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 99;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp:hover{
+            transform: scale(1.1);
+        }
+
+        .whatsapp__icon{
+            width: 30px;
+            height: 30px;
+            filter: invert(1); /*para que sea blanco*/
         }
     </style>
 </head>
@@ -36,45 +87,64 @@
 <body>
 
     <!--Header-->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="#sobre-mi">Sobre mí</a></li>
-                <li><a href="#trabajos">Mis trabajos</a></li>
-                <li><a href="#cursos">Cursos</a></li>
-                <li><a href="contacto">¿Trabajamos juntos?</a></li>
+    <header class="header">
+        <nav class="nav">
+            <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
+                <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
+                <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
             </ul>
         </nav>
     </header>
 
-    <!--Apartado presentación-->
-    <section id="sobre-mi">
-        <h1>Sobre mí</h1>
-        <p>Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam praesentium perspiciatis odio incidunt? Provident illo, amet maxime alias dignissimos asperiores corrupti ex numquam dolore omnis eaque. Delectus dignissimos vel debitis?</p>
-    </section>
+    <main>
+        <!--Inicio-->
+        <section class="start">
 
-    <!--Apartado trabajos-->
-    <section id="trabajos">
-        <h2>Mis trabajos</h2>
-        <!-- TRABAJOS (estructurar: por tipos, hacer galerías...)-->
-    </section>
+        </section>
 
-    <!-- Apartado cursos-->
-     <section id="cursos">
-        <h2>Mis cursos</h2>
-        <!-- formulario contacto, enlaces a mis redes sociales...-->
-     </section>
+        <!--Apartado presentación-->
+        <section class="section section--about" id="sobre-mi">
+            <h1 class="section__title">Sobre mí</h1>
+            <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam praesentium perspiciatis
+                odio incidunt? Provident illo, amet maxime alias dignissimos asperiores corrupti ex numquam dolore omnis
+                eaque. Delectus dignissimos vel debitis?</p>
+        </section>
 
-    <!-- Apartado contacto-->
-     <section id="contacto">
-        <h2>¿Trabajamos juntos?</h2>
-        <!-- formulario contacto, enlaces a mis redes sociales...-->
-     </section>
+        <!--Apartado trabajos-->
+        <section class="section section--portfolio" id="trabajos">
+            <h2 class="section__title">Mis trabajos</h2>
+            <!-- TRABAJOS (estructurar: por tipos, hacer galerías...)-->
+        </section>
 
+        <!-- Apartado cursos-->
+        <section class="section section--courses" id="cursos">
+            <h2 class="section__title">Mis cursos</h2>
+            <!-- formulario contacto, enlaces a mis redes sociales...-->
+        </section>
 
-     <script>
+        <!-- Apartado contacto-->
+        <section class="section section--contact" id="contacto">
+            <h2 class="section__title">¿Trabajamos juntos?</h2>
+            <!-- formulario contacto, enlaces a mis redes sociales...-->
+        </section>
 
-     </script>
-    
+        <!--Icono whatsapp-->
+        <a href="https://wa.me/675783354" class="whatsapp">
+            <img class="whatsapp__icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
+                alt="Whatsapp">
+        </a>
+    </main>
+
+    <footer>
+        <!--footer-->
+    </footer>
+
+    <script>
+
+    </script>
+
 </body>
+
 </html>
