@@ -27,9 +27,9 @@
         /*                            HEADER                            */
         /****************************************************************/
 
-        /*Fijo al hacer scroll*/
+        /*Fijo al hacer scroll*/ /*Cambio: sticky para que aparezca debajo de la sección inicio*/
         header {
-            position: fixed;
+            position: sticky;
             top: 0;
             width: 100%;
             background: white;
@@ -42,6 +42,7 @@
             display: flex;
             justify-content: space-between;
             align-content: center;
+            align-items: center;
         }
 
         .logo {
@@ -64,6 +65,8 @@
             display: flex;
             justify-content: row;
             gap: 1.5rem;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
         .nav__link {
@@ -84,6 +87,7 @@
             border: none;
             color: #333;
             cursor: pointer;
+            transition: font-size 0.3s ease;
         }
 
         .nav--mobile {
@@ -141,6 +145,19 @@
             height: 35px;
         }
 
+        /*El menú de navegación baja de tamaño al hacer scroll*/
+        .header.scrolled .nav__list {
+            font-size: 1rem;
+            gap: 1rem;
+        }
+
+        /*El menú hamburguesa baja de tamaño al hacer scroll*/
+        .header.scrolled .hamburguesa {
+            font-size: 1.5rem;
+        }
+
+
+
         /****************************************************************/
         /*                             MAIN                             */
         /****************************************************************/
@@ -149,6 +166,108 @@
             /*para que no quede debajo del header*/
             min-height: 100vh;
         }
+
+        /****************/
+        /*SECCIÓN INICIO*/
+        /****************/
+        .hero {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100vh;
+            padding: 2rem;
+        }
+
+        .hero__container{
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+            max-width: 800px;
+        }
+
+        .hero__intro{
+            font-size: 2rem;
+        }
+
+        /* estilos para forma1 de hacer sección inicio
+        .hero__title {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: #111;
+            line-height: 1.5;
+        }*/
+
+        .hero__name {
+            font-size: 5rem;
+            font-weight: bold;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        }
+
+        .hero__roles {
+            font-size: 1.8rem;
+            font-weight: 500;
+            font-style: italic;
+        }
+
+        .hero__tagline{
+            font-size: 2rem;
+            font-weight: 500;
+            text-align: center;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        /*WOW*/
+        .hero__wow {
+            font-weight: bold;
+            color: crimson;
+        }
+
+        /*Rotador palabras con flexbox*/
+        .hero__words{
+            display: inline-block;
+            position: relative;
+            height: 2.5rem;
+            overflow: hidden;
+            width: 140px;
+            vertical-align: middle;
+        }
+
+        .hero__inner{
+            display: flex;
+            flex-direction: column;
+            animation: rotateWords 10s infinite;
+            position: absolute;
+            top: 0;
+            left: 0.5rem;
+            width: 100%;
+        }
+
+        .hero__word{
+            height: 2.5rem;
+            line-height: 2.5rem;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        /*Animación carrusel hacia arriba para las palabras*/
+        /*añadir enlace referencia animación*/
+        @keyframes rotateWords {
+            0% { transform: translateY(0);}
+            20% { transform: translateY(-2.5rem);}
+            40% { transform: translateY(-5rem);}
+            60% { transform: translateY(-7.5rem);}
+            80% { transform: translateY(-10rem);}
+            100% { transform: translateY(0);}
+        }
+
+        /****************/
+        /*ICONO WHATSAPP*/
+        /****************/
 
         .whatsapp {
             position: fixed;
@@ -179,83 +298,117 @@
 </head>
 
 <body>
-
-    <!--Header-->
-    <header class="header">
-        <div class="nav__container">
-            <!--Logo-->
-            <a class="logo" href="#inicio">
-                <img class="logo__img" src="./img/logo.png" alt="Logo María Monge">
-            </a>
-
-            <!--Menú navegación-->
-            <nav class="nav nav--desktop">
-                <ul class="nav__list">
-                    <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
-                </ul>
-            </nav>
-
-            <!--Botón menú hamburguesa para móvil-->
-            <button class="hamburguesa">
-                ☰
-            </button>
-
-            <!--Menú desplegable para móvil-->
-            <nav class="nav nav--mobile">
-                <ul class="nav__list--mobile">
-                    <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
-                    <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
-                </ul>
-
-            </nav>
-
-
-        </div>
-    </header>
-
     <main>
         <!--Inicio-->
-        <section id="inicio">
-
+        <section id="inicio" class="hero">
+            <div class="hero__container">
+                <p class="hero__intro">Soy <span class="hero__name">María Monge</span></p>
+                <p class="hero__roles">diseñadora <span class="hero__designer">gráfica, editorial y web</span></p>
+                <p class="hero__tagline">
+                    Hago tu
+                    <span class="hero__words">
+                        <span class="hero__inner">
+                            <span class="hero__word">marca</span>
+                            <span class="hero__word">diseño</span>
+                            <span class="hero__word">proyecto</span>
+                            <span class="hero__word">negocio</span>
+                            <span class="hero__word">idea</span>
+                        </span>
+                    </span>
+                    en versión <span class="hero__wow">WOW</span>
+                </p>
+                
+                <!--primera prueba inicio texto y palabras rotatorias con inlineblock
+                <h1 class="hero__title">
+                    Soy <span class="hero__name">María Monge</span> <br>
+                    diseñadora <span class="hero__designer">gráfica, editorial y web</span>, <br>
+                    y hago tu
+                    
+                    <span class="hero__words">
+                        <span class="hero__word">marca</span>
+                        <span class="hero__word">diseño</span>
+                        <span class="hero__word">proyecto</span>
+                        <span class="hero__word">negocio</span>
+                        <span class="hero__word">idea</span>
+                    </span>
+                    
+                    en versión <span class="hero__wow">WOW</span>
+                </h1>-->
+            </div>
         </section>
 
-        <!--Apartado presentación-->
-        <section class="section section--about" id="sobre-mi">
-            <h1 class="section__title">Sobre mí</h1>
-            <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ullam
-                praesentium perspiciatis
-                odio incidunt? Provident illo, amet maxime alias dignissimos asperiores corrupti ex numquam dolore omnis
-                eaque. Delectus dignissimos vel debitis?</p>
-        </section>
+        <!--Header-->
+        <header class="header">
+            <div class="nav__container">
+                <!--Logo-->
+                <a class="logo" href="#inicio">
+                    <img class="logo__img" src="./img/logo.png" alt="Logo María Monge">
+                </a>
+    
+                <!--Menú navegación-->
+                <nav class="nav nav--desktop">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
+                    </ul>
+                </nav>
+    
+                <!--Botón menú hamburguesa para móvil-->
+                <button class="hamburguesa">
+                    ☰
+                </button>
+    
+                <!--Menú desplegable para móvil-->
+                <nav class="nav nav--mobile">
+                    <ul class="nav__list--mobile">
+                        <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
+                    </ul>
+    
+                </nav>
+    
+    
+            </div>
+        </header>
 
-        <!--Apartado trabajos-->
-        <section class="section section--portfolio" id="trabajos">
-            <h2 class="section__title">Mis trabajos</h2>
-            <!-- TRABAJOS (estructurar: por tipos, hacer galerías...)-->
-        </section>
+                <!--Apartado presentación-->
+                <section class="section section--about" id="sobre-mi">
+                    <h1 class="section__title">Sobre mí</h1>
+                    <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                        Ullam
+                        praesentium perspiciatis
+                        odio incidunt? Provident illo, amet maxime alias dignissimos asperiores corrupti ex numquam
+                        dolore omnis
+                        eaque. Delectus dignissimos vel debitis?</p>
+                </section>
 
-        <!-- Apartado cursos-->
-        <section class="section section--courses" id="cursos">
-            <h2 class="section__title">Mis cursos</h2>
-            <!-- formulario contacto, enlaces a mis redes sociales...-->
-        </section>
+                <!--Apartado trabajos-->
+                <section class="section section--portfolio" id="trabajos">
+                    <h2 class="section__title">Mis trabajos</h2>
+                    <!-- TRABAJOS (estructurar: por tipos, hacer galerías...)-->
+                </section>
 
-        <!-- Apartado contacto-->
-        <section class="section section--contact" id="contacto">
-            <h2 class="section__title">¿Trabajamos juntos?</h2>
-            <!-- formulario contacto, enlaces a mis redes sociales...-->
-        </section>
+                <!-- Apartado cursos-->
+                <section class="section section--courses" id="cursos">
+                    <h2 class="section__title">Mis cursos</h2>
+                    <!-- formulario contacto, enlaces a mis redes sociales...-->
+                </section>
 
-        <!--Icono whatsapp-->
-        <a href="https://wa.me/675783354" class="whatsapp">
-            <img class="whatsapp__icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
-                alt="Whatsapp">
-        </a>
+                <!-- Apartado contacto-->
+                <section class="section section--contact" id="contacto">
+                    <h2 class="section__title">¿Trabajamos juntos?</h2>
+                    <!-- formulario contacto, enlaces a mis redes sociales...-->
+                </section>
+
+                <!--Icono whatsapp-->
+                <a href="https://wa.me/675783354" class="whatsapp">
+                    <img class="whatsapp__icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
+                        alt="Whatsapp">
+                </a>
     </main>
 
     <footer>
