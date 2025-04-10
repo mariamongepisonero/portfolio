@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
-        /*Reset estilos*/
+        /*----------RESET estilos, body y fuentes---------*/
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +20,6 @@
             color: #333;
             background-color: #fefefe;
             line-height: 1.6;
-            scroll-behavior: smooth;
         }
 
         @font-face {
@@ -28,14 +27,13 @@
             src: url(./fonts/acaraje-black.otf) format('opentype');
         }
 
-        /****************************************************************/
-        /*                            HEADER                            */
-        /****************************************************************/
 
-        /*Fijo al hacer scroll*/
-        /*Cambio: sticky para que aparezca debajo de la sección inicio*/
+        /*-----------------------------------------------*/
+        /*                    HEADER                     */
+        /*-----------------------------------------------*/
         header {
             position: fixed;
+            /*Fijo al hacer scroll*/
             top: 0;
             width: 100%;
             height: 60px;
@@ -48,49 +46,10 @@
         }
 
         .nav__container {
-            height: 100%;
             display: flex;
             justify-content: space-between;
-            align-content: center;
             align-items: center;
-        }
-
-        .nav__submenu {
-            display: none;
-            position: absolute;
-            background: white;
-            padding: 0.5rem 0;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            list-style: none;
-            top: 100%;
-            left: 0;
-            min-width: 180px;
-            z-index: 200;
-        }
-
-        /* Mostrar al pasar el ratón */
-        .nav__item--has-submenu:hover .nav__submenu {
-            display: block;
-        }
-
-        /* Estilo de enlaces del submenú */
-        .nav__sublink {
-            display: block;
-            padding: 0.5rem 1rem;
-            color: #333;
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: background 0.3s ease;
-        }
-
-        .nav__sublink:hover {
-            background: #f3f3f3;
-            color: crimson;
-        }
-
-        /* Posicionamiento relativo del item padre */
-        .nav__item--submenu {
-            position: relative;
+            height: 100%;
         }
 
         .logo {
@@ -100,14 +59,14 @@
 
         .logo__img {
             height: 40px;
-            display: block;
             transition: all 0.3s ease;
         }
 
+
+        /*---------------Desktop nav--------------*/
         .nav--desktop {
             display: flex;
         }
-
 
         .nav__list {
             list-style: none;
@@ -115,6 +74,10 @@
             gap: 2.75rem;
             font-size: 1rem;
             transition: all 0.3s ease;
+        }
+
+        .nav__item {
+            position: relative;
         }
 
         .nav__link {
@@ -129,6 +92,135 @@
             color: crimson;
         }
 
+
+        /*----------------Submenú---------------*/
+        .nav__submenu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 180px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 0.5rem 0;
+            list-style: none;
+            z-index: 200;
+            text-align: left;
+        }
+
+        .nav__sublink {
+            display: block;
+            padding: 0.4rem 0.8rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+            text-align: left;
+        }
+
+        .nav__sublink:hover {
+            background: #f3f3f3;
+            color: crimson;
+        }
+
+        /*Hover submenú en escritorio*/
+        .nav__item--submenu:hover .nav__submenu {
+            display: block;
+        }
+
+        /*??? ¿Son necesarias las dos cosas?*/
+        @media screen and (min-width: 769px) {
+            .nav__item--submenu:hover .nav__submenu {
+                display: block;
+            }
+        }
+
+
+        /*--------------Hamburguesa-------------*/
+        .hamburguesa {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #333;
+            transition: font-size 0.3s ease;
+        }
+
+
+        /*--------------Menú móvil-------------*/
+        .nav--mobile {
+            display: none;
+            position: absolute;
+            top: 60px;
+            /*justo debajo del header*/
+            left: 0;
+            background: white;
+            width: 100%;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+        }
+
+        .nav--mobile.active {
+            display: block;
+        }
+
+        .nav__list--mobile {
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            margin: 0;
+            padding: 1rem;
+            justify-content: space-around;
+        }
+
+        .nav__list--mobile .nav__item {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .nav__list--mobile .nav__link {
+            font-size: 1.1rem;
+        }
+
+
+        /*-------------Responsive------------*/
+        /*En móviles, quitar menú y poner hamburguesa*/
+        @media screen and (max-width: 768px) {
+            .nav--desktop {
+                display: none;
+            }
+
+            .hamburguesa {
+                display: block;
+            }
+        }
+
+
+        /******Animaciónes******/
+        /*Menor tamaño header y elementos al hacer scroll*/
+        .header.scrolled {
+            height: 45px;
+        }
+
+        .header.scrolled .logo__img {
+            height: 30px;
+        }
+
+        .header.scrolled .nav--mobile {
+            top: 45px;
+        }
+
+        .header.scrolled .nav__list {
+            font-size: 0.9rem;
+            gap: 1.8rem;
+        }
+
+        .header.scrolled .hamburguesa {
+            font-size: 1rem;
+        }
+
+        /*Subrayado items nav*/
         .nav__link::after {
             content: "";
             position: absolute;
@@ -144,122 +236,42 @@
             width: 100%;
         }
 
-        /*Móvil: oculto por defecto*/
-        .hamburguesa {
-            display: none;
-            font-size: 1.5rem;
-            background: none;
-            border: none;
-            color: #333;
-            cursor: pointer;
-            transition: font-size 0.3s ease;
-        }
-
-        .nav--mobile {
-            display: none;
-            position: fixed;
-            top: 70px;
-            right: 0;
-            background: white;
-            width: 100%;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            z-index: 99;
-        }
-
-        /*Menú activo visible*/
-        .nav--mobile.active {
-            display: block;
-        }
-
-        .nav__list--mobile {
-            margin: 0;
-            padding: 1rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            list-style: none;
-        }
-
-        .nav__list--mobile .nav__item {
-            margin-bottom: 1rem;
-        }
-
-        .nav__list--mobile link {
-            color: #333;
-            text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        /*MEDIA QUERIES para ocultar cambiar tipo de menú en pantallas pequeñas (móviles)*/
-        @media screen and (max-width: 768px) {
-            .nav--desktop {
-                display: none;
-            }
-
-            .hamburguesa {
-                display: block;
-            }
-
-            .nav--mobile.active {
-                display: block;
-            }
-
-            .hero {
-                height: calc(100vh - 60px);
-            }
-        }
-
-        /*Logo más pequeño al hacer scroll*/
-        .header.scrolled {
-            height: 45px;
-        }
-
-        .header.scrolled .logo__img {
-            height: 30px;
-        }
-
-        /*El menú de navegación baja de tamaño al hacer scroll*/
-        .header.scrolled .nav__list {
-            font-size: 0.9rem;
-            gap: 1.8rem;
-        }
-
-        /*El menú hamburguesa baja de tamaño al hacer scroll*/
-        .header.scrolled .hamburguesa {
-            font-size: 1rem;
-        }
 
 
 
-        /****************************************************************/
-        /*                             MAIN                             */
-        /****************************************************************/
+
+        /*-----------------------------------------------*/
+        /*                    MAIN                       */
+        /*-----------------------------------------------*/
 
         section {
-            padding: 120px 20px;
+            padding: 100px 20px;
             /*para que no quede debajo del header*/
             min-height: 100vh;
+            max-width: 1100px;
+            margin: 0 auto;
         }
 
         /****************/
         /*SECCIÓN INICIO*/
         /****************/
         .hero {
+            min-height: 100vh;
+            padding: 6rem 2rem;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            text-align: center;
-            min-height: calc(100vh - 60px);
-            /* ocupa toda la ventana, menos el header */
-            padding: 2rem 1rem;
             background-color: #fff;
+            text-align: center;
         }
 
         .hero__container {
             display: flex;
             flex-direction: column;
             gap: 0.2rem;
-            max-width: 800px;
+            max-width: 90%;
+            margin: 0 auto;
             animation: fadeIn 1s ease forwards;
             /*para que la presentación aparezca suavemente*/
         }
@@ -330,6 +342,92 @@
             color: white;
         }
 
+        /*NAV RESPONSIVE*/
+        @media screen and (max-width: 768px) {
+            .nav__list--mobile .nav__item {
+                margin-bottom: 0.5rem;
+            }
+
+            .nav__list--mobile .nav__link {
+                font-size: 1rem;
+                padding: 0.3rem 0.5rem;
+            }
+
+            .nav__submenu {
+                font-size: 0.9rem;
+            }
+
+            .nav__sublink {
+                font-size: 0.9rem;
+                padding: 0.3rem 0.8rem;
+            }
+        }
+
+        /*HERO RESPONSIVE*/
+        @media screen and (max-width: 768px) {
+            .hero__roles {
+                font-size: 1.4rem;
+                text-align: center;
+            }
+
+            .hero__tagline {
+                font-size: 1.5rem;
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+
+            .hero__words {
+                width: 140px;
+                height: 2.2rem;
+            }
+
+            .hero__word {
+                font-size: 1.2rem;
+                line-height: 2.2rem;
+            }
+
+            .hero__wow {
+                font-size: 2.5rem;
+                letter-spacing: 1px;
+            }
+
+            .hero__name {
+                font-size: 3.5rem;
+            }
+
+            .hero__container {
+                padding: 0 1rem;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero__roles {
+                font-size: 1.2rem;
+            }
+
+            .hero__tagline {
+                font-size: 1.3rem;
+            }
+
+            .hero__words {
+                width: 120px;
+                height: 2rem;
+            }
+
+            .hero__word {
+                font-size: 1rem;
+                line-height: 2rem;
+            }
+
+            .hero__wow {
+                font-size: 2rem;
+            }
+
+            .hero__name {
+                font-size: 3rem;
+            }
+        }
+
         /*Animación carrusel hacia arriba para las palabras*/
         /*añadir enlace referencia animación*/
         @keyframes rotateWords {
@@ -359,7 +457,6 @@
         }
 
         /*Animación para que aparezca la presentación*/
-
         @keyframes fadeIn {
             from {
                 opacity: 0;
@@ -372,10 +469,184 @@
             }
         }
 
+
+
+        /*-------Sección about me -----------*/
+        .section--about {
+            background-color: white;
+            padding: 70px 2rem;
+            width: 100%;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .tabs__container {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 100%;
+            padding: 2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        /*Nav de pestañas*/
+        .tabs__nav {
+            display: flex;
+            justify-content: flex-start;
+            gap: 1rem;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+
+            position: relative;
+        }
+
+        .tabs__nav::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 1px;
+            width: 100%;
+            background: #333;
+        }
+
+        .tab {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.8rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            color: #333;
+            font-size: 1rem;
+            font-weight: 400;
+
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+
+        .tab img {
+            width: 50px;
+            height: 50px;
+            transition: transform 0.3s ease;
+            display: block;
+        }
+
+        .tab span {
+            display: block;
+            font-size: 1rem;
+        }
+
+        .tab:hover img {
+            color: crimson;
+        }
+
+        .tab.active {
+            background-color: #f0f0f0;
+            color: crimson;
+            border-bottom-color: crimson;
+        }
+
+        .tab:hover img,
+        .tab.active img {
+            transform: scale(1.05);
+        }
+
+        /*Paneles contenido*/
+        .tabs__content {
+            height: auto;
+            animation: fadeIn 0.4s ease-in-out;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+            border: 1px solid #eee;
+            padding: 2rem;
+        }
+
+        .tab__panel {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .tab__panel.active {
+            display: block;
+        }
+
+        .tab__label {
+            display: none;
+            font-weight: 600;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        /*Transición*/
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /*Responsive*/
+        @media screen and (max-width: 768px) {
+            .tabs__nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 1rem;
+            }
+
+            .tab {
+                flex: 0 1 45%;
+                justify-content: center;
+                padding: 0.5rem;
+                min-width: 64px;
+            }
+
+            .tab img {
+                width: 55px;
+                height: 55px;
+            }
+
+            .tab span {
+                font-size: 0.95rem;
+            }
+        }
+
+        /*Versión móviles: solo iconos y título en el contenido*/
+        @media screen and (max-width: 768px) {
+            .tab span {
+                display: none;
+            }
+
+            /*Pestañas más compactas*/
+            .tab {
+                flex: 0 0 auto;
+                justify-content: center;
+                padding: 0.5rem;
+                min-width: 48px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .tab__label {
+                display: block;
+                text-align: center;
+                color: crimson;
+            }
+        }
+
+
+
+
         /****************/
         /*ICONO WHATSAPP*/
         /****************/
-
         .whatsapp {
             position: fixed;
             bottom: 20px;
@@ -409,61 +680,55 @@
         <!--Header-->
         <header class="header">
             <div class="nav__container">
+
                 <!--Logo-->
                 <a class="logo" href="#inicio">
                     <img class="logo__img" src="./img/logo.png" alt="Logo María Monge">
                 </a>
 
-                <!--Menú navegación-->
+                <!--Menú desktop-->
                 <nav class="nav nav--desktop">
                     <ul class="nav__list">
-                        <li class="nav__item"><a class="nav__link" href="#about-me">Quién soy</a></li>
-
+                        <li class="nav__item"><a class="nav__link" href="#about-me">quién soy</a></li>
                         <li class="nav__item nav__item--submenu">
-                            <a class="nav__link" href="#portfolio">Portfolio</a>
+                            <a class="nav__link" href="#portfolio">portfolio</a>
                             <ul class="nav__submenu">
-                                <li><a class="nav__sublink" href="#grafico">Diseño gráfico</a></li>
-                                <li><a class="nav__sublink" href="#editorial">Diseño editorial</a></li>
-                                <li><a class="nav__sublink" href="#identidad">Identidades visuales</a></li>
+                                <li><a class="nav__sublink" href="#grafico">diseño gráfico</a></li>
+                                <li><a class="nav__sublink" href="#editorial">diseño editorial</a></li>
+                                <li><a class="nav__sublink" href="#identidad">identidades visuales</a></li>
                             </ul>
                         </li>
-
-                        <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#contacto">¿trabajamos juntos?</a></li>
                     </ul>
                 </nav>
 
                 <!--Botón menú hamburguesa para móvil-->
-                <button class="hamburguesa">
-                    ☰
-                </button>
+                <button class="hamburguesa" type="button">☰</button>
 
-                <!--Menú desplegable para móvil-->
+                <!--Menú móvil-->
                 <nav class="nav nav--mobile">
-                    <ul class="nav__list--mobile">
-                        <li class="nav__item"><a class="nav__link" href="#about-me">Quién soy</a></li>
+                    <ul class="nav__list nav__list--mobile">
+                        <li class="nav__item"><a class="nav__link" href="#about-me">quién soy</a></li>
                         <li class="nav__item nav__item--submenu">
-                            <a class="nav__link" href="#portfolio">Portfolio</a>
+                            <a class="nav__link" href="#portfolio">portfolio</a>
                             <ul class="nav__submenu">
-                                <li><a class="nav__sublink" href="#grafico">Diseño gráfico</a></li>
-                                <li><a class="nav__sublink" href="#editorial">Diseño editorial</a></li>
-                                <li><a class="nav__sublink" href="#identidad">Identidades visuales</a></li>
+                                <li><a class="nav__sublink" href="#grafico">diseño gráfico</a></li>
+                                <li><a class="nav__sublink" href="#editorial">diseño editorial</a></li>
+                                <li><a class="nav__sublink" href="#identidad">identidades visuales</a></li>
                             </ul>
                         </li>
-                        <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#contacto">¿trabajamos juntos?</a></li>
                     </ul>
-
                 </nav>
-
-
             </div>
         </header>
 
         <!--Inicio-->
         <section id="inicio" class="hero">
             <div class="hero__container">
-                <p class="hero__roles">Diseño <span class="hero__designer">gráfico, editorial y web</span></p>
+                <p class="hero__roles">diseño <span class="hero__designer">gráfico, editorial y web</span></p>
                 <p class="hero__tagline">
-                    Tu
+                    tu
                     <span class="hero__words">
                         <span class="hero__inner">
                             <span class="hero__word">negocio</span>
@@ -479,14 +744,53 @@
         </section>
 
         <!--Apartado presentación-->
-        <section class="section section--about" id="about-me">
-            <h1 class="section__title">Quién soy</h1>
-            <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                Ullam
-                praesentium perspiciatis
-                odio incidunt? Provident illo, amet maxime alias dignissimos asperiores corrupti ex numquam
-                dolore omnis
-                eaque. Delectus dignissimos vel debitis?</p>
+        <section id="about-me" class="section section--about">
+            <div class="tabs__container">
+
+                <!--Navegación pestañas-->
+                <div class="tabs__nav">
+                    <button class="tab active" data-tab="me">
+                        <img src="./img/ojos.png" alt="Icono sobre mí">
+                        <span>¡eyyy!</span>
+                    </button>
+                    <button class="tab" data-tab="studies">
+                        <img src="./img/lapiz.png" alt="Icono estudios">
+                        <span>aula & coffee</span>
+                    </button>
+                    <button class="tab" data-tab="experience">
+                        <img src="./img/ordenador.png" alt="Icono experiencia">
+                        <span>mi viaje hasta aquí</span>
+                    </button>
+                    <button class="tab" data-tab="skills">
+                        <img src="./img/estrella.png" alt="Icono skills">
+                        <span>súper skills</span>
+                    </button>
+                </div>
+
+                <!--Contenido de cada pestaña-->
+                <div class="tabs__content">
+                    <div class="tab__panel active" id="tab-me">
+                        <h3 class="tab__label">Conóceme</h3>
+                        <p>¡Hola! Soy María, diseñadora visual obsesionada con los detalles, las tipografías bonitas y
+                            las ideas con propósito...</p>
+                    </div>
+                    <div class="tab__panel" id="tab-studies">
+                        <h3 class="tab__label">Estudios</h3>
+                        <p>Graduada en Diseño Gráfico por [Nombre], con cursos especializados en UX, branding y
+                            dirección de arte...</p>
+                    </div>
+                    <div class="tab__panel" id="tab-experience">
+                        <h3 class="tab__label">Mi experiencia</h3>
+                        <p>He trabajado con agencias, marcas personales y startups creando identidad visual, materiales
+                            editoriales y experiencias web...</p>
+                    </div>
+                    <div class="tab__panel" id="tab-skills">
+                        <h3 class="tab__label">Skills</h3>
+                        <p>Illustrator, Figma, InDesign, Photoshop, HTML, CSS... pero también empatía, comunicación
+                            visual y criterio estético.</p>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <!--Apartado trabajos-->
@@ -513,31 +817,64 @@
     </footer>
 
     <script>
-        //Variables menú
         const header = document.querySelector('.header');
         const hamburger = document.querySelector('.hamburguesa');
         const mobileMenu = document.querySelector('.nav--mobile');
 
-        //Cambiar tamaño del logo y mostrar hamburguesa al hacer scroll
+        // Cambiar estilo al hacer scroll
         window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Abrir/cerrar menú móvil
+        hamburger.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Mostrar submenú con clic solo en móvil
+        document.querySelectorAll('.nav--mobile .nav__item--submenu > .nav__link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    const submenu = link.nextElementSibling;
+                    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
+                }
+            });
+        });
+
+        // Cerrar todo al hacer clic en cualquier enlace
+        document.querySelectorAll('.nav--mobile .nav__link, .nav--mobile .nav__sublink').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.querySelectorAll('.nav--mobile .nav__submenu').forEach(sub => sub.style.display = 'none');
+            });
+        });
+
+        // Cerrar menú móvil si se pasa a escritorio
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 768) {
+                mobileMenu.classList.remove('active');
+                document.querySelectorAll('.nav--mobile .nav__submenu').forEach(sub => sub.style.display = 'none');
             }
         });
 
-        //Abrir y cerrar el menú movil
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            hamburger.classList.toggle('active');
-        });
 
-        //Cerrar el menú móvil cuando se hace clic en un enlace
-        document.querySelectorAll('.nav--mobile .nav__link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                hamburger.classList.remove('active');
+        /*-------------------------------------------------*/
+        /*--------------------TABS ABOUT-ME----------------*/
+        const tabs = document.querySelectorAll(".tab");
+        const panels = document.querySelectorAll(".tab__panel");
+
+        tabs.forEach(tab => {
+            tab.addEventListener("click", () => {
+                const target = tab.getAttribute("data-tab");
+
+                // Quitar clases activas previas
+                tabs.forEach(t => t.classList.remove("active"));
+                panels.forEach(p => p.classList.remove("active"));
+
+                // Activar el tab actual
+                tab.classList.add("active");
+                document.getElementById(`tab-${target}`).classList.add("active");
             });
         });
     </script>
