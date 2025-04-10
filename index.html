@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio creativo María Monge</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         /*Reset estilos*/
@@ -15,12 +16,16 @@
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            /*POPPINS*/
+            font-family: 'Poppins', sans-serif;
             color: #333;
-            background-color: white;
+            background-color: #fefefe;
             line-height: 1.6;
             scroll-behavior: smooth;
+        }
+
+        @font-face {
+            font-family: 'acaraje';
+            src: url(./fonts/acaraje-black.otf) format('opentype');
         }
 
         /****************************************************************/
@@ -30,20 +35,62 @@
         /*Fijo al hacer scroll*/
         /*Cambio: sticky para que aparezca debajo de la sección inicio*/
         header {
-            position: sticky;
+            position: fixed;
             top: 0;
             width: 100%;
+            height: 60px;
             background: white;
-            padding: 1rem 2rem;
+            padding: 0.5rem 1rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             z-index: 100;
+            transition: all 0.3s ease;
+            /*suavizar la transición de tamaños*/
         }
 
         .nav__container {
+            height: 100%;
             display: flex;
             justify-content: space-between;
             align-content: center;
             align-items: center;
+        }
+
+        .nav__submenu {
+            display: none;
+            position: absolute;
+            background: white;
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            z-index: 200;
+        }
+
+        /* Mostrar al pasar el ratón */
+        .nav__item--has-submenu:hover .nav__submenu {
+            display: block;
+        }
+
+        /* Estilo de enlaces del submenú */
+        .nav__sublink {
+            display: block;
+            padding: 0.5rem 1rem;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: background 0.3s ease;
+        }
+
+        .nav__sublink:hover {
+            background: #f3f3f3;
+            color: crimson;
+        }
+
+        /* Posicionamiento relativo del item padre */
+        .nav__item--submenu {
+            position: relative;
         }
 
         .logo {
@@ -52,7 +99,8 @@
         }
 
         .logo__img {
-            height: 50px;
+            height: 40px;
+            display: block;
             transition: all 0.3s ease;
         }
 
@@ -64,13 +112,14 @@
         .nav__list {
             list-style: none;
             display: flex;
-            justify-content: row;
-            gap: 1.5rem;
-            font-size: 1.2rem;
+            gap: 2.75rem;
+            font-size: 1rem;
             transition: all 0.3s ease;
         }
 
         .nav__link {
+            position: relative;
+            /*para la rayita de subrayado absolute*/
             text-decoration: none;
             color: #333;
             transition: color 0.3s ease;
@@ -80,10 +129,25 @@
             color: crimson;
         }
 
+        .nav__link::after {
+            content: "";
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: crimson;
+            transition: width 0.3s ease;
+        }
+
+        .nav__link:hover::after {
+            width: 100%;
+        }
+
         /*Móvil: oculto por defecto*/
         .hamburguesa {
             display: none;
-            font-size: 2rem;
+            font-size: 1.5rem;
             background: none;
             border: none;
             color: #333;
@@ -120,7 +184,7 @@
             margin-bottom: 1rem;
         }
 
-        .nav__list--mobile .link {
+        .nav__list--mobile link {
             color: #333;
             text-decoration: none;
             font-size: 1.2rem;
@@ -140,25 +204,29 @@
                 display: block;
             }
 
-            .hero{
-                height: calc(100vh - 60px); 
+            .hero {
+                height: calc(100vh - 60px);
             }
         }
 
         /*Logo más pequeño al hacer scroll*/
+        .header.scrolled {
+            height: 45px;
+        }
+
         .header.scrolled .logo__img {
-            height: 35px;
+            height: 30px;
         }
 
         /*El menú de navegación baja de tamaño al hacer scroll*/
         .header.scrolled .nav__list {
-            font-size: 1rem;
-            gap: 1rem;
+            font-size: 0.9rem;
+            gap: 1.8rem;
         }
 
         /*El menú hamburguesa baja de tamaño al hacer scroll*/
         .header.scrolled .hamburguesa {
-            font-size: 1.5rem;
+            font-size: 1rem;
         }
 
 
@@ -166,6 +234,7 @@
         /****************************************************************/
         /*                             MAIN                             */
         /****************************************************************/
+
         section {
             padding: 120px 20px;
             /*para que no quede debajo del header*/
@@ -180,8 +249,10 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            min-height: 80vh;
-            padding: 2rem;
+            min-height: calc(100vh - 60px);
+            /* ocupa toda la ventana, menos el header */
+            padding: 2rem 1rem;
+            background-color: #fff;
         }
 
         .hero__container {
@@ -189,24 +260,18 @@
             flex-direction: column;
             gap: 0.2rem;
             max-width: 800px;
+            animation: fadeIn 1s ease forwards;
+            /*para que la presentación aparezca suavemente*/
         }
 
         .hero__intro {
             font-size: 2rem;
         }
 
-        /* estilos para forma1 de hacer sección inicio
-        .hero__title {
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: #111;
-            line-height: 1.5;
-        }*/
-
         .hero__name {
             font-size: 5rem;
             font-weight: bold;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-family: 'acaraje', Cambria, serif;
         }
 
         .hero__roles {
@@ -228,8 +293,9 @@
 
         /*WOW*/
         .hero__wow {
-            font-weight: bold;
-            color: crimson;
+            padding-left: 10px;
+            font-weight: 1000;
+            letter-spacing: 2px;
         }
 
         /*Rotador palabras con flexbox*/
@@ -238,8 +304,12 @@
             position: relative;
             height: 2.5rem;
             overflow: hidden;
-            width: 140px;
+            width: 165px;
             vertical-align: middle;
+
+            /*fondo*/
+            background-color: rgb(182, 8, 8);
+            padding: 0 0.5rem;
         }
 
         .hero__inner {
@@ -257,6 +327,7 @@
             line-height: 2.5rem;
             text-align: left;
             white-space: nowrap;
+            color: white;
         }
 
         /*Animación carrusel hacia arriba para las palabras*/
@@ -283,6 +354,20 @@
             }
 
             100% {
+                transform: translateY(0);
+            }
+        }
+
+        /*Animación para que aparezca la presentación*/
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
                 transform: translateY(0);
             }
         }
@@ -321,44 +406,6 @@
 
 <body>
     <main>
-        <!--Inicio-->
-        <section id="inicio" class="hero">
-            <div class="hero__container">
-                <p class="hero__intro">Soy <span class="hero__name">María Monge</span></p>
-                <p class="hero__roles">diseñadora <span class="hero__designer">gráfica, editorial y web</span></p>
-                <p class="hero__tagline">
-                    Hago tu
-                    <span class="hero__words">
-                        <span class="hero__inner">
-                            <span class="hero__word">marca</span>
-                            <span class="hero__word">diseño</span>
-                            <span class="hero__word">proyecto</span>
-                            <span class="hero__word">negocio</span>
-                            <span class="hero__word">idea</span>
-                        </span>
-                    </span>
-                    en versión <span class="hero__wow">WOW</span>
-                </p>
-
-                <!--primera prueba inicio texto y palabras rotatorias con inlineblock
-                <h1 class="hero__title">
-                    Soy <span class="hero__name">María Monge</span> <br>
-                    diseñadora <span class="hero__designer">gráfica, editorial y web</span>, <br>
-                    y hago tu
-                    
-                    <span class="hero__words">
-                        <span class="hero__word">marca</span>
-                        <span class="hero__word">diseño</span>
-                        <span class="hero__word">proyecto</span>
-                        <span class="hero__word">negocio</span>
-                        <span class="hero__word">idea</span>
-                    </span>
-                    
-                    en versión <span class="hero__wow">WOW</span>
-                </h1>-->
-            </div>
-        </section>
-
         <!--Header-->
         <header class="header">
             <div class="nav__container">
@@ -370,9 +417,17 @@
                 <!--Menú navegación-->
                 <nav class="nav nav--desktop">
                     <ul class="nav__list">
-                        <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
-                        <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
-                        <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#about-me">Quién soy</a></li>
+
+                        <li class="nav__item nav__item--submenu">
+                            <a class="nav__link" href="#portfolio">Portfolio</a>
+                            <ul class="nav__submenu">
+                                <li><a class="nav__sublink" href="#grafico">Diseño gráfico</a></li>
+                                <li><a class="nav__sublink" href="#editorial">Diseño editorial</a></li>
+                                <li><a class="nav__sublink" href="#identidad">Identidades visuales</a></li>
+                            </ul>
+                        </li>
+
                         <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
                     </ul>
                 </nav>
@@ -385,9 +440,15 @@
                 <!--Menú desplegable para móvil-->
                 <nav class="nav nav--mobile">
                     <ul class="nav__list--mobile">
-                        <li class="nav__item"><a class="nav__link" href="#sobre-mi">Sobre mí</a></li>
-                        <li class="nav__item"><a class="nav__link" href="#trabajos">Mis trabajos</a></li>
-                        <li class="nav__item"><a class="nav__link" href="#cursos">Cursos</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#about-me">Quién soy</a></li>
+                        <li class="nav__item nav__item--submenu">
+                            <a class="nav__link" href="#portfolio">Portfolio</a>
+                            <ul class="nav__submenu">
+                                <li><a class="nav__sublink" href="#grafico">Diseño gráfico</a></li>
+                                <li><a class="nav__sublink" href="#editorial">Diseño editorial</a></li>
+                                <li><a class="nav__sublink" href="#identidad">Identidades visuales</a></li>
+                            </ul>
+                        </li>
                         <li class="nav__item"><a class="nav__link" href="#contacto">¿Trabajamos juntos?</a></li>
                     </ul>
 
@@ -397,9 +458,29 @@
             </div>
         </header>
 
+        <!--Inicio-->
+        <section id="inicio" class="hero">
+            <div class="hero__container">
+                <p class="hero__roles">Diseño <span class="hero__designer">gráfico, editorial y web</span></p>
+                <p class="hero__tagline">
+                    Tu
+                    <span class="hero__words">
+                        <span class="hero__inner">
+                            <span class="hero__word">negocio</span>
+                            <span class="hero__word">marca</span>
+                            <span class="hero__word">proyecto</span>
+                            <span class="hero__word">idea</span>
+                            <span class="hero__word">web</span>
+                        </span>
+                    </span>
+                    en versión <span class="hero__wow">wow</span>
+                </p>
+            </div>
+        </section>
+
         <!--Apartado presentación-->
-        <section class="section section--about" id="sobre-mi">
-            <h1 class="section__title">Sobre mí</h1>
+        <section class="section section--about" id="about-me">
+            <h1 class="section__title">Quién soy</h1>
             <p class="section__text">Info sobre mí: Lorem ipsum dolor sit amet consectetur, adipisicing elit.
                 Ullam
                 praesentium perspiciatis
@@ -409,15 +490,9 @@
         </section>
 
         <!--Apartado trabajos-->
-        <section class="section section--portfolio" id="trabajos">
-            <h2 class="section__title">Mis trabajos</h2>
+        <section class="section section--portfolio" id="portfolio">
+            <h2 class="section__title">Portfolio</h2>
             <!-- TRABAJOS (estructurar: por tipos, hacer galerías...)-->
-        </section>
-
-        <!-- Apartado cursos-->
-        <section class="section section--courses" id="cursos">
-            <h2 class="section__title">Mis cursos</h2>
-            <!-- formulario contacto, enlaces a mis redes sociales...-->
         </section>
 
         <!-- Apartado contacto-->
