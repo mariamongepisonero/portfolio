@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="esp">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
@@ -245,7 +245,7 @@
         /*-----------------------------------------------*/
 
         section {
-            padding: 100px 20px;
+            padding: 40px 20px;
             /*para que no quede debajo del header*/
             min-height: 100vh;
             max-width: 1100px;
@@ -469,14 +469,15 @@
             }
         }
 
-
-
-        /*-------Sección about me -----------*/
+        /****************/
+        /*SECCIÓN ABOUT ME*/
+        /****************/
         .section--about {
             background-color: white;
-            padding: 70px 2rem;
+            padding: 40px 2rem;
             width: 100%;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            margin-top: 1rem;
         }
 
         .tabs__container {
@@ -641,8 +642,374 @@
             }
         }
 
+        /**********************************/
+        /*SECCIÓN PORTFOLIO DISEÑO GRAFICO*/
+        /**********************************/
+
+        .section--portfolio {
+            background-color: white;
+            padding: 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+        }
+
+        .portfolio-box {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        /*Título cinta portfolio creativo*/
+        .marquee-wrapper {
+            display: flex;
+            justify-content: center;
+            margin: 1rem auto 0.5rem auto;
+            max-width: 1100px;
+            padding: 0;
+            margin-bottom: 0;
+        }
+
+        .marquee {
+            background-color: crimson;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .marquee__inner {
+            display: inline-block;
+            white-space: nowrap;
+            animation: scroll-left 15s linear infinite;
+        }
+
+        .marquee__inner span {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0.4rem 0;
+            line-height: 1;
+        }
+
+        @keyframes scroll-left {
+            0% {
+                transform: translateX(0%);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /*Carrusel diseño gráfico*/
+
+        .carousel__title {
+            text-align: start;
+            font-size: 1.6rem;
+            color: #333;
+            margin-bottom: 2rem;
+            margin-top: 0;
+        }
+
+        .carousel__viewport {
+            position: relative;
+        }
+
+        .carousel__track {
+            display: flex;
+            transition: transform 0.5s ease;
+            will-change: transform;
+        }
+
+        .carousel__track-wrapper {
+            overflow: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .carousel__slide {
+            flex: 0 0 33.3333%;
+            display: flex;
+            justify-content: center;
+            opacity: 0.5;
+            transform: scale(0.9);
+            transition: all 0.4s ease;
+        }
+
+        .carousel__slide--active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .carousel__card {
+            background: #fff;
+            border-radius: 1rem;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            max-width: 90%;
+        }
+
+        .carousel__image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            aspect-ratio: 4 / 3;
+        }
+
+        .carousel__content {
+            padding: 1rem;
+        }
+
+        .carousel__heading {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .carousel__description {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        .carousel__cta {
+            display: inline-block;
+            margin-top: 0.75rem;
+            background: crimson;
+            color: #fff;
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.3s;
+        }
+
+        .carousel__cta:hover {
+            background: #a30000;
+        }
+
+        .carousel__btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            padding: 0.4rem 1rem;
+            color: crimson;
+            z-index: 1;
+            border-radius: 50%;
+        }
+
+        .carousel__btn--prev {
+            left: 10px;
+        }
+
+        .carousel__btn--next {
+            right: 10px;
+        }
+
+        .carousel__indicators {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .carousel__indicator {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 4px;
+            background: #ccc;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .carousel__indicator--active {
+            background: crimson;
+        }
+
+        @media screen and (max-width: 768px) {
+            .carousel__slide {
+                flex: 0 0 100%;
+            }
+
+            .carousel__track {
+                gap: 0;
+                /* elimina separación si hay */
+            }
+
+            .carousel__card {
+                max-width: 95%;
+            }
+
+            .carousel__content {
+                text-align: center;
+                padding: 1rem 0;
+            }
+
+            .carousel__heading {
+                font-size: 1.2rem;
+                margin-top: 0.5rem;
+            }
+        }
+
+        /*Ventana flotante*/
+        .modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal__content {
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
+            background: white;
+            border-radius: 1rem;
+            padding: 2rem;
+            max-width: 800px;
+            width: 90%;
+            z-index: 1;
+        }
+
+        .modal__close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
+        .modal__title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: crimson;
+        }
+
+        .modal__description {
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .modal__gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .modal__gallery img {
+            max-width: calc(33.333% - 1rem);
+            height: auto;
+            border-radius: 0.5rem;
+            object-fit: cover;
+        }
+
+        @media screen and (max-width: 768px) {
+            .modal__gallery img {
+                max-width: 100%;
+            }
+        }
+
+        /************************************/
+        /*SECCIÓN PORTFOLIO DISEÑO EDITORIAL*/
+        /************************************/
+
+        .editorial__gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .editorial__item {
+            background: #fff;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            padding-bottom: 1rem;
+        }
+
+        .editorial__item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+        }
+
+        .editorial__title {
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            color: #333;
+        }
+
+        /********************************/
+        /*SECCIÓN PORTFOLIO IDENT VISUAL*/
+        /********************************/
+
+        .identity-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+
+        .identity-card {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+            text-align: center;
+        }
+
+        .identity-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .identity-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: contain;
+            padding: 1rem;
+            background-color: #fafafa;
+        }
+
+        .identity-title {
+            font-size: 1rem;
+            font-weight: 500;
+            color: #333;
+        }
 
 
+        #editorial .portfolio-box,
+        #identidad .portfolio-box,
+        #grafico .portfolio-box {
+            margin-bottom: 0;
+        }
 
         /****************/
         /*ICONO WHATSAPP*/
@@ -683,7 +1050,7 @@
 
                 <!--Logo-->
                 <a class="logo" href="#inicio">
-                    <img class="logo__img" src="./img/logo.png" alt="Logo María Monge">
+                    <img class="logo__img" src="./img/iconos/logo.png" alt="Logo María Monge">
                 </a>
 
                 <!--Menú desktop-->
@@ -743,6 +1110,18 @@
             </div>
         </section>
 
+        <!-- Título cinta-->
+        <div class="marquee-wrapper">
+            <div class="marquee">
+                <div class="marquee__inner">
+                    <span>Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy
+                        • </span>
+                    <span>Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy
+                        • </span>
+                </div>
+            </div>
+        </div>
+
         <!--Apartado presentación-->
         <section id="about-me" class="section section--about">
             <div class="tabs__container">
@@ -750,19 +1129,19 @@
                 <!--Navegación pestañas-->
                 <div class="tabs__nav">
                     <button class="tab active" data-tab="me">
-                        <img src="./img/ojos.png" alt="Icono sobre mí">
+                        <img src="./img/iconos/ojos.png" alt="Icono sobre mí">
                         <span>¡eyyy!</span>
                     </button>
                     <button class="tab" data-tab="studies">
-                        <img src="./img/lapiz.png" alt="Icono estudios">
+                        <img src="./img/iconos/lapiz.png" alt="Icono estudios">
                         <span>aula & coffee</span>
                     </button>
                     <button class="tab" data-tab="experience">
-                        <img src="./img/ordenador.png" alt="Icono experiencia">
+                        <img src="./img/iconos/ordenador.png" alt="Icono experiencia">
                         <span>mi viaje hasta aquí</span>
                     </button>
                     <button class="tab" data-tab="skills">
-                        <img src="./img/estrella.png" alt="Icono skills">
+                        <img src="./img/iconos/estrella.png" alt="Icono skills">
                         <span>súper skills</span>
                     </button>
                 </div>
@@ -793,11 +1172,165 @@
             </div>
         </section>
 
+        <!-- Título cinta-->
+        <div class="marquee-wrapper">
+            <div class="marquee">
+                <div class="marquee__inner">
+                    <span>Portfolio creativo • Portfolio creativo • Portfolio creativo • Portfolio creativo • </span>
+                    <span>Portfolio creativo • Portfolio creativo • Portfolio creativo • Portfolio creativo • </span>
+                </div>
+            </div>
+        </div>
+
         <!--Apartado trabajos-->
-        <section class="section section--portfolio" id="portfolio">
-            <h2 class="section__title">Portfolio</h2>
-            <!-- TRABAJOS (estructurar: por tipos, hacer galerías...)-->
-        </section>
+        <div id="portfolio">
+            <!-- Galería diseño gráfico -->
+            <section id="grafico" class="section section--portfolio">
+                <div class="portfolio-box">
+                    <h2 class="carousel__title">Diseño gráfico</h2>
+                    <div class="carousel__viewport">
+                        <button class="carousel__btn carousel__btn--prev">&#10094;</button>
+                        <div class="carousel__track-wrapper">
+                            <div class="carousel__track">
+                                <!-- Slides -->
+                                <div class="carousel__slide">
+                                    <div class="carousel__card">
+                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro.png"
+                                            alt="Proyecto 1" class="carousel__image">
+                                        <div class="carousel__content">
+                                            <h3 class="carousel__heading">Cartel Día del Libro</h3>
+                                            <p class="carousel__description">Diseño para evento literario</p>
+                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Agrega más slides aquí -->
+                                <div class="carousel__slide">
+                                    <div class="carousel__card">
+                                        <img src="./img/proyectos/diseno_grafico/cartel tapa bendito bacalao.png"
+                                            alt="Proyecto 2" class="carousel__image">
+                                        <div class="carousel__content">
+                                            <h3 class="carousel__heading">Bendito Bacalao</h3>
+                                            <p class="carousel__description">Cartel gastronómico</p>
+                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide">
+                                    <div class="carousel__card">
+                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
+                                            alt="Proyecto 3" class="carousel__image">
+                                        <div class="carousel__content">
+                                            <h3 class="carousel__heading">Festival de verano</h3>
+                                            <p class="carousel__description">Cartel cultural</p>
+                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide">
+                                    <div class="carousel__card">
+                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
+                                            alt="Proyecto 3" class="carousel__image">
+                                        <div class="carousel__content">
+                                            <h3 class="carousel__heading">Festival de verano</h3>
+                                            <p class="carousel__description">Cartel cultural</p>
+                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide">
+                                    <div class="carousel__card">
+                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
+                                            alt="Proyecto 3" class="carousel__image">
+                                        <div class="carousel__content">
+                                            <h3 class="carousel__heading">Festival de verano</h3>
+                                            <p class="carousel__description">Cartel cultural</p>
+                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="carousel__slide">
+                                    <div class="carousel__card">
+                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
+                                            alt="Proyecto 3" class="carousel__image">
+                                        <div class="carousel__content">
+                                            <h3 class="carousel__heading">Festival de verano</h3>
+                                            <p class="carousel__description">Cartel cultural</p>
+                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel__btn carousel__btn--next">&#10095;</button>
+                        <div class="carousel__indicators"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Galería diseño editorial -->
+            <section id="editorial" class="section section--portfolio">
+                <div class="portfolio-box">
+                    <h2 class="carousel__title">Diseño editorial</h2>
+                    <div class="editorial__gallery">
+                        <div class="editorial__item">
+                            <img src="./img/proyectos/diseno_editorial/editorial1.png" alt="Proyecto editorial 1">
+                            <h3 class="editorial__title">Revista Creativa</h3>
+                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                        </div>
+                        <div class="editorial__item">
+                            <img src="./img/proyectos/diseno_editorial/editorial2.png" alt="Proyecto editorial 2">
+                            <h3 class="editorial__title">Catálogo diseño</h3>
+                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                        </div>
+                        <div class="editorial__item">
+                            <img src="./img/proyectos/diseno_editorial/editorial3.png" alt="Proyecto editorial 3">
+                            <h3 class="editorial__title">Editorial poética</h3>
+                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                        </div>
+                        <!-- Añade más proyectos si quieres -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sección identidades visuales -->
+            <section id="identidad" class="section section--portfolio">
+                <div class="portfolio-box">
+                    <h2 class="carousel__title">Identidades visuales</h2>
+                    <div class="identity-grid">
+                        <div class="identity-card">
+                            <img src="./img/proyectos/identidad/logo1.png" alt="Identidad 1">
+                            <h3 class="identity-title">Marca Boutique</h3>
+                        </div>
+                        <div class="identity-card">
+                            <img src="./img/proyectos/identidad/logo2.png" alt="Identidad 2">
+                            <h3 class="identity-title">Restaurante local</h3>
+                        </div>
+                        <div class="identity-card">
+                            <img src="./img/proyectos/identidad/logo3.png" alt="Identidad 3">
+                            <h3 class="identity-title">Estudio creativo</h3>
+                        </div>
+                        <!-- Añade más tarjetas según necesites -->
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Ventana flotante con info proyecto -->
+        <div class="modal" id="projectModal">
+            <div class="modal__overlay"></div>
+            <div class="modal__content">
+                <button class="modal__close" aria-label="Cerrar modal">&times;</button>
+                <h3 class="modal__title">Título del proyecto</h3>
+                <p class="modal__description">Pequeña descripción del proyecto.</p>
+                <div class="modal__gallery">
+                    <img src="./img/proyectos/diseno_grafico/ejemplo1.png" alt="Imagen 1">
+                    <img src="./img/proyectos/diseno_grafico/ejemplo2.png" alt="Imagen 2">
+                    <img src="./img/proyectos/diseno_grafico/ejemplo3.png" alt="Imagen 3">
+                </div>
+            </div>
+        </div>
+
 
         <!-- Apartado contacto-->
         <section class="section section--contact" id="contacto">
@@ -858,7 +1391,6 @@
             }
         });
 
-
         /*-------------------------------------------------*/
         /*--------------------TABS ABOUT-ME----------------*/
         const tabs = document.querySelectorAll(".tab");
@@ -877,6 +1409,85 @@
                 document.getElementById(`tab-${target}`).classList.add("active");
             });
         });
+
+
+        /*-------------------------------------------------*/
+        /*---------------------CARRUSEL DG-----------------*/
+        const track = document.querySelector('.carousel__track');
+        const slides = Array.from(track.children);
+        const nextButton = document.querySelector('.carousel__btn--next');
+        const prevButton = document.querySelector('.carousel__btn--prev');
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const viewport = document.querySelector('.carousel__viewport');
+            const slide = slides[0];
+            const slideStyle = getComputedStyle(slide);
+            const slideMarginRight = parseFloat(slideStyle.marginRight || 0);
+            const slideWidth = slide.offsetWidth + slideMarginRight;
+
+            const totalWidth = slideWidth * slides.length;
+            const viewportWidth = viewport.offsetWidth;
+
+            let offset = slideWidth * currentIndex - (viewportWidth - slideWidth) / 2;
+
+            // Limitar desplazamiento para no cortar el último slide
+            const maxOffset = Math.max(0, totalWidth - viewportWidth);
+            offset = Math.min(offset, maxOffset);
+            offset = Math.max(0, offset);
+
+            track.style.transform = `translateX(-${offset}px)`;
+
+            slides.forEach((slide, index) => {
+                slide.classList.toggle('carousel__slide--active', index === currentIndex);
+            });
+
+            document.querySelectorAll('.carousel__indicator').forEach((dot, i) => {
+                dot.classList.toggle('carousel__indicator--active', i === currentIndex);
+            });
+        }
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateCarousel();
+        });
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateCarousel();
+        });
+
+        window.addEventListener('resize', updateCarousel);
+        window.addEventListener('load', updateCarousel);
+
+        // Swipe support
+        let startX = 0;
+        track.addEventListener('touchstart', e => {
+            startX = e.touches[0].clientX;
+        });
+
+        track.addEventListener('touchend', e => {
+            const endX = e.changedTouches[0].clientX;
+            if (endX < startX - 50) nextButton.click();
+            else if (endX > startX + 50) prevButton.click();
+        });
+
+        // Modal
+        const modal = document.getElementById('projectModal');
+        const closeBtn = modal.querySelector('.modal__close');
+        const overlay = modal.querySelector('.modal__overlay');
+
+        // Lógica para abrir el modal (asigna esto a cada botón "Ver proyecto")
+        document.querySelectorAll('.carousel__cta').forEach(button => {
+            button.addEventListener('click', e => {
+                e.preventDefault();
+                modal.classList.add('active');
+                // Puedes aquí personalizar título, descripción e imágenes dinámicamente
+            });
+        });
+
+        closeBtn.addEventListener('click', () => modal.classList.remove('active'));
+        overlay.addEventListener('click', () => modal.classList.remove('active'));
     </script>
 
 </body>
