@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio creativo María Monge</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Shadows+Into+Light&display=swap"
+        rel="stylesheet">
     <style>
         /*----------RESET estilos, body y fuentes---------*/
         * {
@@ -18,13 +19,27 @@
         body {
             font-family: 'Poppins', sans-serif;
             color: #333;
-            background-color: #fefefe;
+            background-color: rgb(182, 8, 8);
             line-height: 1.6;
         }
 
         @font-face {
             font-family: 'acaraje';
             src: url(./fonts/acaraje-black.otf) format('opentype');
+        }
+
+        /*Métrica base de espaciado para armonía en el diseño*/
+        :root {
+            --spacing-base: 16px;
+            /* Base principal */
+            --spacing-md: 32px;
+            /* 2 * 16px */
+            --spacing-lg: 64px;
+            /* 4 * 16px */
+        }
+
+        .handwrite {
+            font-family: 'Give you glory';
         }
 
 
@@ -89,7 +104,7 @@
         }
 
         .nav__link:hover {
-            color: crimson;
+            color: rgb(182, 8, 8);
         }
 
 
@@ -120,7 +135,7 @@
 
         .nav__sublink:hover {
             background: #f3f3f3;
-            color: crimson;
+            color: rgb(182, 8, 8);
         }
 
         /*Hover submenú en escritorio*/
@@ -228,7 +243,7 @@
             left: 0;
             width: 0%;
             height: 2px;
-            background-color: crimson;
+            background-color: rgb(182, 8, 8);
             transition: width 0.3s ease;
         }
 
@@ -245,9 +260,10 @@
         /*-----------------------------------------------*/
 
         section {
-            padding: 80px 20px;
+            padding: var(--spacing-lg) var(--spacing-base);
+            margin: 0 auto var(--spacing-lg);
             max-width: 1100px;
-            margin: 0 auto;
+            background-color: rgb(182, 8, 8);
         }
 
         /****************/
@@ -255,13 +271,20 @@
         /****************/
         .hero {
             min-height: 100vh;
-            padding: 6rem 2rem;
+            padding: var(--spacing-lg) var(--spacing-base);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background-color: #fff;
+            background-color: rgb(182, 8, 8);
+            color: white;
             text-align: center;
+        }
+
+        .hero__icon-image {
+            max-width: 200px;
+            width: 100%;
+            height: auto;
         }
 
         .hero__container {
@@ -274,24 +297,15 @@
             /*para que la presentación aparezca suavemente*/
         }
 
-        .hero__intro {
-            font-size: 2rem;
-        }
-
-        .hero__name {
-            font-size: 5rem;
-            font-weight: bold;
-            font-family: 'acaraje', Cambria, serif;
-        }
-
         .hero__roles {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 500;
             font-style: italic;
+            margin-bottom: var(--spacing-md);
         }
 
         .hero__tagline {
-            font-size: 2rem;
+            font-size: 1.5rem;
             font-weight: 500;
             text-align: center;
             display: inline-flex;
@@ -301,24 +315,17 @@
             flex-wrap: wrap;
         }
 
-        /*WOW*/
-        .hero__wow {
-            padding-left: 10px;
-            font-weight: 1000;
-            letter-spacing: 2px;
-        }
-
         /*Rotador palabras con flexbox*/
         .hero__words {
             display: inline-block;
             position: relative;
-            height: 2.5rem;
+            height: 2.1rem;
             overflow: hidden;
-            width: 165px;
+            width: 125px;
             vertical-align: middle;
 
             /*fondo*/
-            background-color: rgb(182, 8, 8);
+            background-color: white;
             padding: 0 0.5rem;
         }
 
@@ -337,7 +344,8 @@
             line-height: 2.5rem;
             text-align: left;
             white-space: nowrap;
-            color: white;
+            color: rgb(182, 8, 8);
+            font-weight: 600;
         }
 
         /*NAV RESPONSIVE*/
@@ -375,26 +383,16 @@
             }
 
             .hero__words {
-                width: 140px;
-                height: 2.2rem;
+                height: 1rem;
             }
 
             .hero__word {
-                font-size: 1.2rem;
-                line-height: 2.2rem;
-            }
-
-            .hero__wow {
-                font-size: 2.5rem;
-                letter-spacing: 1px;
-            }
-
-            .hero__name {
-                font-size: 3.5rem;
+                font-size: 1rem;
+                line-height: 1rem;
             }
 
             .hero__container {
-                padding: 0 1rem;
+                padding: 1rem;
             }
         }
 
@@ -467,16 +465,48 @@
             }
         }
 
-        /****************/
+        /**********************************/
+        /********TÍTULOS SECCIONES********/
+        /**********************************/
+        .section__title-container {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-base);
+            margin-bottom: var(--spacing-base);
+        }
+
+        .section__title-icon {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+        }
+
+        .section__title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 600;
+            color: #333;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .section__title .handwrite {
+            display: inline-block;
+            margin-right: 0.5rem;
+            color: rgb(182, 8, 8);
+        }
+
+
+
+        /******************/
         /*SECCIÓN ABOUT ME*/
-        /****************/
+        /******************/
         .section--about {
             background-color: white;
-            padding: 20px 2rem;
+            padding: var(--spacing-md) var(--spacing-base);
+            margin-bottom: var(--spacing-md);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
             max-width: 1100px;
-            margin: 0 auto;
-            margin-bottom: 70px;
         }
 
         .tabs__container {
@@ -538,13 +568,13 @@
         }
 
         .tab:hover img {
-            color: crimson;
+            color: rgb(182, 8, 8);
         }
 
         .tab.active {
             background-color: #f0f0f0;
-            color: crimson;
-            border-bottom-color: crimson;
+            color: rgb(182, 8, 8);
+            border-bottom-color: rgb(182, 8, 8);
         }
 
         .tab:hover img,
@@ -636,7 +666,7 @@
             .tab__label {
                 display: block;
                 text-align: center;
-                color: crimson;
+                color: rgb(182, 8, 8);
             }
         }
 
@@ -646,64 +676,22 @@
 
         .section--portfolio {
             background-color: white;
-            padding: 20px 20px;
+            padding: var(--spacing-md) var(--spacing-base);
+            margin-bottom: var(--spacing-md);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            margin-bottom: 20px;
             max-width: 1100px;
-            margin: 0 auto;
         }
 
         .portfolio-box {
             background: white;
             border: 1px solid #ccc;
             border-radius: 10px;
-            max-width: 1100px;
-            margin: 0;
-            padding: 20px 20px;
             box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        /*Título cinta portfolio creativo*/
-        .marquee-wrapper {
-            display: flex;
-            justify-content: center;
             max-width: 1100px;
-            padding: 0;
-            margin: 0 auto;
-            width: 100%;
+            padding: var(--spacing-md);
+            margin-bottom: var(--spacing-md);
         }
 
-        .marquee {
-            background-color: crimson;
-            overflow: hidden;
-            width: 100%;
-        }
-
-        .marquee__inner {
-            display: inline-block;
-            white-space: nowrap;
-            animation: scroll-left 15s linear infinite;
-        }
-
-        .marquee__inner span {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: white;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 0.4rem 0;
-            line-height: 1;
-        }
-
-        @keyframes scroll-left {
-            0% {
-                transform: translateX(0%);
-            }
-
-            100% {
-                transform: translateX(-50%);
-            }
-        }
 
         /*Carrusel diseño gráfico*/
 
@@ -711,7 +699,7 @@
             text-align: start;
             font-size: 1.6rem;
             color: #333;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-base);
             margin-top: 0;
             text-align: left;
         }
@@ -780,7 +768,7 @@
         .carousel__cta {
             display: inline-block;
             margin-top: 0.75rem;
-            background: crimson;
+            background: rgb(182, 8, 8);
             color: #fff;
             padding: 0.4rem 1rem;
             border-radius: 2rem;
@@ -802,7 +790,7 @@
             font-size: 2rem;
             cursor: pointer;
             padding: 0.4rem 1rem;
-            color: crimson;
+            color: rgb(182, 8, 8);
             z-index: 1;
             border-radius: 50%;
         }
@@ -831,7 +819,7 @@
         }
 
         .carousel__indicator--active {
-            background: crimson;
+            background: rgb(182, 8, 8);
         }
 
         @media screen and (max-width: 768px) {
@@ -904,7 +892,7 @@
         .modal__title {
             font-size: 1.5rem;
             margin-bottom: 1rem;
-            color: crimson;
+            color: rgb(182, 8, 8);
         }
 
         .modal__description {
@@ -940,22 +928,22 @@
 
         .section--editorial {
             max-width: 1100px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            padding: var(--spacing-md) var(--spacing-base);
+            margin-bottom: var(--spacing-md);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
             background-color: #fff;
         }
 
         .editorial__title {
-            font-size: 2rem;
+            font-size: 1.6rem;
             text-align: left;
-            margin-bottom: 2rem;
+            margin-bottom: var(--spacing-md);
         }
 
         .editorial__grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            gap: var(--spacing-md);
         }
 
         .editorial__card {
@@ -963,12 +951,14 @@
             perspective: 1000px;
             /*efecto 3D*/
             cursor: pointer;
+            height: 350px;
         }
 
         /*contenedor interior que se gira*/
         .editorial__flip {
             width: 100%;
             height: 100%;
+            aspect-ratio: 3/4;
             position: relative;
             transition: transform 0.8s ease;
             transform-style: preserve-3d;
@@ -1028,7 +1018,7 @@
             padding: 0.6rem 1rem;
             border: none;
             border-radius: 2rem;
-            background: crimson;
+            background: rgb(182, 8, 8);
             color: #fff;
             font-weight: 500;
             cursor: pointer;
@@ -1097,7 +1087,7 @@
         .editorial-modal__title {
             font-size: 1.6rem;
             margin-bottom: 1rem;
-            color: crimson;
+            color: rgb(182, 8, 8);
         }
 
         .editorial-modal__desc {
@@ -1122,6 +1112,36 @@
             .editorial-modal__image {
                 width: 100%;
             }
+
+            .editorial__flip {
+                aspect-ratio: 1/1;
+            }
+
+            .editorial__card {
+                height: 250px;
+            }
+
+            .editorial__card-title {
+                font-size: 1rem;
+            }
+
+            .editorial__card-desc {
+                font-size: 0.9rem;
+            }
+
+            .editorial__btn {
+                padding: 0.4rem 0.8rem;
+            }
+
+            .editorial__card:hover .editorial__flip {
+                transform: none;
+                /*tarjeta no gira*/
+            }
+
+            /*para que la tarjeta gire con clic en móvil*/
+            .editorial__flip.is-flipped {
+                transform: rotateY(180deg);
+            }
         }
 
 
@@ -1139,9 +1159,9 @@
         .identity-card {
             background: white;
             border: 1px solid #ccc;
-            border-radius: 1rem;
+            border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
             text-align: center;
@@ -1213,7 +1233,7 @@
                 <!--Menú desktop-->
                 <nav class="nav nav--desktop">
                     <ul class="nav__list">
-                        <li class="nav__item"><a class="nav__link" href="#about-me">quién soy</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#about-me">sobre mí</a></li>
                         <li class="nav__item nav__item--submenu">
                             <a class="nav__link" href="#portfolio">portfolio</a>
                             <ul class="nav__submenu">
@@ -1232,7 +1252,7 @@
                 <!--Menú móvil-->
                 <nav class="nav nav--mobile">
                     <ul class="nav__list nav__list--mobile">
-                        <li class="nav__item"><a class="nav__link" href="#about-me">quién soy</a></li>
+                        <li class="nav__item"><a class="nav__link" href="#about-me">sobre mí</a></li>
                         <li class="nav__item nav__item--submenu">
                             <a class="nav__link" href="#portfolio">portfolio</a>
                             <ul class="nav__submenu">
@@ -1250,98 +1270,102 @@
         <!--Inicio-->
         <section id="inicio" class="hero">
             <div class="hero__container">
-                <p class="hero__roles">diseño <span class="hero__designer">gráfico, editorial y web</span></p>
-                <p class="hero__tagline">
-                    tu
-                    <span class="hero__words">
-                        <span class="hero__inner">
-                            <span class="hero__word">negocio</span>
-                            <span class="hero__word">marca</span>
-                            <span class="hero__word">proyecto</span>
-                            <span class="hero__word">idea</span>
-                            <span class="hero__word">web</span>
+                <div class="hero__icon">
+                    <img class="hero__icon-image" src="./img/iconos/idea_blanco.png" alt="">
+                </div>
+                <div class="hero__content">
+                    <p class="hero__roles">diseño <span class="hero__designer">gráfico, editorial y web</span></p>
+                    <p class="hero__tagline">
+                        tu
+                        <span class="hero__words">
+                            <span class="hero__inner">
+                                <span class="hero__word">negocio</span>
+                                <span class="hero__word">marca</span>
+                                <span class="hero__word">proyecto</span>
+                                <span class="hero__word">idea</span>
+                                <span class="hero__word">web</span>
+                            </span>
                         </span>
-                    </span>
-                    en versión <span class="hero__wow">wow</span>
-                </p>
-            </div>
-        </section>
-
-        <!-- Título cinta-->
-        <div class="marquee-wrapper">
-            <div class="marquee">
-                <div class="marquee__inner">
-                    <span>Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy
-                        • </span>
-                    <span>Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy • Quién soy
-                        • </span>
-                </div>
-            </div>
-        </div>
-
-        <!--Apartado presentación-->
-        <section id="about-me" class="section section--about">
-            <div class="tabs__container">
-
-                <!--Navegación pestañas-->
-                <div class="tabs__nav">
-                    <button class="tab active" data-tab="me">
-                        <img src="./img/iconos/ojos.png" alt="Icono sobre mí">
-                        <span>¡eyyy!</span>
-                    </button>
-                    <button class="tab" data-tab="studies">
-                        <img src="./img/iconos/lapiz.png" alt="Icono estudios">
-                        <span>aula & coffee</span>
-                    </button>
-                    <button class="tab" data-tab="experience">
-                        <img src="./img/iconos/ordenador.png" alt="Icono experiencia">
-                        <span>mi viaje hasta aquí</span>
-                    </button>
-                    <button class="tab" data-tab="skills">
-                        <img src="./img/iconos/estrella.png" alt="Icono skills">
-                        <span>súper skills</span>
-                    </button>
-                </div>
-
-                <!--Contenido de cada pestaña-->
-                <div class="tabs__content">
-                    <div class="tab__panel active" id="tab-me">
-                        <h3 class="tab__label">Conóceme</h3>
-                        <p>¡Hola! Soy María, diseñadora visual obsesionada con los detalles, las tipografías bonitas y
-                            las ideas con propósito...</p>
-                    </div>
-                    <div class="tab__panel" id="tab-studies">
-                        <h3 class="tab__label">Estudios</h3>
-                        <p>Graduada en Diseño Gráfico por [Nombre], con cursos especializados en UX, branding y
-                            dirección de arte...</p>
-                    </div>
-                    <div class="tab__panel" id="tab-experience">
-                        <h3 class="tab__label">Mi experiencia</h3>
-                        <p>He trabajado con agencias, marcas personales y startups creando identidad visual, materiales
-                            editoriales y experiencias web...</p>
-                    </div>
-                    <div class="tab__panel" id="tab-skills">
-                        <h3 class="tab__label">Skills</h3>
-                        <p>Illustrator, Figma, InDesign, Photoshop, HTML, CSS... pero también empatía, comunicación
-                            visual y criterio estético.</p>
-                    </div>
+                        en versión <span class="hero__wow">wow</span>
+                    </p>
                 </div>
             </div>
         </section>
 
-        <!-- Título cinta-->
-        <div class="marquee-wrapper">
-            <div class="marquee">
-                <div class="marquee__inner">
-                    <span>Portfolio creativo • Portfolio creativo • Portfolio creativo • Portfolio creativo • </span>
-                    <span>Portfolio creativo • Portfolio creativo • Portfolio creativo • Portfolio creativo • </span>
-                </div>
+        <!-- About me-->
+        <section class="section section--about">
+            <!-- Título-->
+            <div class="section__title-container">
+                <img class="section__title-icon" src="./img/iconos/estrella.png" alt="Icono de la sección" />
+                <h2 class="section__title">
+                    <span class="handwrite">Eyyy</span>
+                </h2>
             </div>
-        </div>
 
-        <!--Apartado trabajos-->
-        <div id="portfolio">
-            <!-- Galería diseño gráfico -->
+            <!--Apartado presentación-->
+            <section id="about-me" class="section section--about">
+                <div class="tabs__container">
+
+                    <!--Navegación pestañas-->
+                    <div class="tabs__nav">
+                        <button class="tab active" data-tab="me">
+                            <img src="./img/iconos/ojos.png" alt="Icono sobre mí">
+                            <span>sobre mí</span>
+                        </button>
+                        <button class="tab" data-tab="studies">
+                            <img src="./img/iconos/lapiz.png" alt="Icono estudios">
+                            <span>aula & coffee</span>
+                        </button>
+                        <button class="tab" data-tab="experience">
+                            <img src="./img/iconos/ordenador.png" alt="Icono experiencia">
+                            <span>mi viaje hasta aquí</span>
+                        </button>
+                        <button class="tab" data-tab="skills">
+                            <img src="./img/iconos/estrella.png" alt="Icono skills">
+                            <span>súper skills</span>
+                        </button>
+                    </div>
+
+                    <!--Contenido de cada pestaña-->
+                    <div class="tabs__content">
+                        <div class="tab__panel active" id="tab-me">
+                            <h3 class="tab__label">Conóceme</h3>
+                            <p>¡Hola! Soy María, diseñadora visual obsesionada con los detalles, las tipografías bonitas
+                                y
+                                las ideas con propósito...</p>
+                        </div>
+                        <div class="tab__panel" id="tab-studies">
+                            <h3 class="tab__label">Estudios</h3>
+                            <p>Graduada en Diseño Gráfico por [Nombre], con cursos especializados en UX, branding y
+                                dirección de arte...</p>
+                        </div>
+                        <div class="tab__panel" id="tab-experience">
+                            <h3 class="tab__label">Mi experiencia</h3>
+                            <p>He trabajado con agencias, marcas personales y startups creando identidad visual,
+                                materiales
+                                editoriales y experiencias web...</p>
+                        </div>
+                        <div class="tab__panel" id="tab-skills">
+                            <h3 class="tab__label">Skills</h3>
+                            <p>Illustrator, Figma, InDesign, Photoshop, HTML, CSS... pero también empatía, comunicación
+                                visual y criterio estético.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!--Portfolio-->
+        <section id="portfolio" class="section section-portfolio">
+            <!--Título apartado-->
+            <div class="section__title-container">
+                <img class="section__title-icon" src="./img/iconos/estrella.png" alt="Icono de la sección" />
+                <h2 class="section__title">
+                    <span class="handwrite">Portfolio</span>
+                </h2>
+            </div>
+
+            <!--Subsección: DISEÑO GRÁFICO-->
             <section id="grafico" class="section section--portfolio">
                 <div class="portfolio-box">
                     <h2 class="carousel__title">Diseño gráfico</h2>
@@ -1423,142 +1447,135 @@
                         <div class="carousel__indicators"></div>
                     </div>
                 </div>
+                <!-- Ventana flotante con info proyecto -->
+                <div class="modal" id="projectModal">
+                    <div class="modal__overlay"></div>
+                    <div class="modal__content">
+                        <button class="modal__close" aria-label="Cerrar modal">&times;</button>
+                        <h3 class="modal__title">Título del proyecto</h3>
+                        <p class="modal__description">Pequeña descripción del proyecto.</p>
+                        <div class="modal__gallery">
+                            <img src="./img/proyectos/diseno_grafico/cartel feria libro.png" alt="Imagen 1">
+                            <img src="./img/proyectos/diseno_grafico/cartel feria libro.png" alt="Imagen 2">
+                            <img src="./img/proyectos/diseno_grafico/cartel feria libro.png" alt="Imagen 3">
+                        </div>
+                    </div>
             </section>
 
-            <!-- Ventana flotante con info proyecto -->
-            <div class="modal" id="projectModal">
-                <div class="modal__overlay"></div>
-                <div class="modal__content">
-                    <button class="modal__close" aria-label="Cerrar modal">&times;</button>
-                    <h3 class="modal__title">Título del proyecto</h3>
-                    <p class="modal__description">Pequeña descripción del proyecto.</p>
-                    <div class="modal__gallery">
-                        <img src="./img/proyectos/diseno_grafico/ejemplo1.png" alt="Imagen 1">
-                        <img src="./img/proyectos/diseno_grafico/ejemplo2.png" alt="Imagen 2">
-                        <img src="./img/proyectos/diseno_grafico/ejemplo3.png" alt="Imagen 3">
-                    </div>
-                </div>
-            </div>
-
-            <!--------->
-
-            <!-- Galería diseño editorial -->
+            <!--Subsección: DISEÑO EDITORIAL-->
             <section id="editorial" class="section section--editorial">
-                <h2 class="editorial__title">Diseño editorial</h2>
+                <div class="portfolio-box">
+                    <h2 class="editorial__title">Diseño editorial</h2>
+                    <div class="editorial__grid">
+                        <!--Tarjeta 1-->
+                        <div class="editorial__card">
+                            <div class="editorial__flip">
+                                <div class="editorial__card-front">
+                                    <img class="editorial__image" src="./img/proyectos/diseno_editorial/folleto.jpg"
+                                        alt="Portada proyecto editorial 1">
+                                </div>
+                                <div class="editorial__card-back">
+                                    <h3 class="editorial__card-title">Revista Creativa</h3>
+                                    <p class="editorial__card-desc">Edición especial con ilustraciones y tipografías
+                                        experimentales.</p>
+                                    <button class="editorial__btn" data-target="#project-revistaCreativa">Ver
+                                        más</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Tarjeta 2-->
+                        <div class="editorial__card">
+                            <div class="editorial__flip">
+                                <div class="editorial__card-front">
+                                    <img class="editorial__image" src="./img/proyectos/diseno_editorial/folleto.jpg"
+                                        alt="Portada proyecto editorial 2">
+                                </div>
+                                <div class="editorial__card-back">
+                                    <h3 class="editorial__card-title">Catálogo de Diseño</h3>
+                                    <p class="editorial__card-desc">Aquí va la descripción del proyecto</p>
+                                    <button class="editorial__btn" data-target="#project-catalogoDiseno">Ver
+                                        más</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Tarjeta 3-->
+                        <div class="editorial__card">
+                            <div class="editorial__flip">
+                                <div class="editorial__card-front">
+                                    <img class="editorial__image" src="./img/proyectos/diseno_editorial/folleto.jpg"
+                                        alt="Portada proyecto editorial 3">
+                                </div>
+                                <div class="editorial__card-back">
+                                    <h3 class="editorial__card-title">Libro poesía</h3>
+                                    <p class="editorial__card-desc">Aquí va la descripción del proyecto</p>
+                                    <button class="editorial__btn" data-target="#project-libroPoesia">Ver más</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Modal para la sección editorial (Bloque con sub-bloques dentro)-->
+                    <div id="editorialModal" class="editorial-modal">
+                        <div class="editorial-modal__overlay"></div>
+                        <div class="editorial-modal__content">
+                            <button class="editorial-modal__close">&times;</button>
 
-                <div class="editorial__grid">
-                    <!--Tarjeta 1-->
-                    <div class="editorial__card">
-                        <div class="editorial__flip">
-                            <div class="editorial__card-front">
-                                <img class="editorial__image"
-                                    src="./img/proyectos/diseno_editorial/folleto.jpg"
-                                    alt="Portada proyecto editorial 1">
+                            <!--Bloques de contenido para cada proyecto (ID único)-->
+                            <!-- Proyecto 1 -->
+                            <div class="editorial-modal__project" id="project-revistaCreativa">
+                                <h3 class="editorial-modal__title">Revista Creativa</h3>
+                                <p class="editorial-modal__desc">
+                                    Edición especial con ilustraciones vanguardistas, tipografía experimental
+                                    y una maquetación que explora conceptos minimalistas.
+                                </p>
+                                <div class="editorial-modal__gallery">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
+                                        class="editorial-modal__image">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
+                                        class="editorial-modal__image">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 3"
+                                        class="editorial-modal__image">
+                                </div>
                             </div>
-                            <div class="editorial__card-back">
-                                <h3 class="editorial__card-title">Revista Creativa</h3>
-                                <p class="editorial__card-desc">Edición especial con ilustraciones y tipografías
-                                    experimentales.</p>
-                                <button class="editorial__btn" data-target="#project-revistaCreativa">Ver más</button>
+
+                            <!-- Proyecto 2 -->
+                            <div class="editorial-modal__project" id="project-catalogoDiseno">
+                                <h3 class="editorial-modal__title">Catálogo de Diseño</h3>
+                                <p class="editorial-modal__desc">
+                                    Recopilación de proyectos con enfoque en tendencias
+                                    y un repaso a la evolución estética de este año.
+                                </p>
+                                <div class="editorial-modal__gallery">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
+                                        class="editorial-modal__image">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
+                                        class="editorial-modal__image">
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <!--Tarjeta 2-->
-                    <div class="editorial__card">
-                        <div class="editorial__flip">
-                            <div class="editorial__card-front">
-                                <img class="editorial__image"
-                                    src="./img/proyectos/diseno_editorial/folleto.jpg"
-                                    alt="Portada proyecto editorial 2">
+
+                            <!-- Proyecto 3 -->
+                            <div class="editorial-modal__project" id="project-libroPoesia">
+                                <h3 class="editorial-modal__title">Libro poesía</h3>
+                                <p class="editorial-modal__desc">
+                                    Proyecto que combina poesía e imagen,
+                                    con especial protagonismo de la composición tipográfica
+                                    y la fotografía conceptual.
+                                </p>
+                                <div class="editorial-modal__gallery">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
+                                        class="editorial-modal__image">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
+                                        class="editorial-modal__image">
+                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 3"
+                                        class="editorial-modal__image">
+                                </div>
                             </div>
-                            <div class="editorial__card-back">
-                                <h3 class="editorial__card-title">Catálogo de Diseño</h3>
-                                <p class="editorial__card-desc">Aquí va la descripción del proyecto</p>
-                                <button class="editorial__btn" data-target="#project-catalogoDiseno">Ver más</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Tarjeta 3-->
-                    <div class="editorial__card">
-                        <div class="editorial__flip">
-                            <div class="editorial__card-front">
-                                <img class="editorial__image"
-                                    src="./img/proyectos/diseno_editorial/folleto.jpg"
-                                    alt="Portada proyecto editorial 3">
-                            </div>
-                            <div class="editorial__card-back">
-                                <h3 class="editorial__card-title">Libro poesía</h3>
-                                <p class="editorial__card-desc">Aquí va la descripción del proyecto</p>
-                                <button class="editorial__btn" data-target="#project-libroPoesia">Ver más</button>
-                            </div>
+
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!--Modal para la sección editorial (Bloque con sub-bloques dentro)-->
-            <div id="editorialModal" class="editorial-modal">
-                <div class="editorial-modal__overlay"></div>
-                <div class="editorial-modal__content">
-                    <button class="editorial-modal__close">&times;</button>
-
-                    <!--Bloques de contenido para cada proyecto (ID único)-->
-                    <!-- Proyecto 1 -->
-                    <div class="editorial-modal__project" id="project-revistaCreativa">
-                        <h3 class="editorial-modal__title">Revista Creativa</h3>
-                        <p class="editorial-modal__desc">
-                            Edición especial con ilustraciones vanguardistas, tipografía experimental
-                            y una maquetación que explora conceptos minimalistas.
-                        </p>
-                        <div class="editorial-modal__gallery">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
-                                class="editorial-modal__image">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
-                                class="editorial-modal__image">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 3"
-                                class="editorial-modal__image">
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 2 -->
-                    <div class="editorial-modal__project" id="project-catalogoDiseno">
-                        <h3 class="editorial-modal__title">Catálogo de Diseño</h3>
-                        <p class="editorial-modal__desc">
-                            Recopilación de proyectos con enfoque en tendencias
-                            y un repaso a la evolución estética de este año.
-                        </p>
-                        <div class="editorial-modal__gallery">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
-                                class="editorial-modal__image">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
-                                class="editorial-modal__image">
-                        </div>
-                    </div>
-
-                    <!-- Proyecto 3 -->
-                    <div class="editorial-modal__project" id="project-libroPoesia">
-                        <h3 class="editorial-modal__title">Libro poesía</h3>
-                        <p class="editorial-modal__desc">
-                            Proyecto que combina poesía e imagen,
-                            con especial protagonismo de la composición tipográfica
-                            y la fotografía conceptual.
-                        </p>
-                        <div class="editorial-modal__gallery">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
-                                class="editorial-modal__image">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
-                                class="editorial-modal__image">
-                            <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 3"
-                                class="editorial-modal__image">
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-            <!--------->
-
-            <!-- Sección identidades visuales -->
+            <!--Subsección: IDENTIDADES VISUALES-->
             <section id="identidad" class="section section--portfolio">
                 <div class="portfolio-box">
                     <h2 class="carousel__title">Identidades visuales</h2>
@@ -1579,15 +1596,17 @@
                     </div>
                 </div>
             </section>
-        </div>
+        </section>
 
-
-
-
-        <!-- Apartado contacto-->
+        <!-- Trabajamos juntos-->
         <section class="section section--contact" id="contacto">
-            <h2 class="section__title">¿Trabajamos juntos?</h2>
-            <!-- formulario contacto, enlaces a mis redes sociales...-->
+            <!--Título apartado-->
+            <div class="section__title-container">
+                <img class="section__title-icon" src="./img/iconos/estrella.png" alt="Icono de la sección" />
+                <h2 class="section__title">
+                    <span class="handwrite">¿Trabajamos juntos?</span>
+                </h2>
+            </div>
         </section>
 
         <!--Icono whatsapp-->
@@ -1789,6 +1808,15 @@
         editorialCloseBtn.addEventListener('click', closeEditorialModal);
         editorialOverlay.addEventListener('click', closeEditorialModal);
 
+        //5. En móviles, la parte trasera se muestra con clic
+        const editorialCards = document.querySelectorAll('.editorial__card');
+
+        editorialCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const flipContainer = card.querySelector('.editorial__flip');
+                flipContainer.classList.toggle('is-flipped');
+            });
+        });
 
     </script>
 
