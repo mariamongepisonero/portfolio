@@ -470,9 +470,11 @@
         /**********************************/
         .section__title-container {
             display: flex;
+            justify-content: center;
             align-items: center;
             gap: var(--spacing-base);
             margin-bottom: var(--spacing-base);
+            font-size: 100pt;
         }
 
         .section__title-icon {
@@ -503,10 +505,11 @@
         /******************/
         .section--about {
             background-color: white;
-            padding: var(--spacing-md) var(--spacing-base);
+            padding: var(--spacing-lg);
             margin-bottom: var(--spacing-md);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            max-width: 1100px;
+            max-width: 100%;
+
         }
 
         .tabs__container {
@@ -609,6 +612,17 @@
             margin-bottom: 1rem;
         }
 
+        .tab__img {
+            width: 300px;
+        }
+
+        .tab__flex {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: var(--spacing-base);
+        }
+
         /*Transición*/
         @keyframes fadeIn {
             from {
@@ -675,7 +689,7 @@
         /**********************************/
 
         .section--portfolio {
-            background-color: white;
+            background-color: rgb(182, 8, 8);
             padding: var(--spacing-md) var(--spacing-base);
             margin-bottom: var(--spacing-md);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
@@ -694,7 +708,6 @@
 
 
         /*Carrusel diseño gráfico*/
-
         .carousel__title {
             text-align: start;
             font-size: 1.6rem;
@@ -931,7 +944,7 @@
             padding: var(--spacing-md) var(--spacing-base);
             margin-bottom: var(--spacing-md);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
-            background-color: #fff;
+            background-color: rgb(182, 8, 8);
         }
 
         .editorial__title {
@@ -1005,11 +1018,6 @@
             font-size: 0.95rem;
             color: #333;
             margin-bottom: 1rem;
-        }
-
-        /*Efecto de girar con hover*/
-        .editorial__card:hover .editorial__flip {
-            transform: rotateY(180deg);
         }
 
         /*Botón Ver más*/
@@ -1133,13 +1141,15 @@
                 padding: 0.4rem 0.8rem;
             }
 
-            .editorial__card:hover .editorial__flip {
-                transform: none;
-                /*tarjeta no gira*/
-            }
-
             /*para que la tarjeta gire con clic en móvil*/
             .editorial__flip.is-flipped {
+                transform: rotateY(180deg);
+            }
+        }
+
+        /*Efecto girar con hover solo para ordenador*/
+        @media screen and (min-width: 769px) {
+            .editorial__card:hover .editorial__flip {
                 transform: rotateY(180deg);
             }
         }
@@ -1157,7 +1167,7 @@
         }
 
         .identity-card {
-            background: white;
+            background: rgb(182, 8, 8);
             border: 1px solid #ccc;
             border-radius: 10px;
             overflow: hidden;
@@ -1296,9 +1306,9 @@
         <section class="section section--about">
             <!-- Título-->
             <div class="section__title-container">
-                <img class="section__title-icon" src="./img/iconos/estrella.png" alt="Icono de la sección" />
+                <img class="section__title-icon" src="./img/iconos/flecha.png" alt="Icono de la sección" />
                 <h2 class="section__title">
-                    <span class="handwrite">Eyyy</span>
+                    <span class="handwrite">todo sobre mí</span>
                 </h2>
             </div>
 
@@ -1310,7 +1320,7 @@
                     <div class="tabs__nav">
                         <button class="tab active" data-tab="me">
                             <img src="./img/iconos/ojos.png" alt="Icono sobre mí">
-                            <span>sobre mí</span>
+                            <span>¡eyyy!</span>
                         </button>
                         <button class="tab" data-tab="studies">
                             <img src="./img/iconos/lapiz.png" alt="Icono estudios">
@@ -1330,9 +1340,16 @@
                     <div class="tabs__content">
                         <div class="tab__panel active" id="tab-me">
                             <h3 class="tab__label">Conóceme</h3>
-                            <p>¡Hola! Soy María, diseñadora visual obsesionada con los detalles, las tipografías bonitas
-                                y
-                                las ideas con propósito...</p>
+                            <div class="tab__flex">
+                                <p>¡Hola! Soy María, tengo 26 años y estudié Publicidad y Relaciones Públicas, aunque mi
+                                    pasión por el diseño gráfico y editorial surgió un poco después. Empecé a aprender
+                                    de forma autodidacta y, antes de darme cuenta, ya estaba trabajando en proyectos que
+                                    me permitían expresarme de forma creativa a través del diseño: branding, cartelería,
+                                    folletos, libros, revistas. <br> <br>
+                                    Cuando no estoy diseñando, estoy escuchando música a todo volumen, comiendo rico, riendo, viajando por el mundo y viviendo nuevas experiencias.
+                                    ¡Todo eso alimenta mi creatividad y me mantiene viva!</p>
+                                <img class="tab__img" src="./img/foto/fotomariamonge.jpg" alt="">
+                            </div>
                         </div>
                         <div class="tab__panel" id="tab-studies">
                             <h3 class="tab__label">Estudios</h3>
@@ -1359,7 +1376,7 @@
         <section id="portfolio" class="section section-portfolio">
             <!--Título apartado-->
             <div class="section__title-container">
-                <img class="section__title-icon" src="./img/iconos/estrella.png" alt="Icono de la sección" />
+                <img class="section__title-icon" src="./img/iconos/idea_blanco.png" alt="Icono de la sección" />
                 <h2 class="section__title">
                     <span class="handwrite">Portfolio</span>
                 </h2>
@@ -1379,8 +1396,8 @@
                                         <img src="./img/proyectos/diseno_grafico/cartel feria libro.png"
                                             alt="Proyecto 1" class="carousel__image">
                                         <div class="carousel__content">
-                                            <h3 class="carousel__heading">Cartel Día del Libro</h3>
-                                            <p class="carousel__description">Diseño para evento literario</p>
+                                            <h3 class="carousel__heading">Cartelería</h3>
+                                            <p class="carousel__description">Ilustración Día del Libro 2024</p>
                                             <a href="#" class="carousel__cta">Ver proyecto</a>
                                         </div>
                                     </div>
