@@ -5,11 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio creativo María Monge</title>
+
+    <!--Fuentes-->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Give+You+Glory&family=Shadows+Into+Light&display=swap"
         rel="stylesheet">
+
+
     <style>
-        /*----------RESET estilos, body y fuentes---------*/
+        /*=============== RESET estilos, body y fuentes=============== */
         * {
             margin: 0;
             padding: 0;
@@ -18,37 +22,28 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            color: #333;
             background-color: rgb(182, 8, 8);
+            color: #333;
             line-height: 1.6;
-        }
-
-        @font-face {
-            font-family: 'acaraje';
-            src: url(./fonts/acaraje-black.otf) format('opentype');
-        }
-
-        /*Métrica base de espaciado para armonía en el diseño*/
-        :root {
-            --spacing-base: 16px;
-            /* Base principal */
-            --spacing-md: 32px;
-            /* 2 * 16px */
-            --spacing-lg: 64px;
-            /* 4 * 16px */
         }
 
         .handwrite {
             font-family: 'Give you glory';
         }
 
+        /*Métrica base de espaciado para armonía en el diseño*/
+        :root {
+            --spacing-base: 16px;
+            /* Base */
+            --spacing-md: 32px;
+            /* 2 * 16px */
+            --spacing-lg: 64px;
+            /* 4 * 16px */
+        }
 
-        /*-----------------------------------------------*/
-        /*                    HEADER                     */
-        /*-----------------------------------------------*/
+        /* =============== HEADER =============== */
         header {
             position: fixed;
-            /*Fijo al hacer scroll*/
             top: 0;
             width: 100%;
             height: 60px;
@@ -78,7 +73,7 @@
         }
 
 
-        /*---------------Desktop nav--------------*/
+        /*-----Desktop nav-----*/
         .nav--desktop {
             display: flex;
         }
@@ -108,7 +103,7 @@
         }
 
 
-        /*----------------Submenú---------------*/
+        /*-----Submenú-----*/
         .nav__submenu {
             display: none;
             position: absolute;
@@ -143,7 +138,6 @@
             display: block;
         }
 
-        /*??? ¿Son necesarias las dos cosas?*/
         @media screen and (min-width: 769px) {
             .nav__item--submenu:hover .nav__submenu {
                 display: block;
@@ -212,7 +206,7 @@
         }
 
 
-        /******Animaciónes******/
+        /*Animaciónes*/
         /*Menor tamaño header y elementos al hacer scroll*/
         .header.scrolled {
             height: 45px;
@@ -254,7 +248,6 @@
 
 
 
-
         /*-----------------------------------------------*/
         /*                    MAIN                       */
         /*-----------------------------------------------*/
@@ -266,9 +259,9 @@
             background-color: rgb(182, 8, 8);
         }
 
-        /****************/
-        /*SECCIÓN INICIO*/
-        /****************/
+        /********************/
+        /*   HERO PORTADA   */
+        /********************/
         .hero {
             min-height: 100vh;
             padding: var(--spacing-lg) var(--spacing-base);
@@ -348,7 +341,8 @@
             font-weight: 600;
         }
 
-        /*NAV RESPONSIVE*/
+        /*HERO RESPONSIVE*/
+        /*!!!!!!!!!!!!revisar!!!!!!!!!!!!*/
         @media screen and (max-width: 768px) {
             .nav__list--mobile .nav__item {
                 margin-bottom: 0.5rem;
@@ -466,7 +460,7 @@
         }
 
         /**********************************/
-        /********TÍTULOS SECCIONES********/
+        /*        TÍTULOS SECCIONES       */
         /**********************************/
         .section__title-container {
             display: flex;
@@ -487,7 +481,6 @@
             font-family: 'Poppins', sans-serif;
             font-size: 2.4rem;
             font-weight: 600;
-            color: #333;
             margin: 0;
             line-height: 1.2;
         }
@@ -498,11 +491,18 @@
             color: rgb(182, 8, 8);
         }
 
+        .section__title.white-title {
+            color: white;
+        }
+
+        .section__title.white-title .handwrite {
+            color: white;
+        }
 
 
-        /******************/
-        /*SECCIÓN ABOUT ME*/
-        /******************/
+        /*********************************/
+        /*       SECCIÓN ABOUT ME        */
+        /*********************************/
         .section--about {
             background-color: white;
             padding: var(--spacing-lg);
@@ -685,7 +685,7 @@
         }
 
         /**********************************/
-        /*SECCIÓN PORTFOLIO DISEÑO GRAFICO*/
+        /*       SECCIÓN PORTFOLIO        */
         /**********************************/
 
         .section--portfolio {
@@ -1346,7 +1346,8 @@
                                     de forma autodidacta y, antes de darme cuenta, ya estaba trabajando en proyectos que
                                     me permitían expresarme de forma creativa a través del diseño: branding, cartelería,
                                     folletos, libros, revistas. <br> <br>
-                                    Cuando no estoy diseñando, estoy escuchando música a todo volumen, comiendo rico, riendo, viajando por el mundo y viviendo nuevas experiencias.
+                                    Cuando no estoy diseñando, estoy escuchando música a todo volumen, comiendo rico,
+                                    riendo, viajando por el mundo y viviendo nuevas experiencias.
                                     ¡Todo eso alimenta mi creatividad y me mantiene viva!</p>
                                 <img class="tab__img" src="./img/foto/fotomariamonge.jpg" alt="">
                             </div>
@@ -1377,7 +1378,7 @@
             <!--Título apartado-->
             <div class="section__title-container">
                 <img class="section__title-icon" src="./img/iconos/idea_blanco.png" alt="Icono de la sección" />
-                <h2 class="section__title">
+                <h2 class="section__title white-title">
                     <span class="handwrite">Portfolio</span>
                 </h2>
             </div>
@@ -1402,14 +1403,14 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- Agrega más slides aquí -->
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
                                         <img src="./img/proyectos/diseno_grafico/cartel tapa bendito bacalao.png"
                                             alt="Proyecto 2" class="carousel__image">
                                         <div class="carousel__content">
-                                            <h3 class="carousel__heading">Bendito Bacalao</h3>
-                                            <p class="carousel__description">Cartel gastronómico</p>
+                                            <h3 class="carousel__heading">Cartelería</h3>
+                                            <p class="carousel__description">Cartel gastronómico para el festival
+                                                Bendito Bacalao 2024</p>
                                             <a href="#" class="carousel__cta">Ver proyecto</a>
                                         </div>
                                     </div>
@@ -1642,28 +1643,40 @@
         const hamburger = document.querySelector('.hamburguesa');
         const mobileMenu = document.querySelector('.nav--mobile');
 
-        // Cambiar estilo al hacer scroll
+        //1. Cambiar estilo del header al hacer scroll
+        // Añade/quita la clase 'scrolled' si la posición vertical del scroll supera 50px
+        //@listens window#scroll
+        //@return {void}
         window.addEventListener('scroll', () => {
             header.classList.toggle('scrolled', window.scrollY > 50);
         });
 
-        // Abrir/cerrar menú móvil
+        // 2. Abre/cierra el menú móvil al al hacer click en el botón hamburguesa
+        // Alterna la clase 'active' del menú móvil
+        //@listens hamburger#clic
+        //@return {void}
         hamburger.addEventListener('click', () => {
             mobileMenu.classList.toggle('active');
         });
 
-        // Mostrar submenú con clic solo en móvil
+        // 3. Muestra/oculta el submenú al hacer clic en elementos con submenú en móviles
+        // Solo se aplica si el ancho de ventana es menor o igual a 768px
+        // @listens link#click
+        // @return {void}
         document.querySelectorAll('.nav--mobile .nav__item--submenu > .nav__link').forEach(link => {
             link.addEventListener('click', (e) => {
                 if (window.innerWidth <= 768) {
                     e.preventDefault();
                     const submenu = link.nextElementSibling;
+                    // Muestra si está oculto, o lo oculta si está visible
                     submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
                 }
             });
         });
 
-        // Cerrar todo al hacer clic en cualquier enlace
+        // 4. Cerrar menú móvil y submenús cuando se hace clic en cualquier enlace de navegación
+        // @listens link#click
+        // @return {void}
         document.querySelectorAll('.nav--mobile .nav__link, .nav--mobile .nav__sublink').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.remove('active');
@@ -1671,7 +1684,9 @@
             });
         });
 
-        // Cerrar menú móvil si se pasa a escritorio
+        // 5. Verifica si la ventana se ha redimensionado a un ancho mayor a 768px para cerrar el menú móvil.
+        // @listens window#resize
+        // @return {void}
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 mobileMenu.classList.remove('active');
@@ -1684,6 +1699,9 @@
         const tabs = document.querySelectorAll(".tab");
         const panels = document.querySelectorAll(".tab__panel");
 
+        // Asigna un evento 'click' a cada pestaña
+        // Desactiva el resto de pestañas y paneles
+        // Activa la pestaña y el panel correspondientes al data-tab
         tabs.forEach(tab => {
             tab.addEventListener("click", () => {
                 const target = tab.getAttribute("data-tab");
@@ -1702,11 +1720,15 @@
         /*-------------------------------------------------*/
         /*---------------------CARRUSEL DG-----------------*/
         const track = document.querySelector('.carousel__track');
+        /*Array de todas las diapositivas dentro del track*/
         const slides = Array.from(track.children);
         const nextButton = document.querySelector('.carousel__btn--next');
         const prevButton = document.querySelector('.carousel__btn--prev');
         let currentIndex = 0;
 
+        //Actualiza la posición del carrusel según el currentIndez
+        // @function updateCarousel
+        // @return {void}
         function updateCarousel() {
             const viewport = document.querySelector('.carousel__viewport');
             const slide = slides[0];
@@ -1714,6 +1736,7 @@
             const slideMarginRight = parseFloat(slideStyle.marginRight || 0);
             const slideWidth = slide.offsetWidth + slideMarginRight;
 
+            //Cálculo del ancho total y el viewport para centrar la diapositiva activa
             const totalWidth = slideWidth * slides.length;
             const viewportWidth = viewport.offsetWidth;
 
@@ -1726,29 +1749,38 @@
 
             track.style.transform = `translateX(-${offset}px)`;
 
+            //Añadir clase activa a la diapositiva correspondiente
             slides.forEach((slide, index) => {
                 slide.classList.toggle('carousel__slide--active', index === currentIndex);
             });
-
-            document.querySelectorAll('.carousel__indicator').forEach((dot, i) => {
-                dot.classList.toggle('carousel__indicator--active', i === currentIndex);
-            });
         }
 
+        //Avanza la diapositiva una posición y actualiza el carrusel
+        // @listens nextButton#click
+        // @return {void}
         nextButton.addEventListener('click', () => {
             currentIndex = (currentIndex + 1) % slides.length;
             updateCarousel();
         });
 
+        //Retrocede la diapositiva una posición y actualiza el carrusel
+        // @listens prevButton#click
+        // @return {void}
         prevButton.addEventListener('click', () => {
             currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             updateCarousel();
         });
 
+        // Ajusta la posición del carrusel cuando cambia el tamaño de la ventana.
+        // @listens window#resize
         window.addEventListener('resize', updateCarousel);
+        //Actualiza el carrusel al cargar la página
+        // @listens window#load
         window.addEventListener('load', updateCarousel);
 
-        // Swipe support
+
+        // Permite hacer swipe en la versión móvil
+        // Registra la posición inicial y determina la diferencia al soltar el dedo para avanzar o retroceder
         let startX = 0;
         track.addEventListener('touchstart', e => {
             startX = e.touches[0].clientX;
@@ -1760,20 +1792,26 @@
             else if (endX > startX + 50) prevButton.click();
         });
 
-        // Modal
+        // Modal (ventana flotante) en carrusel diseño gráfico, botón cerrar y fondo superpuesto
         const modal = document.getElementById('projectModal');
         const closeBtn = modal.querySelector('.modal__close');
         const overlay = modal.querySelector('.modal__overlay');
 
-        // Para abrir el modal (asigna esto a cada botón "Ver proyecto")
+        // Para abrir el modal al hacer clic en "Ver proyecto"
+        // @listens button#click
+        // @return {void}
         document.querySelectorAll('.carousel__cta').forEach(button => {
             button.addEventListener('click', e => {
                 e.preventDefault();
                 modal.classList.add('active');
-                // Puedes aquí personalizar título, descripción e imágenes dinámicamente
+                // ¡¡¡¡¡¡ Personalizar AQUI título, descripción e imágenes dinámicamente !!!!!!!
             });
         });
 
+        //Cierra el modal cuando se hace clic en X o en fondo overlay
+        // @listens closeBtn#click
+        // @listens overlay#click
+        // @return {void}
         closeBtn.addEventListener('click', () => modal.classList.remove('active'));
         overlay.addEventListener('click', () => modal.classList.remove('active'));
 
@@ -1787,7 +1825,7 @@
         const editorialOverlay = editorialModal.querySelector('.editorial-modal__overlay');
         const editorialCloseBtn = editorialModal.querySelector('.editorial-modal__close');
 
-        //2. Ocultamos todos los proyectos del modal
+        //2. Ocultar todos los proyectos del modal
         function hideAllEditorialProjects() {
             const projects = editorialModal.querySelectorAll('.editorial-modal__project');
             projects.forEach(project => {
@@ -1819,13 +1857,13 @@
         //4. Cerrar el modal al hacer click en cierre u overlay
         function closeEditorialModal() {
             editorialModal.style.display = 'none';
-            hideAllEditorialProjects(); // por limpieza, se ocultan todos
+            hideAllEditorialProjects(); // Se ocultan todos
         }
 
         editorialCloseBtn.addEventListener('click', closeEditorialModal);
         editorialOverlay.addEventListener('click', closeEditorialModal);
 
-        //5. En móviles, la parte trasera se muestra con clic
+        //5. En versión móvil, la parte trasera se muestra con clic
         const editorialCards = document.querySelectorAll('.editorial__card');
 
         editorialCards.forEach(card => {
