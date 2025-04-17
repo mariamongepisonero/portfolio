@@ -522,13 +522,96 @@
             z-index: 1;
         }
 
+        /*Monitor pc*/
+        .monitor {
+            position: relative;
+            max-width: 1000px;
+            max-height: calc((100vh - 80px));
+            margin: 0 auto;
+            padding: 2.2rem 1.6rem 1.6rem;
+            background: #1e1e1e;
+            border-radius: 18px 18px 0 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+        }
+
+        .monitor::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -34px;
+            width: 140px;
+            height: 10px;
+            background: #1e1e1e;
+            border-radius: 6px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .25);
+        }
+
+        .monitor::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: -52px;
+            width: 140px;
+            height: 18px;
+            background: #444;
+            border-radius: 10px;
+            box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+        }
+
+        .monitor__screen {
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            font-size: 0.85rem;
+        }
+
+        .monitor__screen>.tabs__container {
+            height: calc(100vh - 190px);
+            max-height: 560px;
+            overflow-y: auto;
+            padding-right: 1rem;
+            /*para no tapar el scroll*/
+        }
+
+        .monitor__screen>.tabs__container::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .monitor__screen>.tabs__container::-webkit-scrollbar-thumb {
+            background: rgb(182, 8, 8);
+            border-radius: 4px;
+        }
+
+        .monitor__screen>.tabs__container::-webkit-scrollbar-track {
+            background: #eee;
+        }
+
+        /*RESPONSIVE: en móviles sin base y altura fija */
+        @media (max-width:600px) {
+            .monitor {
+                padding: 2rem 1rem 1rem;
+            }
+
+            .monitor::after,
+            .monitor::before {
+                display: none;
+            }
+
+            .monitor__screen>.tabs__container {
+                height: auto;
+                overflow-y: visible;
+            }
+        }
+
         /*Nav de pestañas*/
         .tabs__nav {
             display: flex;
             justify-content: flex-start;
-            gap: 1rem;
+            gap: 0.8rem;
             border-bottom: 1px solid #ccc;
-            padding-bottom: 1rem;
+            padding-bottom: 0.8rem;
 
             position: relative;
         }
@@ -546,11 +629,11 @@
             background: none;
             border: none;
             cursor: pointer;
-            padding: 0.8rem 1rem;
+            padding: 0.2rem 0.4rem;
             border-radius: 8px;
             transition: all 0.3s ease;
             color: #333;
-            font-size: 1rem;
+            font-size: 0.8rem;
             font-weight: 400;
 
             display: flex;
@@ -559,8 +642,8 @@
         }
 
         .tab img {
-            width: 50px;
-            height: 50px;
+            width: 40px;
+            height: 40px;
             transition: transform 0.3s ease;
             display: block;
         }
@@ -570,19 +653,19 @@
             font-size: 1rem;
         }
 
-        .tab:hover img {
-            color: rgb(182, 8, 8);
-        }
-
         .tab.active {
             background-color: #f0f0f0;
             color: rgb(182, 8, 8);
             border-bottom-color: rgb(182, 8, 8);
         }
 
+        .tab:hover {
+            background-color: #f7f7f7;
+        }
+
         .tab:hover img,
         .tab.active img {
-            transform: scale(1.05);
+            transform: scale(1.10);
         }
 
         /*Paneles contenido*/
@@ -614,11 +697,10 @@
 
         /*----Me---*/
         .aboutme__big-phrase {
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             font-family: 'Give you glory';
             font-weight: 600;
             line-height: 1.3;
-            margin-bottom: 1.5rem;
             padding-left: 1rem;
             text-align: start;
             color: rgb(182, 8, 8);
@@ -660,9 +742,8 @@
             flex: 1 1 250px;
             line-height: 1.6;
             color: #444;
-            font-size: 1rem;
+            font-size: 11pt;
             max-width: 500px;
-            margin: auto 0;
         }
 
         .aboutme__funfact {
@@ -687,6 +768,52 @@
             font-size: 0.9rem;
         }
 
+        /*Estilos para modal galería fotos, creado con JS*/
+        .gallery-modal {
+            position: fixed;
+            inset: 0;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+        }
+
+        .gallery-modal__overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.7);
+        }
+
+        .gallery-modal__content {
+            position: relative;
+            background: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            max-width: 80%;
+            max-height: 80vh;
+            overflow: auto;
+        }
+
+        .gallery-modal__img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .gallery-modal__close {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            font-size: 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+
         /*----Studies---*/
         .cards__container--studies {
             display: grid;
@@ -697,7 +824,7 @@
 
         .study-card {
             background-color: #fff;
-            border: 2.5px solid #333;
+            border: 1.5px solid #333;
             border-radius: 8px;
             padding: 1.5rem;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
@@ -711,14 +838,14 @@
         .study-card__title {
             display: flex;
             align-items: center;
-            font-size: 1.4rem;
+            font-size: 14pt;
             margin-bottom: 2rem;
             color: #333;
         }
 
         .study-card__icon {
-            width: 32px;
-            height: 32px;
+            width: 50px;
+            height: 40px;
             margin-right: 0.5rem;
         }
 
@@ -727,40 +854,31 @@
         }
 
         .study-card__item h4 {
-            font-size: 1.1rem;
-            margin-bottom: 0.2rem;
+            font-size: 12pt;
             color: #333;
+            margin-bottom: 0.2rem;
         }
 
         .study-card__place {
-            font-size: 0.95rem;
+            font-size: 11pt;
             color: #666;
             margin-bottom: 0.3rem;
             line-height: 1.1rem;
         }
 
         .study-card__year {
-            font-size: 0.85rem;
+            font-size: 10pt;
             color: #727272;
         }
 
-
-        .study-card__learning-list {
-            list-style: none;
-            padding-left: 0;
-            margin: 0;
+        .study-card__text {
+            font-size: 10pt;
+            color: #666;
+            margin-top: 0;
+            margin-bottom: 1rem;
+            line-height: 1.1rem;
         }
 
-        .study-card__learning-list li {
-            margin-bottom: 0.8rem;
-            font-size: 0.95rem;
-            line-height: 1.4;
-        }
-
-        .study-card__learning-list li strong {
-            color: rgb(182, 8, 8);
-            font-weight: 600;
-        }
 
         /*Transiciones*/
         @keyframes fadeIn {
@@ -822,50 +940,87 @@
             }
         }
 
-        /*Estilos para modal galería fotos, creado con JS*/
-        .gallery-modal {
-            position: fixed;
-            inset: 0;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
 
-        .gallery-modal.active {
-            display: flex;
-        }
 
-        .gallery-modal__overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.7);
-        }
 
-        .gallery-modal__content {
+        /*----Experience---*/
+        .timeline-wrapper {
             position: relative;
-            background: #fff;
-            padding: 1rem;
-            border-radius: 8px;
-            max-width: 80%;
-            max-height: 80vh;
-            overflow: auto;
+            max-width: 900px;
+            margin: 2rem auto;
         }
 
-        .gallery-modal__img {
-            display: block;
-            width: 100%;
-            height: auto;
+        .panels-container {
+            position: relative;
+            height: 100%;
         }
 
-        .gallery-modal__close {
+        .xp-panel {
             position: absolute;
-            top: 0.5rem;
-            right: 1rem;
-            font-size: 2rem;
-            background: none;
-            border: none;
-            cursor: pointer;
+            top: 0;
+            transform: translateX(-50%);
+            width: 150px;
+            background: #fff;
+            border: 1px solid #333;
+            border-radius: 8px;
+            padding: 0.8rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+            z-index: 1;
+        }
+
+        /*Pin*/
+
+
+        .xp-year {
+            display: block;
+            font-family: 'Give You Glory', cursive;
+            color: rgb(182, 8, 8);
+            font-size: 1rem;
+        }
+
+        .xp-title {
+            font-size: 1.05rem;
+            margin: .3rem 0 .5rem;
+            line-height: 1.2;
+        }
+
+        .xp-text {
+            font-size: .85rem;
+            line-height: 1.3;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 180px;
+            left: 0;
+            width: 100%;
+            z-index: 1;
+        }
+
+        .xp-panel:hover {
+            background: #f7f7f7;
+        }
+
+        @media (max-width: 700px) {
+            .panels-container {
+                height: auto;
+            }
+
+            .xp-panel {
+                position: static;
+                transform: none;
+                margin: 1rem auto;
+                width: calc(100% - 2rem);
+            }
+
+            .xp-panel::after {
+                display: none;
+            }
+
+            .timeline-line {
+                display: none;
+            }
         }
 
         /**********************************/
@@ -1499,129 +1654,183 @@
             <!--Apartado presentación-->
             <section id="about-me" class="section section--about">
                 <div class="tab__background">
-                    <div class="tabs__container">
+                    <div class="monitor">
+                        <div class="monitor__screen">
+                            <div class="tabs__container">
 
-                        <!--Navegación pestañas-->
-                        <div class="tabs__nav">
-                            <button class="tab active" data-tab="me">
-                                <img src="./img/iconos/ojos.png" alt="Icono sobre mí">
-                                <span>¡eyyy!</span>
-                            </button>
-                            <button class="tab" data-tab="studies">
-                                <img src="./img/iconos/lapiz.png" alt="Icono estudios">
-                                <span>aula & coffee</span>
-                            </button>
-                            <button class="tab" data-tab="experience">
-                                <img src="./img/iconos/ordenador.png" alt="Icono experiencia">
-                                <span>mi viaje hasta aquí</span>
-                            </button>
-                            <button class="tab" data-tab="skills">
-                                <img src="./img/iconos/estrella.png" alt="Icono skills">
-                                <span>súper skills</span>
-                            </button>
-                        </div>
-
-                        <!--Contenido de cada pestaña-->
-                        <div class="tabs__content">
-                            <div class="tab__panel active" id="tab-me">
-                                <div class="aboutme__big-phrase">Full-time problem solver</div>
-                                <div class="tab__flex">
-                                    <p class="aboutme__text"> Me llamo María y siempre he sentido que nací para crear
-                                        (esto
-                                        ha sonado un poco intenso, pero es verdad). <br> <br>
-                                        Hasta ahora he trabajado con todo tipo de clientes y en toda clase de proyectos
-                                        y mi
-                                        única conclusión es que no me aburro de inventar, probar, borrar, borrar, borrar
-                                        (...), y volver a empezar porque "ahora sí que se me ocurrió algo mejor".
-                                        <br>
-                                        <strong>Spoiler</strong>: El bucle es infinito. Pero me flipa cuando las ideas
-                                        toman
-                                        forma y de repente todo conecta. <br> <br>
-                                        En mi escaso (y sagrado) tiempo libre, me dedico a lo importante: comer rico,
-                                        reír
-                                        fuerte, viajar mucho, cantar alto, hablar con cualquiera y probar cosas nuevas.
-                                        <br>
-
-                                        Vivo para sentir, por eso mismo diseño.
-
-                                    </p>
-                                    <div class="aboutme__gallery">
-                                        <img class="aboutme__img" src="" alt="">
-                                        <img class="aboutme__img" src="" alt="">
-                                        <img class="aboutme__img" src="" alt="">
-                                        <img class="aboutme__img" src="" alt="">
-                                        <img class="aboutme__img" src="" alt="">
-                                        <img class="aboutme__img" src="" alt="">
-                                    </div>
+                                <!--Navegación pestañas-->
+                                <div class="tabs__nav">
+                                    <button class="tab active" data-tab="me">
+                                        <img src="./img/iconos/ojos.png" alt="Icono sobre mí">
+                                        <span>¡eyyy!</span>
+                                    </button>
+                                    <button class="tab" data-tab="studies">
+                                        <img src="./img/iconos/lapiz.png" alt="Icono estudios">
+                                        <span>aula & coffee</span>
+                                    </button>
+                                    <button class="tab" data-tab="experience">
+                                        <img src="./img/iconos/ordenador.png" alt="Icono experiencia">
+                                        <span>mi viaje hasta aquí</span>
+                                    </button>
+                                    <button class="tab" data-tab="skills">
+                                        <img src="./img/iconos/estrella.png" alt="Icono skills">
+                                        <span>súper skills</span>
+                                    </button>
                                 </div>
-                                <div class="aboutme__funfact">
-                                    <span class="aboutme__funfact-label handwrite">Fun fact:</span>
-                                    <span class="aboutme__funfact-text">
-                                        Yo no, pero juro que mi Notion lo tiene todo bajo control
-                                    </span>
-                                </div>
-                            </div>
 
-                            <div class="tab__panel" id="tab-studies">
-                                <div class="aboutme__big-phrase">Non-stop</div>
+                                <!--Contenido de cada pestaña-->
+                                <div class="tabs__content">
+                                    <div class="tab__panel active" id="tab-me">
+                                        <div class="aboutme__big-phrase">Full-time problem solver</div>
+                                        <div class="tab__flex">
+                                            <p class="aboutme__text"> Me llamo María y siempre he sentido que nací para
+                                                crear
+                                                (esto
+                                                ha sonado un poco intenso, pero es verdad). <br> <br>
+                                                Hasta ahora he trabajado con todo tipo de clientes y en toda clase de
+                                                proyectos
+                                                y mi
+                                                única conclusión es que no me aburro de inventar, probar, borrar,
+                                                borrar,
+                                                borrar
+                                                (...), y volver a empezar porque "ahora sí que se me ocurrió algo
+                                                mejor".
+                                                <br>
+                                                <strong>Spoiler</strong>: El bucle es infinito. Pero me flipa cuando las
+                                                ideas
+                                                toman
+                                                forma y de repente todo conecta. <br> <br>
+                                                En mi escaso (y sagrado) tiempo libre, me dedico a lo importante: comer
+                                                rico,
+                                                reír
+                                                fuerte, viajar mucho, cantar alto, hablar con cualquiera y probar cosas
+                                                nuevas.
+                                                <br>
 
-                                <div class="cards__container cards__container--studies">
-                                    <!-- Tarjeta 1: Formación Oficial -->
-                                    <div class="study-card">
-                                        <h3 class="study-card__title">
-                                            <img src="./img/iconos/book.png" alt="Icono libro"
-                                                class="study-card__icon" />
-                                            Formación Oficial
-                                        </h3>
+                                                Vivo para sentir, por eso mismo diseño.
 
-                                        <div class="study-card__item">
-                                            <h4>Grado Superior en Publicidad y RRPP</h4>
-                                            <p class="study-card__place">UEMC - Universidad Europea Miguel de Cervantes
-                                                (Valladolid)
                                             </p>
-                                            <p class="study-card__year">2018-2022</p>
+                                            <div class="aboutme__gallery">
+                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="" alt="">
+                                            </div>
                                         </div>
-
-                                        <div class="study-card__item">
-                                            <h4>Formación en Diseño Gráfico y Editorial</h4>
-                                            <p class="study-card__place">ESI - Escuela de Diseño (Valladolid)</p>
-                                            <p class="study-card__year">2023-2024</p>
-                                        </div>
-
-                                        <div class="study-card__item">
-                                            <h4>Máster en Diseño Web y UX/UI</h4>
-                                            <p class="study-card__place">CEI - Escuela de Diseño (Valencia)</p>
-                                            <p class="study-card__year">2025</p>
+                                        <div class="aboutme__funfact">
+                                            <span class="aboutme__funfact-label handwrite">Fun fact:</span>
+                                            <span class="aboutme__funfact-text">
+                                                Yo no, pero juro que mi Notion lo tiene todo bajo control
+                                            </span>
                                         </div>
                                     </div>
+                                    <div class="tab__panel" id="tab-studies">
+                                        <div class="aboutme__big-phrase">Non-stop</div>
 
-                                    <!-- Tarjeta 2: Aprendizaje Vital -->
-                                    <div class="study-card">
-                                        <h3 class="study-card__title">
-                                            <img src="./img/iconos/lightbulb.png" alt="Icono bombilla"
-                                                class="study-card__icon" />
-                                            Aprendizaje Vital
-                                        </h3>
-                                        <ul class="study-card__learning-list">
-                                            <li><strong>Cursos intensivos</strong>, tutoriales eternos y experimentar
-                                                sin
-                                                miedo</li>
-                                            <li><strong>Briefs reales</strong>, timelines reales, cafés reales</li>
-                                            <li><strong>Diseño bajo presión</strong> (y con buena música)</li>
-                                            <li><strong>Aprendizaje constante</strong> de todo y de todos</li>
-                                        </ul>
+                                        <div class="cards__container cards__container--studies">
+                                            <!-- Tarjeta 1: Formación Oficial -->
+                                            <div class="study-card">
+                                                <h3 class="study-card__title">
+                                                    <img src="./img/iconos/gorro-02.png" alt="Icono sombrero"
+                                                        class="study-card__icon" />
+                                                    Formación Oficial
+                                                </h3>
+
+                                                <div class="study-card__item">
+                                                    <h4>Grado Superior en Publicidad y RRPP</h4>
+                                                    <p class="study-card__place">UEMC - Universidad Europea Miguel de
+                                                        Cervantes
+                                                        (Valladolid)
+                                                    </p>
+                                                    <p class="study-card__year">2018-2022</p>
+                                                </div>
+
+                                                <div class="study-card__item">
+                                                    <h4>Formación en Diseño Gráfico y Editorial</h4>
+                                                    <p class="study-card__place">ESI - Escuela de Diseño (Valladolid)
+                                                    </p>
+                                                    <p class="study-card__year">2023-2024</p>
+                                                </div>
+
+                                                <div class="study-card__item">
+                                                    <h4>Máster en Diseño Web y UX/UI</h4>
+                                                    <p class="study-card__place">CEI - Escuela de Diseño (Valencia)</p>
+                                                    <p class="study-card__year">2025</p>
+                                                </div>
+                                            </div>
+
+                                            <!-- Tarjeta 2: Aprendizaje Vital -->
+                                            <div class="study-card">
+                                                <h3 class="study-card__title">
+                                                    <img src="./img/iconos/stars.png" alt="Icono stars"
+                                                        class="study-card__icon" />
+                                                    Aprendizaje Vital
+                                                </h3>
+                                                <ul class="study-card__item">
+                                                    <h4>Cursos intensivos</h4>
+                                                    <p class="study-card__text">Y tutoriales de Youtube eternos a las
+                                                        2:00am
+                                                        con
+                                                        los que aprendes más que en 4 años de carrera.</p>
+                                                    <h4>Briefs reales</h4>
+                                                    <p class="study-card__text">Da igual cuánto sepas, el cliente
+                                                        siempre
+                                                        quiere
+                                                        su logo más grande.</p>
+                                                    <h4>Diseño bajo presión</h4>
+                                                    <p class="study-card__text">Siempre trabajando para ayer.</p>
+                                                    <h4>Aprendizaje constante</h4>
+                                                    <p class="study-card__text">Soy una esponja: aprendo de todo y de
+                                                        todos.
+                                                    </p>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab__panel" id="tab-experience">
+                                        <div class="timeline-wrapper">
+                                            <div class="xp-panel" style="left:10%">
+                                                <span class="xp-year">2022</span>
+                                                <h4 class="xp-title">Zamart</h4>
+                                                <p class="xp-text">Diseño gráfico & editorial.<br>Ctrl+S es religión.
+                                                </p>
+                                            </div>
+
+                                            <div class="xp-panel" style="left:35%">
+                                                <span class="xp-year">2023</span>
+                                                <h4 class="xp-title">Grupo Palausa</h4>
+                                                <p class="xp-text">Marketing creativo 360º. Café ↑∞.</p>
+                                            </div>
+
+                                            <div class="xp-panel" style="left:55%">
+                                                <span class="xp-year">2024</span>
+                                                <h4 class="xp-title">UX/UI Bootcamp</h4>
+                                                <p class="xp-text">Figma, prototipos y magia de micro‑copy.</p>
+                                            </div>
+
+                                            <div class="xp-panel" style="left:75%">
+                                                <span class="xp-year">2024</span>
+                                                <h4 class="xp-title">Freelance 🔥</h4>
+                                                <p class="xp-text">Logos giga, webs mini, “¡haz tu magia!”.</p>
+                                            </div>
+
+                                            <div class="xp-panel" style="left:90%">
+                                                <span class="xp-year">2025</span>
+                                                <h4 class="xp-title">Master Web & UX</h4>
+                                                <p class="xp-text">CEI Valencia. UI dark-mode lover.</p>
+                                            </div>
+                                            <img src="./img/iconos/linea-temporal.png" alt="Línea temporal"
+                                                class="timeline-line" />
+                                        </div>
+                                    </div>
+                                    <div class="tab__panel" id="tab-skills">
+                                        <p>Illustrator, Figma, InDesign, Photoshop, HTML, CSS... pero también empatía,
+                                            comunicación
+                                            visual y criterio estético.</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab__panel" id="tab-experience">
-                                <p>He trabajado con agencias, marcas personales y startups creando identidad visual,
-                                    materiales
-                                    editoriales y experiencias web...</p>
-                            </div>
-                            <div class="tab__panel" id="tab-skills">
-                                <p>Illustrator, Figma, InDesign, Photoshop, HTML, CSS... pero también empatía,
-                                    comunicación
-                                    visual y criterio estético.</p>
                             </div>
                         </div>
                     </div>
