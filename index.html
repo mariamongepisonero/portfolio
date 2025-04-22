@@ -677,6 +677,7 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
             border: 1px solid #eee;
             padding: 2rem;
+
         }
 
         .tab__panel {
@@ -946,8 +947,9 @@
         /*----Experience---*/
         .timeline-wrapper {
             position: relative;
-            max-width: 900px;
             margin: 2rem auto;
+            height: 100%;
+            min-height: 250px;
         }
 
         .panels-container {
@@ -970,8 +972,6 @@
         }
 
         /*Pin*/
-
-
         .xp-year {
             display: block;
             font-family: 'Give You Glory', cursive;
@@ -992,14 +992,10 @@
 
         .timeline-line {
             position: absolute;
-            top: 180px;
+            top: 150px;
             left: 0;
             width: 100%;
             z-index: 1;
-        }
-
-        .xp-panel:hover {
-            background: #f7f7f7;
         }
 
         @media (max-width: 700px) {
@@ -1022,6 +1018,69 @@
                 display: none;
             }
         }
+
+
+        /*----Skilss---*/
+        .skills {
+            position: relative;
+            padding: var(--spacing-base) 0;
+        }
+
+        .skills__list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+        }
+
+        .skills__item {
+            background: none;
+            border: none;
+            cursor: pointer;
+            width: 60px;
+        }
+
+        .skills__icon {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* Popup */
+        .skills__popup {
+            position: absolute;
+            background: #fff;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 0.75rem 1rem;
+            z-index: 50;
+            white-space: nowrap;
+        }
+
+        .skills__popup--hidden {
+            display: none;
+        }
+
+        .skills__popup-header {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .skills__popup-stars {
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        /*Estrellas*/
+        .skills__star {
+            font-size: 1.2rem;
+            color: #ccc;
+        }
+
+        .skills__star--filled {
+            color: #f1c40f;
+        }
+
 
         /**********************************/
         /*       SECCIÓN PORTFOLIO        */
@@ -1790,45 +1849,59 @@
                                         </div>
                                     </div>
                                     <div class="tab__panel" id="tab-experience">
-                                        <div class="timeline-wrapper">
-                                            <div class="xp-panel" style="left:10%">
-                                                <span class="xp-year">2022</span>
-                                                <h4 class="xp-title">Zamart</h4>
-                                                <p class="xp-text">Diseño gráfico & editorial.<br>Ctrl+S es religión.
+                                        <div class="aboutme__big-phrase">Multitasking (o modo supervivencia)</div>
+                                        <div class="panels-container timeline-wrapper">
+                                            <div class="xp-panel" style="left:22%">
+                                                <span class="xp-year">2021 - now</span>
+                                                <h4 class="xp-title">Gráficas Zamart</h4>
+                                                <p class="xp-text">Diseño gráfico & editorial.
                                                 </p>
                                             </div>
 
-                                            <div class="xp-panel" style="left:35%">
-                                                <span class="xp-year">2023</span>
+                                            <div class="xp-panel" style="left:42%">
+                                                <span class="xp-year">2022 - now</span>
                                                 <h4 class="xp-title">Grupo Palausa</h4>
-                                                <p class="xp-text">Marketing creativo 360º. Café ↑∞.</p>
+                                                <p class="xp-text">Marketing & contenidos gráficos.</p>
                                             </div>
 
-                                            <div class="xp-panel" style="left:55%">
-                                                <span class="xp-year">2024</span>
-                                                <h4 class="xp-title">UX/UI Bootcamp</h4>
-                                                <p class="xp-text">Figma, prototipos y magia de micro‑copy.</p>
+                                            <div class="xp-panel" style="left:77%">
+                                                <span class="xp-year">2024 - now</span>
+                                                <h4 class="xp-title">Freelance</h4>
+                                                <p class="xp-text">Logos, marcas, webs...</p>
                                             </div>
 
-                                            <div class="xp-panel" style="left:75%">
-                                                <span class="xp-year">2024</span>
-                                                <h4 class="xp-title">Freelance 🔥</h4>
-                                                <p class="xp-text">Logos giga, webs mini, “¡haz tu magia!”.</p>
-                                            </div>
-
-                                            <div class="xp-panel" style="left:90%">
-                                                <span class="xp-year">2025</span>
-                                                <h4 class="xp-title">Master Web & UX</h4>
-                                                <p class="xp-text">CEI Valencia. UI dark-mode lover.</p>
-                                            </div>
                                             <img src="./img/iconos/linea-temporal.png" alt="Línea temporal"
                                                 class="timeline-line" />
                                         </div>
                                     </div>
                                     <div class="tab__panel" id="tab-skills">
-                                        <p>Illustrator, Figma, InDesign, Photoshop, HTML, CSS... pero también empatía,
-                                            comunicación
-                                            visual y criterio estético.</p>
+                                        <div class="skills">
+                                            <div class="skills__list">
+                                                <button class="skills__item" type="button"
+                                                    data-skills-name="Illustrator" data-skills-rating="4">
+                                                    <img class="skills__icon" src="./img/iconos/illustrator.svg"
+                                                        alt="Illustrator">
+                                                </button>
+                                                <button class="skills__item" type="button" data-skills-name="Figma"
+                                                    data-skills-rating="5">
+                                                    <img class="skills__icon" src="./img/iconos/figma.svg" alt="Figma">
+                                                </button>
+                                                <button class="skills__item" type="button" data-skills-name="InDesign"
+                                                    data-skills-rating="3">
+                                                    <img class="skills__icon" src="./img/iconos/indesign.svg"
+                                                        alt="InDesign">
+                                                </button>
+                                                <button class="skills__item" type="button" data-skills-name="Photoshop"
+                                                    data-skills-rating="4">
+                                                    <img class="skills__icon" src="./img/iconos/photoshop.svg"
+                                                        alt="Photoshop">
+                                                </button>
+                                            </div>
+                                            <div class="skills__popup skills__popup--hidden" id="skills-popup">
+                                                <div class="skills__popup-header"></div>
+                                                <div class="skills__popup-stars"></div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -2375,6 +2448,71 @@
             });
         });
 
+
+        //Skills aboutme//
+        const skillsItems = document.querySelectorAll('.skills__item');
+        const skillsPopup = document.getElementById('skills-popup');
+        const popupHeader = skillsPopup.querySelector('.skills__popup-header');
+        const popupStars = skillsPopup.querySelector('.skills__popup-stars');
+
+        /* Función para mostrar estrellitas nivel de una skill
+        Lee el nombre y rating de cada icono y crea las estrellas. Crea el cuadro y lo hace visible
+        */
+        skillsItems.forEach(item => {
+            item.addEventListener('click', () => {
+                //Obtener nombre de la skill con el atributo data-skills-name
+                const name = item.dataset.skillsName;
+                //Obtener el rating de la skill
+                const rating = parseInt(item.dataset.skillsRating, 10);
+
+                // Pone título al cuadro de estrellas
+                popupHeader.textContent = name;
+
+                // Crear las estrellas
+                popupStars.innerHTML = ''; // para limpiar contenido anterior
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement('span');
+                    star.textContent = '★';
+                    // Si el índice es menor o igual al rating, marca como rellena
+                    if (i <= rating) {
+                        star.classList.add('skills__star', 'skills__star--filled');
+                    } else {
+                        star.classList.add('skills__star');
+                    }
+                    popupStars.appendChild(star);
+                }
+
+                // posicionar justo debajo del icono
+                const rect = item.getBoundingClientRect();
+                skillsPopup.style.top = `${rect.bottom + window.scrollY + 8}px`;
+                skillsPopup.style.left = `${rect.left + window.scrollX}px`;
+
+                // Mostrar cuadro estrellas
+                skillsPopup.classList.remove('skills__popup--hidden');
+            });
+        });
+
+        /*
+         * Listener global para cerrar el popup cuando se hace clic fuera.
+        * - Si el click no está dentro de un .skills__item ni dentro del popup,
+        *   se añade la clase de oculto.*/
+        function handleDocumentClick(event) {
+            // Comprueba que el objetivo no sea un skill ni el propio popup
+            if (
+                !event.target.closest('.skills__item') &&
+                !event.target.closest('#skills-popup')
+            ) {
+                skillsPopup.classList.add('skills__popup--hidden');
+            }
+        }
+
+        // Asocia el manejador de clic a cada botón de skill
+        skillsItems.forEach(item => {
+            item.addEventListener('click', handleSkillClick);
+        });
+
+        // Asocia el manejador global para cerrar el popup al hacer clic fuera
+        document.addEventListener('click', handleDocumentClick);
     </script>
 
 </body>
