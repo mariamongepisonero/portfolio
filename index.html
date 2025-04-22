@@ -647,6 +647,7 @@
                 left: 20px;
                 right: 20px;
                 border-radius: 24px;
+                scrollbar-gutter: stable both-edges;
             }
 
             .mobile {
@@ -744,6 +745,21 @@
                 order: 1;
             }
 
+            /*barrita de scroll*/
+            .device--mobile .mobile__screen::-webkit-scrollbar {
+                width: 8px;
+            }
+
+            .device--mobile .mobile__screen::-webkit-scrollbar-thumb {
+                background: rgb(182, 8, 8);
+                border-radius: 4px;
+            }
+
+            .device--mobile .mobile__screen::-webkit-scrollbar-track {
+                background: #eee;
+                border-radius: 4px;
+                margin: 16px 0;
+            }
         }
 
 
@@ -1240,6 +1256,17 @@
 
         .skills__star--filled {
             color: #f1c40f;
+        }
+
+        /*responsive*/
+        @media screen and (max-width: 768px) {
+            .skills__list {
+                gap: 1.2rem;
+            }
+
+            .skills__item {
+                width: 45px;
+            }
         }
 
 
@@ -2199,7 +2226,7 @@
                                             </div>
 
                                             <!--Popup estrellas-->
-                                            <div class="skills__popup skills__popup--hidden" id="skills-popup">
+                                            <div class="skills__popup skills__popup--hidden">
                                                 <div class="skills__popup-header"></div>
                                                 <div class="skills__popup-stars"></div>
                                             </div>
@@ -2538,7 +2565,7 @@
                                             </div>
 
                                             <!--Popup estrellas-->
-                                            <div class="skills__popup skills__popup--hidden" id="skills-popup">
+                                            <div class="skills__popup skills__popup--hidden">
                                                 <div class="skills__popup-header"></div>
                                                 <div class="skills__popup-stars"></div>
                                             </div>
@@ -2942,75 +2969,67 @@
 
 
         //-----------Skills aboutme------------//
-        // Seleccionar todos los botones de skill y el contenedor del popup
-        const skillsItems = document.querySelectorAll('.skills__item');
-        const skillsPopup = document.getElementById('skills-popup');
-        const popupHeader = skillsPopup.querySelector('.skills__popup-header');
-        const popupStars = skillsPopup.querySelector('.skills__popup-stars');
 
-        /**Función handleSkillClick: 
-         *   - monta el contenido (nombre herramienta + estrellas) 
-         *   - posiciona el popup justo debajo del icono clicado
-         *   - lo muestra
-         */
-        function handleSkillClick(event) {
-            const item = event.currentTarget;
-            const name = item.dataset.skillsName;
-            const rating = parseInt(item.dataset.skillsRating, 10);
+        document.querySelectorAll('.skills').forEach(skillsSection => {
+            const skillsItems = skillsSection.querySelectorAll('.skills__item');      // todos los botones‑icono
+            const skillsPopup = skillsSection.querySelector('.skills__popup');       // el cuadro emergente
+            const popupHeader = skillsPopup.querySelector('.skills__popup-header');  // <h4> con el nombre
+            const popupStars = skillsPopup.querySelector('.skills__popup-stars');   // contenedor de ★
 
-            // 1) Poner el título del popup
-            popupHeader.textContent = name;
+            /* 1. Función handleSkillClick: Se ejecuta cuando el usuario pulsa un icono.*/
+            function handleSkillClick(e) {
+                e.stopPropagation();                    // evita que el “click global” lo cierre enseguida
+                const btn = e.currentTarget;         // botón que generó el evento
+                const name = btn.dataset.skillsName;  // nombre de la skill (HTML, Figma…)
+                const rating = +btn.dataset.skillsRating || 0;  // rating numérico (1‑5)
 
-            // 2) Generar las estrellas, marcando las 'filled'
-            popupStars.innerHTML = '';
-            for (let i = 1; i <= 5; i++) {
-                const star = document.createElement('span');
-                star.textContent = '★';
-                star.className = i <= rating
-                    ? 'skills__star skills__star--filled'
-                    : 'skills__star';
-                popupStars.appendChild(star);
+                /*Cierra cualquier popup que pudiera estar visible (incluyendo otros bloques .skills si los hubiera)        */
+                document.querySelectorAll('.skills__popup')
+                    .forEach(p => p.classList.add('skills__popup--hidden'));
+
+                /*Rellena el encabezado con el nombre */
+                popupHeader.textContent = name;
+
+                /*Genera dinámicamente las 5 estrellas:
+                       – ★ llena (class skills__star--filled) si i ≤ rating
+                       – ★ vacía (gris) en caso contrario                     */
+                popupStars.innerHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    const star = document.createElement('span');
+                    star.textContent = '★';
+                    star.className = `skills__star${i <= rating ? ' skills__star--filled' : ''}`;
+                    popupStars.appendChild(star);
+                }
+
+                /*Muestra el popup (quitamos la clase que lo ocultaba)y *después* medimos su ancho real con offsetWidth      */
+                skillsPopup.classList.remove('skills__popup--hidden');
+
+                /*Calcula la posición del popup
+                    – top  : justo debajo del icono
+                    – left : centrado respecto al icono*/
+                const btnRect = btn.getBoundingClientRect();          // posición absoluta del botón
+                const contRect = skillsSection.getBoundingClientRect();// posición de la caja .skills
+
+                const top = btnRect.bottom - contRect.top + 4;        // +4 px de margen
+                const left = btnRect.left - contRect.left
+                    + (btnRect.width - skillsPopup.offsetWidth) / 2;
+
+                skillsPopup.style.top = `${top}px`;
+                skillsPopup.style.left = `${left}px`;
             }
 
-            // 3) Calcular posición: inmediatamente debajo del icono, calculando respecto al documento
-            const container = skillsPopup.parentElement; // debe ser .skills
-            const itemRect = item.getBoundingClientRect();
-            const containerRect = container.getBoundingClientRect();
-
-            // Queremos popup justo DEBAJO del icono:
-            const topPos = itemRect.bottom - containerRect.top + 4;
-            // Centrado horizontal:
-            const leftPos = itemRect.left - containerRect.left
-                + (itemRect.width - skillsPopup.offsetWidth) / 2;
-
-            skillsPopup.style.top = `${topPos}px`;
-            skillsPopup.style.left = `${leftPos}px`;
-
-            // 4) Mostrar popup
-            skillsPopup.classList.remove('skills__popup--hidden');
-        }
-
-        /**
-         * handleDocumentClick:
-         *   Si el click no fue ni sobre un icono (.skills__item)
-         *   ni dentro del popup, lo oculta.
-         */
-        function handleDocumentClick(event) {
-            if (
-                !event.target.closest('.skills__item') &&
-                !event.target.closest('#skills-popup')
-            ) {
-                skillsPopup.classList.add('skills__popup--hidden');
-            }
-        }
-
-        // Asociamos los handlers
-        skillsItems.forEach(item => {
-            item.addEventListener('click', handleSkillClick);
+            /* Asignamos el listener a cada botón de la sección */
+            skillsItems.forEach(btn => btn.addEventListener('click', handleSkillClick));
         });
-        // Detectar clicks fuera para cerrar el popup
-        document.addEventListener('click', handleDocumentClick);
 
+        /* 2. Función click global – cerrar el popup: Si el clic NO cae ni sobre un .skills__item ni sobre el propio .skills__popup, lo ocultamos.*/
+        document.addEventListener('click', e => {
+            if (!e.target.closest('.skills__item') &&
+                !e.target.closest('.skills__popup')) {
+                document.querySelectorAll('.skills__popup')
+                    .forEach(p => p.classList.add('skills__popup--hidden'));
+            }
+        });
 
 
         /*-------------------------------------------------*/
