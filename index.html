@@ -13,7 +13,9 @@
 
 
     <style>
-        /*=============== RESET estilos, body y fuentes=============== */
+        /************************************/
+        /*     RESET, BODY Y FUENTES        */
+        /************************************/
         * {
             margin: 0;
             padding: 0;
@@ -41,7 +43,9 @@
             /* 4 * 16px */
         }
 
-        /* =============== HEADER =============== */
+        /***************************/
+        /*         HEADER          */
+        /***************************/
         header {
             position: fixed;
             top: 0;
@@ -189,7 +193,7 @@
         }
 
         .nav__list--mobile .nav__link {
-            font-size: 1.1rem;
+            font-size: 0.9rem;
         }
 
 
@@ -248,9 +252,9 @@
 
 
 
-        /*-----------------------------------------------*/
-        /*                    MAIN                       */
-        /*-----------------------------------------------*/
+        /*****************************/
+        /*          MAIN             */
+        /*****************************/
 
         section {
             padding: var(--spacing-lg) var(--spacing-base);
@@ -259,9 +263,9 @@
             background-color: rgb(182, 8, 8);
         }
 
-        /********************/
-        /*   HERO PORTADA   */
-        /********************/
+        /************************/
+        /*     HERO PORTADA     */
+        /************************/
         .hero {
             min-height: 100vh;
             padding: var(--spacing-lg) var(--spacing-base);
@@ -422,11 +426,12 @@
             gap: var(--spacing-base);
             margin-bottom: var(--spacing-base);
             font-size: 100pt;
+
         }
 
         .section__title-icon {
-            width: 48px;
-            height: 48px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
         }
 
@@ -960,7 +965,7 @@
 
         .gallery-modal__img {
             display: block;
-            width: 100%;
+            width: 320px;
             height: auto;
         }
 
@@ -1211,7 +1216,7 @@
         }
 
         .skills__item {
-            background: none;
+            background: transparent;
             border: none;
             cursor: pointer;
             width: 60px;
@@ -1221,6 +1226,11 @@
             display: block;
             width: 100%;
             height: auto;
+            transition: all 0.3s ease;
+        }
+
+        .skills__icon:hover {
+            transform: scale(1.1)
         }
 
         /* Popup */
@@ -1269,10 +1279,9 @@
             }
         }
 
-
-        /**********************************/
-        /*       SECCIÓN PORTFOLIO        */
-        /**********************************/
+        /****************************************/
+        /*          SECCIÓN PORTFOLIO           */
+        /****************************************/
 
         .section--portfolio {
             background-color: rgb(182, 8, 8);
@@ -1293,7 +1302,9 @@
         }
 
 
-        /*Carrusel diseño gráfico*/
+        /****************************************/
+        /*       CARRUSEL DISEÑO GRÁFICO       */
+        /****************************************/
         .carousel__title {
             text-align: start;
             font-size: 1.6rem;
@@ -1521,9 +1532,9 @@
         }
 
 
-        /************************************/
-        /*SECCIÓN PORTFOLIO DISEÑO EDITORIAL*/
-        /************************************/
+        /**************************************************/
+        /*       SECCIÓN PORTFOLIO DISEÑO EDITORIAL       */
+        /**************************************************/
 
         .section--editorial {
             max-width: 1100px;
@@ -1742,9 +1753,9 @@
 
 
 
-        /********************************/
-        /*SECCIÓN PORTFOLIO IDENT VISUAL*/
-        /********************************/
+        /******************************************/
+        /*     SECCIÓN PORTFOLIO IDENT VISUAL     */
+        /******************************************/
 
         .identity-grid {
             display: grid;
@@ -1782,11 +1793,123 @@
             color: #333;
         }
 
+        /*******************************/
+        /*     Formulario contacto     */
+        /*******************************/
+        .section--contact {
+            background-color: white;
+            padding: var(--spacing-lg);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
+            max-width: 100%;
+            min-height: 100vh;
+            margin-bottom: 0;
+            margin-top: var(--spacing-base);
+        }
+
+        .contact {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .contact__form {
+            width: 100%;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-top: var(--spacing-md);
+        }
+
+        .contact__input,
+        .contact__textarea {
+            padding: 1rem;
+            font-family: inherit;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            resize: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: border-color 0.3s ease-in-out;
+        }
+
+        .contact__input:focus,
+        .contact__textarea:focus {
+            border-color: #666;
+            outline: none;
+        }
+
+        .contact__button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+            padding: 1rem;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .contact__button:hover {
+            background-color: #333;
+        }
+
+        .contact__success-message {
+            display: none;
+            color: #666;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /*********************/
+        /*      FOOTER       */
+        /*********************/
+        .footer {
+            background-color: #fff;
+            padding: 1rem 1rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+
+        }
+
+        .footer__container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            /*por si es necesario para móvil*/
+            gap: 3rem;
+        }
+
+        .footer__text {
+            font-size: 0.8rem;
+            margin-bottom: var(--spacing-base);
+            color: #333;
+        }
+
+        .footer__social {
+            display: flex;
+            justify-content: center;
+            gap: 0.8rem;
+        }
+
+        .footer__social-link img {
+            width: 35px;
+            height: 35px;
+            transition: transform 0.3s ease;
+            filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.08));
+        }
+
+        .footer__social-link:hover img {
+            transform: scale(1.1);
+        }
 
 
-        /****************/
-        /*ICONO WHATSAPP*/
-        /****************/
+        /**************************/
+        /*     ICONO WHATSAPP     */
+        /**************************/
         .whatsapp {
             position: fixed;
             bottom: 20px;
@@ -1889,7 +2012,7 @@
         </section>
 
         <!-- About me-->
-        <section class="section section--about">
+        <section id="about-me" class="section section--about">
             <!-- Título-->
             <div class="section__title-container">
                 <img class="section__title-icon" src="./img/iconos/flecha.png" alt="Icono de la sección" />
@@ -1899,7 +2022,7 @@
             </div>
 
             <!--Apartado presentación-->
-            <section id="about-me" class="section section--about">
+            <section class="section section--about">
                 <div class="device device--desktop">
                     <div class="monitor">
                         <div class="monitor__screen">
@@ -1950,12 +2073,18 @@
 
                                             </p>
                                             <div class="aboutme__gallery">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge1.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge2.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge3.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge4.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge5.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge6.jpg"
+                                                    alt="Foto María Monge">
                                             </div>
                                         </div>
                                         <div class="aboutme__funfact">
@@ -2289,12 +2418,18 @@
 
                                             </p>
                                             <div class="aboutme__gallery">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
-                                                <img class="aboutme__img" src="" alt="">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge1.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge2.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge3.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge4.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge5.jpg"
+                                                    alt="Foto María Monge">
+                                                <img class="aboutme__img" src="./img/fotos/mariamonge6.jpg"
+                                                    alt="Foto María Monge">
                                             </div>
                                         </div>
                                         <div class="aboutme__funfact">
@@ -2600,68 +2735,58 @@
                                 <!-- Slides -->
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro.png"
+                                        <img src="./img/proyectos/diseno_grafico/dialibro/dialibro.png"
                                             alt="Proyecto 1" class="carousel__image">
                                         <div class="carousel__content">
                                             <h3 class="carousel__heading">Cartelería</h3>
                                             <p class="carousel__description">Ilustración Día del Libro 2024</p>
-                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                            <a href="#" class="carousel__cta" data-project="1">Ver proyecto</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/cartel tapa bendito bacalao.png"
+                                        <img src="./img/proyectos/diseno_grafico/benditobacalao/benditobacalao.jpg"
                                             alt="Proyecto 2" class="carousel__image">
                                         <div class="carousel__content">
                                             <h3 class="carousel__heading">Cartelería</h3>
                                             <p class="carousel__description">Cartel gastronómico para el festival
                                                 Bendito Bacalao 2024</p>
-                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                            <a href="#" class="carousel__cta" data-project="2">Ver proyecto</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
-                                            alt="Proyecto 3" class="carousel__image">
+                                        <img src="./img/proyectos/diseno_grafico/Ferialibro2023/ferialibro.jpg" alt="Proyecto 3"
+                                            class="carousel__image">
                                         <div class="carousel__content">
-                                            <h3 class="carousel__heading">Festival de verano</h3>
-                                            <p class="carousel__description">Cartel cultural</p>
-                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                            <h3 class="carousel__heading">Cartelería</h3>
+                                            <p class="carousel__description">Feria del libro Palencia 2023</p>
+                                            <a href="#" class="carousel__cta" data-project="3">Ver proyecto</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
-                                            alt="Proyecto 3" class="carousel__image">
+                                        <img src="./img/proyectos/diseno_grafico/GAVA/GAVA1.jpg" alt="Proyecto 4"
+                                            class="carousel__image">
                                         <div class="carousel__content">
-                                            <h3 class="carousel__heading">Festival de verano</h3>
-                                            <p class="carousel__description">Cartel cultural</p>
-                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                            <h3 class="carousel__heading">GAVA</h3>
+                                            <p class="carousel__description">Menú para restaurante gastrobar en
+                                                Valladolid</p>
+                                            <a href="#" class="carousel__cta" data-project="4">Ver proyecto</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
+                                        <img src="./img/proyectos/diseno_grafico/semanaculturalupp/semanaculturalupp.png"
                                             alt="Proyecto 3" class="carousel__image">
                                         <div class="carousel__content">
-                                            <h3 class="carousel__heading">Festival de verano</h3>
-                                            <p class="carousel__description">Cartel cultural</p>
-                                            <a href="#" class="carousel__cta">Ver proyecto</a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel__slide">
-                                    <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png"
-                                            alt="Proyecto 3" class="carousel__image">
-                                        <div class="carousel__content">
-                                            <h3 class="carousel__heading">Festival de verano</h3>
-                                            <p class="carousel__description">Cartel cultural</p>
-                                            <a href="#" class="carousel__cta">Ver proyecto</a>
+                                            <h3 class="carousel__heading">Semana Cultural UPP</h3>
+                                            <p class="carousel__description">Programa actividades</p>
+                                            <a href="#" class="carousel__cta" data-project="5">Ver proyecto</a>
                                         </div>
                                     </div>
                                 </div>
@@ -2826,10 +2951,22 @@
         <section class="section section--contact" id="contacto">
             <!--Título apartado-->
             <div class="section__title-container">
-                <img class="section__title-icon" src="./img/iconos/estrella.png" alt="Icono de la sección" />
+                <img class="section__title-icon" src="./img/iconos/mano.png" alt="Icono de la sección" />
                 <h2 class="section__title">
                     <span class="handwrite">¿Trabajamos juntos?</span>
                 </h2>
+            </div>
+
+            <div class="contact">
+                <form id="formulario-contacto" class="contact__form" action="">
+                    <input class="contact__input" type="text" name="nombre" placeholder="Tu nombre" required />
+                    <input class="contact__input" type="email" name="email" placeholder="Tu correo" required />
+                    <textarea class="contact__textarea" name="mensaje" placeholder="¡Hablemos! Cuéntame un poco"
+                        required></textarea>
+                    <button class="contact__button" type="submit">Enviar</button>
+                    <p class="contact__success-message" id="mensaje-exito">¡Al lío! Pronto me pondré en contacto contigo
+                    </p>
+                </form>
             </div>
         </section>
 
@@ -2840,8 +2977,28 @@
         </a>
     </main>
 
-    <footer>
-        <!--footer-->
+    <footer class="footer">
+        <div class="footer__container">
+            <p class="footer__text">Y esto es todo, puedes echar un vistazo también por aquí:</p>
+            <div class="footer__social">
+                <a href="https://www.instagram.com/mariamonge_" target="_blank" class="footer__social-link">
+                    <img src="./img/contacto/instagram.png" alt="Instagram" />
+                </a>
+                <a href="https://www.linkedin.com/in/mar%C3%ADa-monge-14526a314/" target="_blank"
+                    class="footer__social-link">
+                    <img src="./img/contacto/linkedin.png" alt="LinkedIn" />
+                </a>
+                <a href="mailto:mariamongepisonero@gmail.com" class="footer__social-link">
+                    <img src="./img/contacto/email.png" alt="Email" />
+                </a>
+            </div>
+            <div class="footer__bottom">
+                <button class="footer__top-button" id="scroll-top" aria-label="Volver arriba">
+                    ↑
+                </button>
+                <span class="footer__year">&copy; <span id="year"></span></span>
+            </div>
+        </div>
     </footer>
 
     <script>
@@ -2920,7 +3077,7 @@
                     tabs.forEach(t => t.classList.remove('active'));
                     panes.forEach(p => p.classList.remove('active'));
 
-                    // activar el clicado y el panel correspondiente
+                    // activar el tab clicado y el panel correspondiente
                     tab.classList.add('active');
                     paneC
                         .querySelector(`.tab__panel[data-tab="${key}"]`)
@@ -2978,7 +3135,7 @@
 
             /* 1. Función handleSkillClick: Se ejecuta cuando el usuario pulsa un icono.*/
             function handleSkillClick(e) {
-                e.stopPropagation();                    // evita que el “click global” lo cierre enseguida
+                e.stopPropagation();                  // evita que el “click global” lo cierre enseguida
                 const btn = e.currentTarget;         // botón que generó el evento
                 const name = btn.dataset.skillsName;  // nombre de la skill (HTML, Figma…)
                 const rating = +btn.dataset.skillsRating || 0;  // rating numérico (1‑5)
@@ -3001,12 +3158,12 @@
                     popupStars.appendChild(star);
                 }
 
-                /*Muestra el popup (quitamos la clase que lo ocultaba)y *después* medimos su ancho real con offsetWidth      */
+                /*Muestra el popup (quitamos la clase que lo ocultaba)*/
                 skillsPopup.classList.remove('skills__popup--hidden');
 
                 /*Calcula la posición del popup
-                    – top  : justo debajo del icono
-                    – left : centrado respecto al icono*/
+                    – top: justo debajo del icono
+                    – left: centrado respecto al icono*/
                 const btnRect = btn.getBoundingClientRect();          // posición absoluta del botón
                 const contRect = skillsSection.getBoundingClientRect();// posición de la caja .skills
 
@@ -3111,15 +3268,87 @@
         const modal = document.getElementById('projectModal');
         var closeBtn = modal.querySelector('.modal__close');
         var overlay = modal.querySelector('.modal__overlay');
+        var title = modal.querySelector('.modal__title');
+        var description = modal.querySelector('.modal__description');
+        var gallery = modal.querySelector('.modal__gallery');
+
+
+        // Datos de cada proyecto 
+        const projectData = {
+            1: {
+                title: "Cartelería",
+                description: "Ilustración Día del Libro 2024",
+                images: [
+                    "./img/proyectos/diseno_grafico/dialibro/dialibro1.jpg",
+                    "./img/proyectos/diseno_grafico/dialibro/dialibro2.jpg",
+                    "./img/proyectos/diseno_grafico/dialibro/dialibro3.jpg"
+                ]
+            },
+            2: {
+                title: "Cartelería",
+                description: "Cartel gastronómico para el festival Bendito Bacalao 2024",
+                images: [
+                    "./img/proyectos/diseno_grafico/benditobacalao/benditobacalao1.jpg",
+                    "./img/proyectos/diseno_grafico/benditobacalao/benditobacalao2.jpg",
+                    "./img/proyectos/diseno_grafico/benditobacalao/benditobacalao3.jpg"
+                ]
+            },
+            3: {
+                title: "Cartel feria del libro 2023",
+                description: "...",
+                images: [
+                    "./img/proyectos/diseno_grafico/Ferialibro2023/ferialibro1.jpg",
+                    "./img/proyectos/diseno_grafico/Ferialibro2023/ferialibro2.jpg",
+                    "./img/proyectos/diseno_grafico/Ferialibro2023/ferialibro3.jpg"
+                ]
+            },
+            4: {
+                title: "Menú GAVA",
+                description: "Diseño de carta para gastrobar...",
+                images: [
+                    "./img/proyectos/diseno_grafico/GAVA/GAVA2.jpg",
+                    "./img/proyectos/diseno_grafico/GAVA/GAVA3.jpg",
+                    "./img/proyectos/diseno_grafico/GAVA/GAVA4.jpg"
+                ]
+            },
+            5: {
+                title: "Semana Cultural UPP",
+                description: "Diseño del programa de actividades...",
+                images: [
+                    "./img/proyectos/diseno_grafico/semanaculturalupp/semanaculturalupp1.jpg",
+                    "./img/proyectos/diseno_grafico/semanaculturalupp/semanaculturalupp2.jpg",
+                    "./img/proyectos/diseno_grafico/semanaculturalupp/semanaculturalupp3.jpg"
+                ]
+            }
+        };
 
         // Para abrir el modal al hacer clic en "Ver proyecto"
         // @listens button#click
         // @return {void}
-        document.querySelectorAll('.carousel__cta').forEach(button => {
+        document.querySelectorAll('.carousel__cta').forEach((button, index) => {
+            button.setAttribute('data-project', index + 1);
             button.addEventListener('click', e => {
                 e.preventDefault();
+                const projectId = button.getAttribute('data-project');
+                const data = projectData[projectId];
+
+                if (data) {
+                    title.textContent = data.title;
+                    description.textContent = data.description;
+
+                    // Limpia galería anterior
+                    gallery.innerHTML = '';
+
+                    // Carga nuevas imágenes
+                    data.images.forEach(src => {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = data.title;
+                        gallery.appendChild(img);
+                    });
+                }
+
                 modal.classList.add('active');
-                // ¡¡¡¡¡¡ Personalizar AQUI título, descripción e imágenes dinámicamente !!!!!!!
             });
         });
 
@@ -3190,8 +3419,17 @@
 
 
 
-    </script>
+        /*-----------------------------------------------------*/
+        /*-------------------FORMULARIO CONTACTO---------------*/
+        document.getElementById('formulario-contacto').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const mensaje = document.getElementById('mensaje-exito');
+            mensaje.style.display = 'block';
 
+            // Para resetear el formulario
+            this.reset();
+        });
+    </script>
 </body>
 
 </html>
