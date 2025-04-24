@@ -1,0 +1,20 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(182, 8, 8);
+    color: #333;
+    line-height: 1.6;
+}
+
+.handwrite {
+    font-family: 'Give you glory';
+}
+
+/*Métrica base de espaciado para armonía en el diseño*/
+:root {
+    --spacing-base: 16px;
+    /* Base */
+    --spacing-md: 32px;
+    /* 2 * 16px */
+    --spacing-lg: 64px;
+    /* 4 * 16px */
+}
