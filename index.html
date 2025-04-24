@@ -1413,24 +1413,6 @@
             right: 10px;
         }
 
-        .carousel__indicators {
-            text-align: center;
-            margin-top: 1rem;
-        }
-
-        .carousel__indicator {
-            display: inline-block;
-            width: 10px;
-            height: 10px;
-            margin: 0 4px;
-            background: #ccc;
-            border-radius: 50%;
-            cursor: pointer;
-        }
-
-        .carousel__indicator--active {
-            background: rgb(182, 8, 8);
-        }
 
         @media screen and (max-width: 768px) {
             .carousel__slide {
@@ -1757,41 +1739,10 @@
         /*     SECCIÓN PORTFOLIO IDENT VISUAL     */
         /******************************************/
 
-        .identity-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 2rem;
-        }
+        /*Reutiliza las clases y estilos del carrusel de diseño gráfico*/
 
-        .identity-card {
-            background: rgb(182, 8, 8);
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer;
-            text-align: center;
-        }
 
-        .identity-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-        }
 
-        .identity-card img {
-            width: 100%;
-            height: 220px;
-            object-fit: contain;
-            padding: 1rem;
-            background-color: #fafafa;
-        }
-
-        .identity-title {
-            font-size: 1rem;
-            font-weight: 500;
-            color: #333;
-        }
 
         /*******************************/
         /*     Formulario contacto     */
@@ -2735,8 +2686,8 @@
                                 <!-- Slides -->
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/dialibro/dialibro.png"
-                                            alt="Proyecto 1" class="carousel__image">
+                                        <img src="./img/proyectos/diseno_grafico/dialibro/dialibro.png" alt="Proyecto 1"
+                                            class="carousel__image">
                                         <div class="carousel__content">
                                             <h3 class="carousel__heading">Cartelería</h3>
                                             <p class="carousel__description">Ilustración Día del Libro 2024</p>
@@ -2758,8 +2709,8 @@
                                 </div>
                                 <div class="carousel__slide">
                                     <div class="carousel__card">
-                                        <img src="./img/proyectos/diseno_grafico/Ferialibro2023/ferialibro.jpg" alt="Proyecto 3"
-                                            class="carousel__image">
+                                        <img src="./img/proyectos/diseno_grafico/Ferialibro2023/ferialibro.jpg"
+                                            alt="Proyecto 3" class="carousel__image">
                                         <div class="carousel__content">
                                             <h3 class="carousel__heading">Cartelería</h3>
                                             <p class="carousel__description">Feria del libro Palencia 2023</p>
@@ -2793,7 +2744,6 @@
                             </div>
                         </div>
                         <button class="carousel__btn carousel__btn--next">&#10095;</button>
-                        <div class="carousel__indicators"></div>
                     </div>
                 </div>
                 <!-- Ventana flotante con info proyecto -->
@@ -2820,14 +2770,13 @@
                         <div class="editorial__card">
                             <div class="editorial__flip">
                                 <div class="editorial__card-front">
-                                    <img class="editorial__image" src="./img/proyectos/diseno_editorial/folleto.jpg"
-                                        alt="Portada proyecto editorial 1">
+                                    <img class="editorial__image"
+                                        src="./img/proyectos/diseno_editorial/agenda2025/agenda1.jpg" alt="Agenda 2025">
                                 </div>
                                 <div class="editorial__card-back">
-                                    <h3 class="editorial__card-title">Revista Creativa</h3>
-                                    <p class="editorial__card-desc">Edición especial con ilustraciones y tipografías
-                                        experimentales.</p>
-                                    <button class="editorial__btn" data-target="#project-revistaCreativa">Ver
+                                    <h3 class="editorial__card-title">Agenda 2025</h3>
+                                    <p class="editorial__card-desc">Diseño de una agenda para el año 2025...</p>
+                                    <button class="editorial__btn" data-project="6">Ver
                                         más</button>
                                 </div>
                             </div>
@@ -2836,13 +2785,15 @@
                         <div class="editorial__card">
                             <div class="editorial__flip">
                                 <div class="editorial__card-front">
-                                    <img class="editorial__image" src="./img/proyectos/diseno_editorial/folleto.jpg"
+                                    <img class="editorial__image"
+                                        src="./img/proyectos/diseno_editorial/revistaneoretro/neoretro1.jpg"
                                         alt="Portada proyecto editorial 2">
                                 </div>
                                 <div class="editorial__card-back">
-                                    <h3 class="editorial__card-title">Catálogo de Diseño</h3>
-                                    <p class="editorial__card-desc">Aquí va la descripción del proyecto</p>
-                                    <button class="editorial__btn" data-target="#project-catalogoDiseno">Ver
+                                    <h3 class="editorial__card-title">Catálogo NeoRetro</h3>
+                                    <p class="editorial__card-desc">Revista catálogo de productos de la marca de muebles
+                                        NeoRetro</p>
+                                    <button class="editorial__btn" data-project="7">Ver
                                         más</button>
                                 </div>
                             </div>
@@ -2857,124 +2808,84 @@
                                 <div class="editorial__card-back">
                                     <h3 class="editorial__card-title">Libro poesía</h3>
                                     <p class="editorial__card-desc">Aquí va la descripción del proyecto</p>
-                                    <button class="editorial__btn" data-target="#project-libroPoesia">Ver más</button>
+                                    <button class="editorial__btn" data-project="8">Ver más</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <!--Modal para la sección editorial (Bloque con sub-bloques dentro)-->
+                    <!-- Modal genérico -->
                     <div id="editorialModal" class="editorial-modal">
                         <div class="editorial-modal__overlay"></div>
+
                         <div class="editorial-modal__content">
-                            <button class="editorial-modal__close">&times;</button>
-
-                            <!--Bloques de contenido para cada proyecto (ID único)-->
-                            <!-- Proyecto 1 -->
-                            <div class="editorial-modal__project" id="project-revistaCreativa">
-                                <h3 class="editorial-modal__title">Revista Creativa</h3>
-                                <p class="editorial-modal__desc">
-                                    Edición especial con ilustraciones vanguardistas, tipografía experimental
-                                    y una maquetación que explora conceptos minimalistas.
-                                </p>
-                                <div class="editorial-modal__gallery">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
-                                        class="editorial-modal__image">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
-                                        class="editorial-modal__image">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 3"
-                                        class="editorial-modal__image">
-                                </div>
-                            </div>
-
-                            <!-- Proyecto 2 -->
-                            <div class="editorial-modal__project" id="project-catalogoDiseno">
-                                <h3 class="editorial-modal__title">Catálogo de Diseño</h3>
-                                <p class="editorial-modal__desc">
-                                    Recopilación de proyectos con enfoque en tendencias
-                                    y un repaso a la evolución estética de este año.
-                                </p>
-                                <div class="editorial-modal__gallery">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
-                                        class="editorial-modal__image">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
-                                        class="editorial-modal__image">
-                                </div>
-                            </div>
-
-                            <!-- Proyecto 3 -->
-                            <div class="editorial-modal__project" id="project-libroPoesia">
-                                <h3 class="editorial-modal__title">Libro poesía</h3>
-                                <p class="editorial-modal__desc">
-                                    Proyecto que combina poesía e imagen,
-                                    con especial protagonismo de la composición tipográfica
-                                    y la fotografía conceptual.
-                                </p>
-                                <div class="editorial-modal__gallery">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 1"
-                                        class="editorial-modal__image">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 2"
-                                        class="editorial-modal__image">
-                                    <img src="./img/proyectos/diseno_editorial/folleto.jpg" alt="Página 3"
-                                        class="editorial-modal__image">
-                                </div>
-                            </div>
-
+                            <button class="editorial-modal__close" aria-label="Cerrar ventana">&times;</button>
+                            <h3 class="editorial-modal__title"></h3>
+                            <p class="editorial-modal__desc"></p>
+                            <div class="editorial-modal__gallery"></div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <!--Subsección: IDENTIDADES VISUALES-->
-            <section id="identidad" class="section section--portfolio">
+            <!-- Sub-sección: IDENTIDADES VISUALES -->
+            <section id="branding" class="section section--portfolio">
                 <div class="portfolio-box">
                     <h2 class="carousel__title">Identidades visuales</h2>
-                    <div class="identity-grid">
-                        <div class="identity-card">
-                            <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png" alt="Identidad 1">
-                            <h3 class="identity-title">Marca Boutique</h3>
+
+                    <div class="carousel__viewport">
+                        <button class="carousel__btn carousel__btn--prev" aria-label="Anterior">&#10094;</button>
+
+                        <div class="carousel__track-wrapper">
+                            <div class="carousel__track" id="brandingTrack">
+                                <!--Diapositivas con JS -->
+                            </div>
                         </div>
-                        <div class="identity-card">
-                            <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png" alt="Identidad 2">
-                            <h3 class="identity-title">Restaurante local</h3>
-                        </div>
-                        <div class="identity-card">
-                            <img src="./img/proyectos/diseno_grafico/cartel feria libro 2.png" alt="Identidad 3">
-                            <h3 class="identity-title">Estudio creativo</h3>
-                        </div>
-                        <!-- Más tarjetas... -->
+
+                        <button class="carousel__btn carousel__btn--next" aria-label="Siguiente">&#10095;</button>
+                    </div>
+                </div>
+
+                <!-- Modal genérico para proyectos de branding -->
+                <div class="modal" id="brandingModal">
+                    <div class="modal__overlay"></div>
+                    <div class="modal__content">
+                        <button class="modal__close" aria-label="Cerrar modal">&times;</button>
+                        <h3 class="modal__title"></h3>
+                        <p class="modal__description"></p>
+                        <div class="modal__gallery" id="brandingGallery"></div>
                     </div>
                 </div>
             </section>
-        </section>
 
-        <!-- Trabajamos juntos-->
-        <section class="section section--contact" id="contacto">
-            <!--Título apartado-->
-            <div class="section__title-container">
-                <img class="section__title-icon" src="./img/iconos/mano.png" alt="Icono de la sección" />
-                <h2 class="section__title">
-                    <span class="handwrite">¿Trabajamos juntos?</span>
-                </h2>
-            </div>
+            <!-- Trabajamos juntos-->
+            <section class="section section--contact" id="contacto">
+                <!--Título apartado-->
+                <div class="section__title-container">
+                    <img class="section__title-icon" src="./img/iconos/mano.png" alt="Icono de la sección" />
+                    <h2 class="section__title">
+                        <span class="handwrite">¿Trabajamos juntos?</span>
+                    </h2>
+                </div>
 
-            <div class="contact">
-                <form id="formulario-contacto" class="contact__form" action="">
-                    <input class="contact__input" type="text" name="nombre" placeholder="Tu nombre" required />
-                    <input class="contact__input" type="email" name="email" placeholder="Tu correo" required />
-                    <textarea class="contact__textarea" name="mensaje" placeholder="¡Hablemos! Cuéntame un poco"
-                        required></textarea>
-                    <button class="contact__button" type="submit">Enviar</button>
-                    <p class="contact__success-message" id="mensaje-exito">¡Al lío! Pronto me pondré en contacto contigo
-                    </p>
-                </form>
-            </div>
-        </section>
+                <div class="contact">
+                    <form id="formulario-contacto" class="contact__form" action="">
+                        <input class="contact__input" type="text" name="nombre" placeholder="Tu nombre" required />
+                        <input class="contact__input" type="email" name="email" placeholder="Tu correo" required />
+                        <textarea class="contact__textarea" name="mensaje" placeholder="¡Hablemos! Cuéntame un poco"
+                            required></textarea>
+                        <button class="contact__button" type="submit">Enviar</button>
+                        <p class="contact__success-message" id="mensaje-exito">¡Al lío! Pronto me pondré en contacto
+                            contigo
+                        </p>
+                    </form>
+                </div>
+            </section>
 
-        <!--Icono whatsapp-->
-        <a href="https://wa.me/675783354" class="whatsapp">
-            <img class="whatsapp__icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
-                alt="Whatsapp">
-        </a>
+            <!--Icono whatsapp-->
+            <a href="https://wa.me/675783354" class="whatsapp">
+                <img class="whatsapp__icon" src="https://cdn.jsdelivr.net/npm/simple-icons@v9/icons/whatsapp.svg"
+                    alt="Whatsapp">
+            </a>
     </main>
 
     <footer class="footer">
@@ -3364,60 +3275,248 @@
         /*-----------------------------------------------------*/
         /*---------------------DISEÑO EDITORIAL-----------------*/
 
-        //1. Selección del modal y sus elementos
-        const editorialModal = document.getElementById('editorialModal');
-        const editorialOverlay = editorialModal.querySelector('.editorial-modal__overlay');
-        const editorialCloseBtn = editorialModal.querySelector('.editorial-modal__close');
+        document.addEventListener('DOMContentLoaded', () => {
 
-        //2. Ocultar todos los proyectos del modal
-        function hideAllEditorialProjects() {
-            const projects = editorialModal.querySelectorAll('.editorial-modal__project');
-            projects.forEach(project => {
-                project.style.display = 'none';
-            });
-        }
+            const editorialModal = document.getElementById('editorialModal');
+            const overlay = editorialModal.querySelector('.editorial-modal__overlay');
+            const closeBtn = editorialModal.querySelector('.editorial-modal__close');
+            const modalTitle = editorialModal.querySelector('.editorial-modal__title');
+            const modalDesc = editorialModal.querySelector('.editorial-modal__desc');
+            const modalGallery = editorialModal.querySelector('.editorial-modal__gallery');
 
-        //3. Botones "Ver más" de las tarjetas
-        document.querySelectorAll('.editorial__btn').forEach(btn => {
-            btn.addEventListener('click', event => {
-                event.preventDefault();
-                // Obtenemos el ID del proyecto que se quiere ver
-                const targetId = btn.dataset.target; // ej. "#project-revistaCreativa"
-                if (!targetId) return;
-
-                // Oculta todos los proyectos
-                hideAllEditorialProjects();
-
-                // Muestra solo el proyecto indicado
-                const projectToShow = document.querySelector(targetId);
-                if (projectToShow) {
-                    projectToShow.style.display = 'block';
-                    // Abrimos modal
-                    editorialModal.style.display = 'flex';
+            const editorialProjects = {
+                6: {
+                    title: "Agenda 2025",
+                    desc: "Agenda 2025....",
+                    images: [
+                        "./img/proyectos/diseno_editorial/agenda2025/agenda3.jpg",
+                        "./img/proyectos/diseno_editorial/agenda2025/agenda2.jpg",
+                        "./img/proyectos/diseno_editorial/agenda2025/agenda4.jpg"
+                    ]
+                },
+                7: {
+                    title: "Revista NeoRetro",
+                    desc: "Revista-Catálogo para la marca de muebles NeoRetro...",
+                    images: [
+                        "./img/proyectos/diseno_editorial/revistaneoretro/neoretro3.jpg",
+                        "./img/proyectos/diseno_editorial/revistaneoretro/neoretro2.jpg",
+                        "./img/proyectos/diseno_editorial/revistaneoretro/neoretro4.jpg"
+                    ]
+                },
+                8: {
+                    title: "Libro de poesía",
+                    desc: "Proyecto que fusiona poesía, composición tipográfica y fotografía conceptual.",
+                    images: [
+                        "./img/proyectos/diseno_editorial/folleto.jpg",
+                        "./img/proyectos/diseno_editorial/folleto.jpg",
+                        "./img/proyectos/diseno_editorial/folleto.jpg"
+                    ]
                 }
+            };
+
+            //1. Abrir modal y cargar datos
+            document.querySelectorAll('.editorial__btn').forEach(btn => {
+                btn.addEventListener('click', e => {
+                    e.preventDefault();
+                    e.stopPropagation(); // que no gire la tarjeta al clicar en "Ver más"
+
+                    const key = btn.dataset.project;
+                    const data = editorialProjects[key];
+                    if (!data) return;    // seguridad
+
+                    // Rellenar contenido
+                    modalTitle.textContent = data.title;
+                    modalDesc.textContent = data.desc;
+                    modalGallery.innerHTML = '';      // limpiar galería
+
+                    data.images.forEach(src => {
+                        const img = document.createElement('img');
+                        img.src = src;
+                        img.alt = data.title;
+                        img.classList.add('editorial-modal__image');
+                        modalGallery.appendChild(img);
+                    });
+
+                    // Mostrar el modal
+                    editorialModal.classList.add('editorial-modal--active');
+                });
+            });
+
+
+            /* 2. Cerrar el modal */
+            function closeEditorialModal() {
+                editorialModal.classList.remove('editorial-modal--active');
+            }
+            closeBtn.addEventListener('click', closeEditorialModal);
+            overlay.addEventListener('click', closeEditorialModal);
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeEditorialModal();
+            });
+
+            /* 3. Flip cards en móvil  */
+            const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+            if (isTouch) {
+                document.querySelectorAll('.editorial__card').forEach(card => {
+                    card.addEventListener('click', () => {
+                        card.querySelector('.editorial__flip').classList.toggle('is-flipped');
+                    });
+                });
+            }
+
+        });
+
+        document.querySelectorAll('.editorial__card').forEach(card => {
+            card.addEventListener('click', e => {
+                card.querySelector('.editorial__flip')
+                    .classList.toggle('is-flipped');
             });
         });
 
-        //4. Cerrar el modal al hacer click en cierre u overlay
-        function closeEditorialModal() {
-            editorialModal.style.display = 'none';
-            hideAllEditorialProjects(); // Se ocultan todos
-        }
+        /*-----------------------------------------------------*/
+        /*---------------------IDENTIDADES VISUALES-----------------*/
 
-        editorialCloseBtn.addEventListener('click', closeEditorialModal);
-        editorialOverlay.addEventListener('click', closeEditorialModal);
+        document.addEventListener('DOMContentLoaded', () => {
 
-        //5. En versión móvil, la parte trasera se muestra con clic
-        const editorialCards = document.querySelectorAll('.editorial__card');
+            /* 1 · Datos de los proyectos (añade o quita los que necesites) */
+            const brandingProjects = [
+                {
+                    id: 'burbuz',
+                    title: 'Burbuz',
+                    desc: 'Packaging para marca de refrescos.',
+                    cover: './img/proyectos/identidad/burbuz/burbuz.jpg',
+                    images: [
+                        './img/proyectos/identidad/burbuz/burbuz1.jpg',
+                        './img/proyectos/identidad/burbuz/burbuz2.jpg',
+                        './img/proyectos/identidad/burbuz/burbuz3.jpg'
+                    ]
+                },
+                {
+                    id: 'skin00',
+                    title: 'skin00',
+                    desc: 'Identidad visual y packaging para marca de cosméticos',
+                    cover: './img/proyectos/identidad/skin00/skin.jpg',
+                    images: [
+                        './img/proyectos/identidad/skin00/skin1.jpg',
+                        './img/proyectos/identidad/skin00/skin3.jpg',
+                        './img/proyectos/identidad/skin00/skin2.jpg'
+                    ]
+                },
+                {
+                    id: 'cafeuno',
+                    title: 'Café Uno',
+                    desc: 'Branding sensorial para cafetería de especialidad.',
+                    cover: './img/proyectos/identidad/cafeuno/cover.jpg',
+                    images: [
+                        './img/proyectos/identidad/cafeuno/1.jpg',
+                        './img/proyectos/identidad/cafeuno/2.jpg',
+                        './img/proyectos/identidad/cafeuno/3.jpg'
+                    ]
+                }
+            ];
 
-        editorialCards.forEach(card => {
-            card.addEventListener('click', () => {
-                const flipContainer = card.querySelector('.editorial__flip');
-                flipContainer.classList.toggle('is-flipped');
+            /* 2 · Construcción dinámica de las diapositivas */
+            const brandingTrack = document.getElementById('brandingTrack');
+            brandingProjects.forEach(p => {
+                brandingTrack.insertAdjacentHTML('beforeend', `
+                <div class="carousel__slide">
+                    <div class="carousel__card" data-id="${p.id}">
+                        <img src="${p.cover}" alt="${p.title}" class="carousel__image">
+                         <div class="carousel__content">
+                             <h3 class="carousel__heading">${p.title}</h3>
+                             <p  class="carousel__description">${p.desc}</p>
+                             <a href="#" class="carousel__cta">Ver proyecto</a>
+                         </div>
+                    </div>
+                </div>
+              `);
             });
+
+            /* 3 Referencias y estado del carrusel */
+            const brandingViewport = document.querySelector('#branding .carousel__viewport');
+            const brandingSlides = Array.from(brandingTrack.children);
+            const prevBtn = brandingViewport.querySelector('.carousel__btn--prev');
+            const nextBtn = brandingViewport.querySelector('.carousel__btn--next');
+            let currentIndex = 0;
+
+            /* 3.1 Algoritmo de centrado (igual que Diseño gráfico) */
+            function updateBrandingCarousel() {
+                const slide = brandingSlides[0];
+                const style = getComputedStyle(slide);
+                const marginRight = parseFloat(style.marginRight) || 0;
+                const slideWidth = slide.offsetWidth + marginRight;
+
+                const totalWidth = slideWidth * brandingSlides.length;
+                const viewportWidth = brandingViewport.offsetWidth;
+                let offset = slideWidth * currentIndex - (viewportWidth - slideWidth) / 2;
+
+                const maxOffset = Math.max(0, totalWidth - viewportWidth);
+                offset = Math.max(0, Math.min(offset, maxOffset));
+
+                brandingTrack.style.transform = `translateX(-${offset}px)`;
+
+                brandingSlides.forEach((s, i) =>
+                    s.classList.toggle('carousel__slide--active', i === currentIndex));
+            }
+
+            /* 3.2 Navegación con botones */
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % brandingSlides.length;
+                updateBrandingCarousel();
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + brandingSlides.length) % brandingSlides.length;
+                updateBrandingCarousel();
+            });
+
+            /* 3.3 Swipe en dispositivos táctiles */
+            let startX = 0;
+            brandingTrack.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+            brandingTrack.addEventListener('touchend', e => {
+                const endX = e.changedTouches[0].clientX;
+                if (endX < startX - 50) nextBtn.click();
+                else if (endX > startX + 50) prevBtn.click();
+            });
+
+            /* 3.4 · Ajustes responsive */
+            window.addEventListener('load', updateBrandingCarousel);
+            window.addEventListener('resize', updateBrandingCarousel);
+
+            /* 4 · Modal dinámico */
+            const modal = document.getElementById('brandingModal');
+            const mTitle = modal.querySelector('.modal__title');
+            const mDesc = modal.querySelector('.modal__description');
+            const mGallery = document.getElementById('brandingGallery');
+            const mClose = modal.querySelector('.modal__close');
+            const mOverlay = modal.querySelector('.modal__overlay');
+
+            brandingTrack.addEventListener('click', e => {
+                const btn = e.target.closest('.carousel__cta');
+                if (!btn) return;
+                e.preventDefault();
+
+                const card = btn.closest('.carousel__card');
+                const data = brandingProjects.find(p => p.id === card.dataset.id);
+                if (!data) return;
+
+                /* Rellena el modal */
+                mTitle.textContent = data.title;
+                mDesc.textContent = data.desc;
+                mGallery.innerHTML = data.images
+                    .map(src => `<img src="${src}" alt="${data.title}">`)
+                    .join('');
+
+                modal.classList.add('active');
+            });
+
+            const closeModal = () => modal.classList.remove('active');
+            mClose.addEventListener('click', closeModal);
+            mOverlay.addEventListener('click', closeModal);
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+            /* 5 · Arranca en la primera diapositiva */
+            updateBrandingCarousel();
         });
-
-
 
         /*-----------------------------------------------------*/
         /*-------------------FORMULARIO CONTACTO---------------*/
