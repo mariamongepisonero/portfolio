@@ -607,7 +607,6 @@
             left: 20px;
             right: 20px;
             border-radius: 24px;
-            scrollbar-gutter: stable both-edges;
         }
 
         .mobile {
