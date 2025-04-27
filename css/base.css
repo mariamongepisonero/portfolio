@@ -12,9 +12,9 @@ body {
 /*Métrica base de espaciado para armonía en el diseño*/
 :root {
     --spacing-base: 16px;
-    /* Base */
+    /*Base*/
     --spacing-md: 32px;
-    /* 2 * 16px */
+    /* 2*16px */
     --spacing-lg: 64px;
-    /* 4 * 16px */
+    /* 4*16px */
 }

@@ -1,5 +1,6 @@
 /*-------------------------------------------------*/
-/*-----------------MENÚ NAVEGACIÓN----------------*/
+/*                 MENÚ NAVEGACIÓN                 */
+/*-------------------------------------------------*/
 
 const header = document.querySelector('.header');
 const hamburger = document.querySelector('.hamburguesa');
@@ -7,24 +8,18 @@ const mobileMenu = document.querySelector('.nav--mobile');
 
 //1. Cambiar estilo del header al hacer scroll
 // Añade/quita la clase 'scrolled' si la posición vertical del scroll supera 50px
-//@listens window#scroll
-//@return {void}
 window.addEventListener('scroll', () => {
     header.classList.toggle('scrolled', window.scrollY > 50);
 });
 
 // 2. Abre/cierra el menú móvil al al hacer click en el botón hamburguesa
 // Alterna la clase 'active' del menú móvil
-//@listens hamburger#clic
-//@return {void}
 hamburger.addEventListener('click', () => {
     mobileMenu.classList.toggle('active');
 });
 
 // 3. Muestra/oculta el submenú al hacer clic en elementos con submenú en móviles
 // Solo se aplica si el ancho de ventana es menor o igual a 768px
-// @listens link#click
-// @return {void}
 document.querySelectorAll('.nav--mobile .nav__item--submenu > .nav__link').forEach(link => {
     link.addEventListener('click', (e) => {
         if (window.innerWidth <= 768) {
@@ -37,8 +32,6 @@ document.querySelectorAll('.nav--mobile .nav__item--submenu > .nav__link').forEa
 });
 
 // 4. Cerrar menú móvil y submenús cuando se hace clic en cualquier enlace de navegación
-// @listens link#click
-// @return {void}
 document.querySelectorAll(
     '.nav--mobile .nav__item:not(.nav__item--submenu) > .nav__link, ' +
     '.nav--mobile .nav__sublink'
@@ -52,8 +45,7 @@ document.querySelectorAll(
 });
 
 // 5. Verifica si la ventana se ha redimensionado a un ancho mayor a 768px para cerrar el menú móvil.
-// @listens window#resize
-// @return {void}
+// (Sin esto, el menú no funcionaba correctamente al encoger la pantalla y volver a agrandarla)
 window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
         mobileMenu.classList.remove('active');
@@ -64,11 +56,12 @@ window.addEventListener('resize', () => {
 
 
 /*-------------------------------------------------*/
-/*---------TABS ABOUT-ME: ordenador y móvil--------*/
+/*     TABS SECCIÓN ABOUT ME: Ordenador y móvil    */
+/*-------------------------------------------------*/
 
 //Recorrer cada device (monitor y movil) por separado
 document.querySelectorAll('.device').forEach(device => {
-    //Dentro de cada device, seleccionar:
+    //Dentro de cada device, seleccionamos:
     const nav = device.querySelector('.tabs__nav'); //barra pestañas
     const tabs = nav.querySelectorAll('.tab'); //cada botón tab
     const paneC = device.querySelector('.tabs__content'); //contenedor de paneles
@@ -79,11 +72,11 @@ document.querySelectorAll('.device').forEach(device => {
         tab.addEventListener('click', () => {
             const key = tab.dataset.tab;
 
-            // desactivar todo
+            //desactivar todo
             tabs.forEach(t => t.classList.remove('active'));
             panes.forEach(p => p.classList.remove('active'));
 
-            // activar el tab clicado y el panel correspondiente
+            //activar el tab clicado y el panel correspondiente
             tab.classList.add('active');
             paneC
                 .querySelector(`.tab__panel[data-tab="${key}"]`)
@@ -94,7 +87,7 @@ document.querySelectorAll('.device').forEach(device => {
 
 
 
-/*---------------Galería-----------------*/
+/*----------- GALERÍA FOTOS ABOUT ME------------*/
 
 // 1. Seleccionar imágenes de la galería y crear una ventana flotante en el html
 const aboutImgs = document.querySelectorAll('.aboutme__img');
@@ -110,7 +103,7 @@ galleryModal.innerHTML = `
             </div>`;
 document.body.appendChild(galleryModal);
 
-//var porque estas variables se vuelven a utilizar más abajo
+//var porque estas variables se vuelven a utilizar más abajo!
 const modalImg = galleryModal.querySelector('.gallery-modal__img');
 var closeBtn = galleryModal.querySelector('.gallery-modal__close');
 var overlay = galleryModal.querySelector('.gallery-modal__overlay');
@@ -118,12 +111,12 @@ var overlay = galleryModal.querySelector('.gallery-modal__overlay');
 //2. Al hacer clic en cada miniatura, se abre el modal
 aboutImgs.forEach(img => {
     img.addEventListener('click', () => {
-        modalImg.src = img.src; // mostramos la misma imagen en grande
+        modalImg.src = img.src; //mostrar la misma imagen en grande
         galleryModal.classList.add('active');
     });
 });
 
-//3. Cerrar modal
+//3. Cerrar el modal
 function closeGalleryModal() {
     galleryModal.classList.remove('active');
 }
@@ -132,26 +125,26 @@ closeBtn.addEventListener('click', closeGalleryModal);
 overlay.addEventListener('click', closeGalleryModal);
 
 
-//-----------------Skills aboutme------------------//
+//------------- SKILLS -----------------//
 
 document.querySelectorAll('.skills').forEach(skillsSection => {
-    const skillsItems = skillsSection.querySelectorAll('.skills__item');      // todos los botones‑icono
-    const skillsPopup = skillsSection.querySelector('.skills__popup');       // el cuadro emergente
-    const popupHeader = skillsPopup.querySelector('.skills__popup-header');  // <h4> con el nombre
-    const popupStars = skillsPopup.querySelector('.skills__popup-stars');   // contenedor de ★
+    const skillsItems = skillsSection.querySelectorAll('.skills__item');      //todos los botones‑icono
+    const skillsPopup = skillsSection.querySelector('.skills__popup');       //el cuadro emergente
+    const popupHeader = skillsPopup.querySelector('.skills__popup-header');  //<h4> con el nombre de la app
+    const popupStars = skillsPopup.querySelector('.skills__popup-stars');   //contenedor de ★
 
-    /* 1. Función handleSkillClick: Se ejecuta cuando el usuario pulsa un icono.*/
+    //1. Función handleSkillClick: Se ejecuta cuando el usuario pulsa un icono
     function handleSkillClick(e) {
         e.stopPropagation();                  // evita que el “click global” lo cierre enseguida
         const btn = e.currentTarget;         // botón que generó el evento
         const name = btn.dataset.skillsName;  // nombre de la skill (HTML, Figma…)
         const rating = +btn.dataset.skillsRating || 0;  // rating numérico (1‑5)
 
-        /*Cierra cualquier popup que pudiera estar visible (incluyendo otros bloques .skills si los hubiera)        */
+        //Cierra cualquier popup que pudiera estar visible (incluyendo otros bloques .skills)
         document.querySelectorAll('.skills__popup')
             .forEach(p => p.classList.add('skills__popup--hidden'));
 
-        /*Rellena el encabezado con el nombre */
+        //Rellena el encabezado con el nombre
         popupHeader.textContent = name;
 
         /*Genera dinámicamente las 5 estrellas:
@@ -165,16 +158,16 @@ document.querySelectorAll('.skills').forEach(skillsSection => {
             popupStars.appendChild(star);
         }
 
-        /*Muestra el popup (quitamos la clase que lo ocultaba)*/
+        //Muestra el popup (quitar la clase que lo ocultaba)
         skillsPopup.classList.remove('skills__popup--hidden');
 
         /*Calcula la posición del popup
             – top: justo debajo del icono
             – left: centrado respecto al icono*/
-        const btnRect = btn.getBoundingClientRect();          // posición absoluta del botón
-        const contRect = skillsSection.getBoundingClientRect();// posición de la caja .skills
+        const btnRect = btn.getBoundingClientRect();             //posición absoluta del botón
+        const contRect = skillsSection.getBoundingClientRect();  //posición de la caja .skills
 
-        const top = btnRect.bottom - contRect.top + 4;        // +4 px de margen
+        const top = btnRect.bottom - contRect.top + 4;        //+4 px de margen!
         const left = btnRect.left - contRect.left
             + (btnRect.width - skillsPopup.offsetWidth) / 2;
 
@@ -182,11 +175,11 @@ document.querySelectorAll('.skills').forEach(skillsSection => {
         skillsPopup.style.left = `${left}px`;
     }
 
-    /* Asignamos el listener a cada botón de la sección */
+    //Asignar el listener a cada botón de la sección
     skillsItems.forEach(btn => btn.addEventListener('click', handleSkillClick));
 });
 
-/* 2. Función click global – cerrar el popup: Si el clic NO cae ni sobre un .skills__item ni sobre el propio .skills__popup, lo ocultamos.*/
+//2. Función click global – cerrar el popup: Si el clic NO cae ni sobre un .skills__item ni sobre el propio .skills__popup, se oculta
 document.addEventListener('click', e => {
     if (!e.target.closest('.skills__item') &&
         !e.target.closest('.skills__popup')) {
@@ -198,18 +191,17 @@ document.addEventListener('click', e => {
 
 
 /*-------------------------------------------------*/
-/*---------------CARRUSEL DISEÑO GRÁFICO-----------*/
+/*                  DISEÑO GRÁFICO                */
+/*------------------------------------------------*/
 
 const track = document.querySelector('.carousel__track');
-/*Array de todas las diapositivas dentro del track*/
+//Array de todas las diapositivas dentro del track
 const slides = Array.from(track.children);
 const nextButton = document.querySelector('.carousel__btn--next');
 const prevButton = document.querySelector('.carousel__btn--prev');
 let currentIndex = 0;
 
 //Actualiza la posición del carrusel según el currentIndez
-// @function updateCarousel
-// @return {void}
 function updateCarousel() {
     const viewport = document.querySelector('.carousel__viewport');
     const slide = slides[0];
@@ -223,7 +215,7 @@ function updateCarousel() {
 
     let offset = slideWidth * currentIndex - (viewportWidth - slideWidth) / 2;
 
-    // Limitar desplazamiento para no cortar el último slide
+    //Limitar EL desplazamiento para no cortar el último slide!
     const maxOffset = Math.max(0, totalWidth - viewportWidth);
     offset = Math.min(offset, maxOffset);
     offset = Math.max(0, offset);
@@ -237,31 +229,25 @@ function updateCarousel() {
 }
 
 //Avanza la diapositiva una posición y actualiza el carrusel
-// @listens nextButton#click
-// @return {void}
 nextButton.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % slides.length;
     updateCarousel();
 });
 
 //Retrocede la diapositiva una posición y actualiza el carrusel
-// @listens prevButton#click
-// @return {void}
 prevButton.addEventListener('click', () => {
     currentIndex = (currentIndex - 1 + slides.length) % slides.length;
     updateCarousel();
 });
 
-// Ajusta la posición del carrusel cuando cambia el tamaño de la ventana.
-// @listens window#resize
+//Ajusta la posición del carrusel cuando cambia el tamaño de la ventana.
 window.addEventListener('resize', updateCarousel);
 //Actualiza el carrusel al cargar la página
-// @listens window#load
 window.addEventListener('load', updateCarousel);
 
 
-// Permite hacer swipe en la versión móvil
-// Registra la posición inicial y determina la diferencia al soltar el dedo para avanzar o retroceder
+//Permite hacer swipe en móvil
+//Registra la posición inicial y determina la diferencia al soltar el dedo para avanzar o retroceder
 let startX = 0;
 track.addEventListener('touchstart', e => {
     startX = e.touches[0].clientX;
@@ -273,7 +259,7 @@ track.addEventListener('touchend', e => {
     else if (endX > startX + 50) prevButton.click();
 });
 
-// Modal (ventana flotante) en carrusel diseño gráfico, botón cerrar y fondo superpuesto
+//Modal (ventana flotante) en carrusel diseño gráfico, botón cerrar y fondo superpuesto
 const modal = document.getElementById('projectModal');
 var closeBtn = modal.querySelector('.modal__close');
 var overlay = modal.querySelector('.modal__overlay');
@@ -282,7 +268,7 @@ var description = modal.querySelector('.modal__description');
 var gallery = modal.querySelector('.modal__gallery');
 
 
-// Datos de cada proyecto 
+//Datos de cada proyecto 
 const projectData = {
     1: {
         title: "Día del Libro 2024",
@@ -331,9 +317,7 @@ const projectData = {
     }
 };
 
-// Para abrir el modal al hacer clic en "Ver proyecto"
-// @listens button#click
-// @return {void}
+//Para abrir el modal al hacer clic en "Ver proyecto"
 document.querySelectorAll('.carousel__cta').forEach((button, index) => {
     button.setAttribute('data-project', index + 1);
     button.addEventListener('click', e => {
@@ -345,10 +329,10 @@ document.querySelectorAll('.carousel__cta').forEach((button, index) => {
             title.textContent = data.title;
             description.textContent = data.description;
 
-            // Limpia galería anterior
+            //Limpia galería anterior
             gallery.innerHTML = '';
 
-            // Carga nuevas imágenes
+            //Carga nuevas imágenes
             data.images.forEach(src => {
                 const img = document.createElement('img');
                 img.src = src;
@@ -362,19 +346,16 @@ document.querySelectorAll('.carousel__cta').forEach((button, index) => {
 });
 
 //Cierra el modal cuando se hace clic en X o en fondo overlay
-// @listens closeBtn#click
-// @listens overlay#click
-// @return {void}
 closeBtn.addEventListener('click', () => modal.classList.remove('active'));
 overlay.addEventListener('click', () => modal.classList.remove('active'));
 
 
 
-/*-----------------------------------------------------*/
-/*---------------------DISEÑO EDITORIAL-----------------*/
+/*-------------------------------------------------*/
+/*                 DISEÑO EDITORIAL               */
+/*------------------------------------------------*/
 
 document.addEventListener('DOMContentLoaded', () => {
-
     const editorialModal = document.getElementById('editorialModal');
     const overlay = editorialModal.querySelector('.editorial-modal__overlay');
     const closeBtn = editorialModal.querySelector('.editorial-modal__close');
@@ -419,12 +400,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const key = btn.dataset.project;
             const data = editorialProjects[key];
-            if (!data) return;    // seguridad
+            if (!data) return;    //seguridad
 
-            // Rellenar contenido
+            //Rellenar contenido
             modalTitle.textContent = data.title;
             modalDesc.textContent = data.desc;
-            modalGallery.innerHTML = '';      // limpiar galería
+            modalGallery.innerHTML = '';      //limpiar galería
 
             data.images.forEach(src => {
                 const img = document.createElement('img');
@@ -434,13 +415,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 modalGallery.appendChild(img);
             });
 
-            // Mostrar el modal
+            //Mostrar el modal
             editorialModal.classList.add('editorial-modal--active');
         });
     });
 
 
-    /* 2. Cerrar el modal */
+    //2. Cerrar el modal
     function closeEditorialModal() {
         editorialModal.classList.remove('editorial-modal--active');
     }
@@ -450,7 +431,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.key === 'Escape') closeEditorialModal();
     });
 
-    /* 3. Flip cards en móvil  */
+    //3. Flip cards en móvil 
     const isTouch = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
     if (isTouch) {
         document.querySelectorAll('.editorial__card').forEach(card => {
@@ -470,12 +451,13 @@ document.querySelectorAll('.editorial__card').forEach(card => {
 });
 
 
-/*-----------------------------------------------------*/
-/*-------------------IDENTIDADES VISUALES---------------*/
+/*-------------------------------------------------*/
+/*              IDENTIDADES VISUALES               */
+/*------------------------------------------------*/
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    /* 1 · Datos de los proyectos (añade o quita los que necesites) */
+    //Datos de los proyectos
     const brandingProjects = [
         {
             id: 'burbuz',
@@ -512,7 +494,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ];
 
-    /* 2 · Construcción dinámica de las diapositivas */
+    //2. Construir las diapositivas con HTML
     const brandingTrack = document.getElementById('brandingTrack');
     brandingProjects.forEach(p => {
         brandingTrack.insertAdjacentHTML('beforeend', `
@@ -529,14 +511,14 @@ document.addEventListener('DOMContentLoaded', () => {
               `);
     });
 
-    /* 3 Referencias y estado del carrusel */
+    //3. Seleccionar elementos y marcar estado del carrusel
     const brandingViewport = document.querySelector('#branding .carousel__viewport');
     const brandingSlides = Array.from(brandingTrack.children);
     const prevBtn = brandingViewport.querySelector('.carousel__btn--prev');
     const nextBtn = brandingViewport.querySelector('.carousel__btn--next');
     let currentIndex = 0;
 
-    /* 3.1 Algoritmo de centrado (igual que Diseño gráfico) */
+    //Centrar el carrusel (igual que el de Diseño gráfico)
     function updateBrandingCarousel() {
         const slide = brandingSlides[0];
         const style = getComputedStyle(slide);
@@ -556,7 +538,7 @@ document.addEventListener('DOMContentLoaded', () => {
             s.classList.toggle('carousel__slide--active', i === currentIndex));
     }
 
-    /* 3.2 Navegación con botones */
+    //Botones de navegación a un lado y otro
     nextBtn.addEventListener('click', () => {
         currentIndex = (currentIndex + 1) % brandingSlides.length;
         updateBrandingCarousel();
@@ -567,7 +549,7 @@ document.addEventListener('DOMContentLoaded', () => {
         updateBrandingCarousel();
     });
 
-    /* 3.3 Swipe en dispositivos táctiles */
+    //swipe en móviles
     let startX = 0;
     brandingTrack.addEventListener('touchstart', e => startX = e.touches[0].clientX);
     brandingTrack.addEventListener('touchend', e => {
@@ -576,11 +558,11 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (endX > startX + 50) prevBtn.click();
     });
 
-    /* 3.4 · Ajustes responsive */
+    //ajuste responsive
     window.addEventListener('load', updateBrandingCarousel);
     window.addEventListener('resize', updateBrandingCarousel);
 
-    /* 4 · Modal dinámico */
+    //Modal
     const modal = document.getElementById('brandingModal');
     const mTitle = modal.querySelector('.modal__title');
     const mDesc = modal.querySelector('.modal__description');
@@ -597,7 +579,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = brandingProjects.find(p => p.id === card.dataset.id);
         if (!data) return;
 
-        /* Rellena el modal */
+        //Completar datos del modal
         mTitle.textContent = data.title;
         mDesc.textContent = data.desc;
         mGallery.innerHTML = data.images
@@ -612,18 +594,19 @@ document.addEventListener('DOMContentLoaded', () => {
     mOverlay.addEventListener('click', closeModal);
     document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-    /* 5 · Arranca en la primera diapositiva */
+    //Arrancar en la primera diapo
     updateBrandingCarousel();
 });
 
 
-/*-----------------------------------------------------*/
-/*-------------------FORMULARIO CONTACTO---------------*/
+/*-------------------------------------------------*/
+/*              FORMULARIO CONTACTO               */
+/*------------------------------------------------*/
 document.getElementById('formulario-contacto').addEventListener('submit', function (e) {
     e.preventDefault();
     const mensaje = document.getElementById('mensaje-exito');
     mensaje.style.display = 'block';
 
-    // Para resetear el formulario
+    //Resetear formulario
     this.reset();
 });
